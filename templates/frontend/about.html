@@ -23,29 +23,52 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="about-top-content">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="heading-content-three">
-                                    <h2 class="title">TẠI SAO <br>Chọn Chúng Tôi</h2>
-                                    <h4 class="sub-title">Best offers Information</h4>
-                                </div><!-- /.section-title-area -->
-                            </div><!-- /.col-md-12 -->
-                        </div><!-- /.row -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2 class="extra-big-title text-center">UY TÍNH LÀM NÊN THƯƠNG HIỆU</h2>
-                            </div><!-- /.col-md-12 -->
-                            <div class="col-md-6">
-                                <div class="about-content-left">
-                                    <p>Tài xế được tuyển chọn khắc khe với kinh nghiệm nhiều năm trong ngành vận chuyển hành khách sẽ đảm bảo cho quý khách có sự an toàn tuyệt đối trong suốt chuyến hành trình.</p>
-                                    <p>Chất lượng xe đời mới, hệ thống an toàn, nội thất xe sang trong nhằm tạo cho khách hàng cảm giác thoải mái dễ chịu trong suốt hành trình.</p>
-                                    <p>Tài xế thân thiện – chu đáo – lịch sự.</p>
-                                </div><!-- /.about-content-left-->
-                            </div><!-- /.col-md-5 -->
-                            <div class="col-md-6">
-                                <img src="{% static 'images/vios_car.jpg' %}" alt="car-item">
-                            </div><!-- /.col-md-7 -->
-                        </div><!-- /.row -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="heading-content-three">
+                                        <h2 class="title">TẠI SAO <br>Chọn Chúng Tôi</h2>
+                                        <h4 class="sub-title">Best offers Information</h4>
+                                    </div><!-- /.section-title-area -->
+                                </div><!-- /.col-md-12 -->
+                            </div><!-- /.row -->
+                            <div class="row">
+                                {%if object_list%}
+                                    <div class="col-md-12">
+                                        <h2 class="extra-big-title text-center" style="text-transform: uppercase;">{{object_list.0.slogan}}</h2>
+                                    </div><!-- /.col-md-12 -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="about-content-left">
+                                                {{ object_list.0.summary|safe }}
+                                            </div><!-- /.col-md-5 -->
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="about-image">
+                                                <img src="{{ object_list.0.avatar.url }}" alt="car-item">
+                                            </div>
+                                        </div><!-- /.col-md-7 -->
+                                    </div>
+
+                                {% else %}
+                                    <div class="col-md-12">
+                                        <h2 class="extra-big-title text-center">UY TÍNH LÀM NÊN THƯƠNG HIỆU</h2>
+                                    </div><!-- /.col-md-12 -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="about-content-left">
+                                                <p>Tài xế được tuyển chọn khắc khe với kinh nghiệm nhiều năm trong ngành vận chuyển hành khách sẽ đảm bảo cho quý khách có sự an toàn tuyệt đối trong suốt chuyến hành trình.</p>
+                                                <p>Chất lượng xe đời mới, hệ thống an toàn, nội thất xe sang trong nhằm tạo cho khách hàng cảm giác thoải mái dễ chịu trong suốt hành trình.</p>
+                                                <p>Tài xế thân thiện – chu đáo – lịch sự.</p>
+                                            </div><!-- /.about-content-left-->
+                                        </div><!-- /.col-md-5 -->
+                                        <div class="col-md-6">
+                                            <img src="{% static 'images/vios_car.jpg' %}" alt="car-item">
+                                        </div><!-- /.col-md-7 -->
+                                    </div>
+                                    
+                                {%endif%} 
+
+                            </div><!-- /.row -->
                     </div><!-- /.top-content -->
                 </div><!-- /.col-md-12 -->
             </div><!-- /.row -->

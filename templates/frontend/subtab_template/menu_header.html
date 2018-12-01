@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles  %}
 
 <header class="header-nav-area">
 	
@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-10 col-xs-10">
                     <div class="site-logo">
-                        <a href="{% url 'frontend:index'%}"><img src=" {% static "images/avatar/logo.png" %}"></a>
+                        <a href="{% url 'frontend:index'%}"><img src="{% static 'images/avatar/logo.png' %}"></a>
                     </div><!-- /.logo -->
                 </div><!-- /.col-md-3 -->
                 <div class="col-md-9 col-sm-2 col-xs-2 pd-right-0">
@@ -25,7 +25,7 @@
                                         <a href="{% url 'frontend:booking'%}" class="{% if request.resolver_match.url_name == 'booking' %} active{% endif %}">Đặt xe</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'frontend:car'%}" class="{% if request.resolver_match.url_name == 'car' %} active{% endif %}">Thông tin</a>
+                                        <a href="{% url 'frontend:car'%}" class="{% if request.resolver_match.url_name == 'car' %} active{% endif %}">Xe</a>
                                     </li>
                                     <li>
                                         <a href="{% url 'frontend:news'%}" class="{% if request.resolver_match.url_name == 'news' %} active{% endif %}"> Blog</a>

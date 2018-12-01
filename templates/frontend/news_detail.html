@@ -50,11 +50,6 @@
                                     </div><!-- /.item-navigation -->
                                 </div><!-- /.post-navigation -->
                             </div><!-- /.author-content -->
-    
-                            <!-- <figure class="post-thumb">
-                                <img src="assets/images/single-blog.jpg" alt="blog">
-                            </figure> /.post-thumb -->
-
                             <div class="single-post">
                                 <div class="entry-meta">
                                     <div class="entry-date">
@@ -66,29 +61,12 @@
                                         <div class="meta-title">Category</div> 
                                         <a href="#">{{blog.category.name}}</a>
                                     </div>      
-
-                                    <!-- <div class="entry-tag">
-                                        <div class="meta-title">Tag</div> 
-                                        <a href="#">burger</a>,
-                                        <a href="#">pixxa</a>,
-                                        <a href="#">drink</a>,
-                                        <a href="#">hot</a>,
-                                        <a href="#">spacial</a>
-                                    </div>  -->         
                                 </div><!-- /.entry-meta -->
 
                                 <div class="entry-content">
                                    {{blog.content|safe}}
                                 </div><!-- /.entry-content -->
                             </div><!-- /.single-post -->
-
-                            <!--  <div class="entry-share">
-                                <span class="meta-name">Share:</span>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                            </div>< /.entry-share -->
                         </article><!-- /.post -->
                     </div><!-- /.single-main -->
 
@@ -98,7 +76,7 @@
                             <!-- block-title-area -->
                             <div class="col-md-10 block-title-area tb-cell">
                                 <div class="heading-content style-one">
-                                    <h2 class="title">Related Post</h2>
+                                    <h2 class="title">Bài viết liên quan</h2>
                                 </div><!-- /.heading-content-one -->
                             </div><!-- /.col-md-10 -->
 
@@ -115,486 +93,92 @@
                                 </div><!-- /.item-navigation -->
                             </div><!-- /.col-md-2 -->
                         </div><!-- /.row --> 
+                        <div class="row">
+                        <!-- /.vehicle-slider -->                           
+                           {% if blog_category %}
+                                {% for b in blog_category%}
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="item">
+                                        <article class="post">
+                                            <figure class="post-thumb">
+                                                <a href="{% url 'frontend:detail_news' b.id %}">
+                                                    <img src="{{b.avatar.url}}" alt="blog">
+                                                </a>
+                                            </figure><!-- /.post-thumb -->
+                                            <div class="post-content">  
+                                                <div class="entry-meta">
+                                                    <span class="entry-date nevy-bg">
+                                                        {{b.uploaded_at|date:"d-m-Y"}}
+                                                    </span>
+                                                    <span class="entry-author red-bg">
+                                                        <i class="fa fa-user"></i>
+                                                        {{blog.author.username}}
+                                                    </span>
+                                                </div><!-- /.entry-meta -->
+                                                <h2 class="entry-title">
+                                                    <a href="{% url 'frontend:detail_news' b.id %}">
+                                                        {{b.title}}
+                                                    </a>
+                                                </h2><!-- /.entry-title -->
+                                                <div class="entry-footer">
+                                                    <div class="entry-footer-meta">
+                                                        <span class="entry-view"><i class="fa fa-eye"></i>{{b.view}}</span>
+                                                        <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>09</a></span>
+                                                        <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>05</a></span>
+                                                    </div><!-- /.entry-footer-meta -->
+                                                </div><!-- /.entry-footer -->
+                                            </div><!-- /.post-content -->
+                                        </article><!-- /.post -->
+                                        </div>
+                                </div><!-- /.vehicle-slider -->
+                                {% endfor %}
+                            {% endif %}
+                        </div>
 
-                        <!-- /.vehicle-slider -->
-                        <div class="blog-related-slider slider-style-two owl-carousel owl-loaded owl-drag" data-item="[2,2,2,1]">
-                            <!-- /.item -->
-                            
-                            <!-- /.item -->
-                            
-                            <!-- /.item -->
+                    
+                    </div><!-- /.col-md-8 -->
+                </div>
 
-                            <!-- /.item -->
-                        <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-750px, 0px, 0px); transition: all 0s ease 0s; width: 3000px;"><div class="owl-item cloned" style="width: 345px; margin-right: 30px;"><div class="item">
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="#">
-                                            <img src="assets/images/blog/blog-three.png" alt="blog">
-                                        </a>
-                                    </figure><!-- /.post-thumb -->
-                                    <div class="post-content">  
-                                        <div class="entry-meta">
-                                            <span class="entry-date nevy-bg">
-                                                July 25, 2016
-                                            </span>
-                                            <span class="entry-author red-bg">
-                                                <i class="fa fa-user"></i>
-                                                <a href="#">Dr. Sibbir.</a>
-                                            </span>
-                                        </div><!-- /.entry-meta -->
-                                        <h2 class="entry-title">
-                                            <a href="#">Get the best price of taxi in your Town.</a>
-                                        </h2><!-- /.entry-title -->
-                                        <div class="entry-footer">
-                                            <div class="entry-footer-meta">
-                                                <span class="entry-view"><i class="fa fa-eye"></i>35</span>
-                                                <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>09</a></span>
-                                                <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>05</a></span>
-                                            </div><!-- /.entry-footer-meta -->
-                                        </div><!-- /.entry-footer -->
-                                    </div><!-- /.post-content -->
-                                </article><!-- /.post -->
-                            </div></div><div class="owl-item cloned" style="width: 345px; margin-right: 30px;"><div class="item">
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="#">
-                                            <img src="assets/images/blog/blog-one.png" alt="blog">
-                                        </a>
-                                    </figure><!-- /.post-thumb -->
-                                    <div class="post-content">  
-                                        <div class="entry-meta">
-                                            <span class="entry-date nevy-bg">
-                                                July 25, 2016
-                                            </span>
-                                            <span class="entry-author red-bg">
-                                                <i class="fa fa-user"></i>
-                                                Dr. Sibbir.
-                                            </span>
-                                        </div><!-- /.entry-meta -->
-                                        <h2 class="entry-title">
-                                            <a href="#">Get the best price of taxi in your Town.</a>
-                                        </h2><!-- /.entry-title -->
-                                        <div class="entry-footer">
-                                            <div class="entry-footer-meta">
-                                                <span class="entry-view"><i class="fa fa-eye"></i>35</span>
-                                                <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>09</a></span>
-                                                <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>05</a></span>
-                                            </div><!-- /.entry-footer-meta -->
-                                        </div><!-- /.entry-footer -->
-                                    </div><!-- /.post-content -->
-                                </article><!-- /.post -->
-                            </div></div><div class="owl-item active" style="width: 345px; margin-right: 30px;"><div class="item">
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="#">
-                                            <img src="assets/images/blog/blog-one.png" alt="blog">
-                                        </a>
-                                    </figure><!-- /.post-thumb -->
-                                    <div class="post-content">  
-                                        <div class="entry-meta">
-                                            <span class="entry-date nevy-bg">
-                                                July 25. 2016
-                                            </span>
-                                            <span class="entry-author red-bg">
-                                                <i class="fa fa-user"></i>
-                                                <a href="#">Dr, Sibbir.</a>
-                                            </span>
-                                        </div><!-- /.entry-meta -->
-                                        <h2 class="entry-title">
-                                            <a href="#">Get the best price of taxi in your Town.</a>
-                                        </h2><!-- /.entry-title -->
-                                        <div class="entry-footer">
-                                            <div class="entry-footer-meta">
-                                                <span class="entry-view"><i class="fa fa-eye"></i>35</span>
-                                                <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>09</a></span>
-                                                <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>05</a></span>
-                                            </div><!-- /.entry-footer-meta -->
-                                        </div><!-- /.entry-footer -->
-                                    </div><!-- /.post-content -->
-                                </article><!-- /.post -->
-                            </div></div><div class="owl-item active" style="width: 345px; margin-right: 30px;"><div class="item">
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="#">
-                                            <img src="assets/images/blog/blog-two.png" alt="blog">
-                                        </a>
-                                    </figure><!-- /.post-thumb -->
-                                    <div class="post-content">  
-                                        <div class="entry-meta">
-                                            <span class="entry-date nevy-bg">
-                                                July 25, 2016
-                                            </span>
-                                            <span class="entry-author red-bg">
-                                                <i class="fa fa-user"></i>
-                                                <a href="#">Dr. Sibbir.</a>
-                                            </span>
-                                        </div><!-- /.entry-meta -->
-                                        <h2 class="entry-title">
-                                            <a href="#">Get the best price of taxi in your Town.</a>
-                                        </h2><!-- /.entry-title -->
-                                        <div class="entry-footer">
-                                            <div class="entry-footer-meta">
-                                                <span class="entry-view"><i class="fa fa-eye"></i>35</span>
-                                                <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>09</a></span>
-                                                <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>05</a></span>
-                                            </div><!-- /.entry-footer-meta -->
-                                        </div><!-- /.entry-footer -->
-                                    </div><!-- /.post-content -->
-                                </article><!-- /.post -->
-                            </div></div><div class="owl-item" style="width: 345px; margin-right: 30px;"><div class="item">
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="#">
-                                            <img src="assets/images/blog/blog-three.png" alt="blog">
-                                        </a>
-                                    </figure><!-- /.post-thumb -->
-                                    <div class="post-content">  
-                                        <div class="entry-meta">
-                                            <span class="entry-date nevy-bg">
-                                                July 25, 2016
-                                            </span>
-                                            <span class="entry-author red-bg">
-                                                <i class="fa fa-user"></i>
-                                                <a href="#">Dr. Sibbir.</a>
-                                            </span>
-                                        </div><!-- /.entry-meta -->
-                                        <h2 class="entry-title">
-                                            <a href="#">Get the best price of taxi in your Town.</a>
-                                        </h2><!-- /.entry-title -->
-                                        <div class="entry-footer">
-                                            <div class="entry-footer-meta">
-                                                <span class="entry-view"><i class="fa fa-eye"></i>35</span>
-                                                <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>09</a></span>
-                                                <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>05</a></span>
-                                            </div><!-- /.entry-footer-meta -->
-                                        </div><!-- /.entry-footer -->
-                                    </div><!-- /.post-content -->
-                                </article><!-- /.post -->
-                            </div></div><div class="owl-item" style="width: 345px; margin-right: 30px;"><div class="item">
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="#">
-                                            <img src="assets/images/blog/blog-one.png" alt="blog">
-                                        </a>
-                                    </figure><!-- /.post-thumb -->
-                                    <div class="post-content">  
-                                        <div class="entry-meta">
-                                            <span class="entry-date nevy-bg">
-                                                July 25, 2016
-                                            </span>
-                                            <span class="entry-author red-bg">
-                                                <i class="fa fa-user"></i>
-                                                Dr. Sibbir.
-                                            </span>
-                                        </div><!-- /.entry-meta -->
-                                        <h2 class="entry-title">
-                                            <a href="#">Get the best price of taxi in your Town.</a>
-                                        </h2><!-- /.entry-title -->
-                                        <div class="entry-footer">
-                                            <div class="entry-footer-meta">
-                                                <span class="entry-view"><i class="fa fa-eye"></i>35</span>
-                                                <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>09</a></span>
-                                                <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>05</a></span>
-                                            </div><!-- /.entry-footer-meta -->
-                                        </div><!-- /.entry-footer -->
-                                    </div><!-- /.post-content -->
-                                </article><!-- /.post -->
-                            </div></div><div class="owl-item cloned" style="width: 345px; margin-right: 30px;"><div class="item">
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="#">
-                                            <img src="assets/images/blog/blog-one.png" alt="blog">
-                                        </a>
-                                    </figure><!-- /.post-thumb -->
-                                    <div class="post-content">  
-                                        <div class="entry-meta">
-                                            <span class="entry-date nevy-bg">
-                                                July 25. 2016
-                                            </span>
-                                            <span class="entry-author red-bg">
-                                                <i class="fa fa-user"></i>
-                                                <a href="#">Dr, Sibbir.</a>
-                                            </span>
-                                        </div><!-- /.entry-meta -->
-                                        <h2 class="entry-title">
-                                            <a href="#">Get the best price of taxi in your Town.</a>
-                                        </h2><!-- /.entry-title -->
-                                        <div class="entry-footer">
-                                            <div class="entry-footer-meta">
-                                                <span class="entry-view"><i class="fa fa-eye"></i>35</span>
-                                                <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>09</a></span>
-                                                <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>05</a></span>
-                                            </div><!-- /.entry-footer-meta -->
-                                        </div><!-- /.entry-footer -->
-                                    </div><!-- /.post-content -->
-                                </article><!-- /.post -->
-                            </div></div><div class="owl-item cloned" style="width: 345px; margin-right: 30px;"><div class="item">
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="#">
-                                            <img src="assets/images/blog/blog-two.png" alt="blog">
-                                        </a>
-                                    </figure><!-- /.post-thumb -->
-                                    <div class="post-content">  
-                                        <div class="entry-meta">
-                                            <span class="entry-date nevy-bg">
-                                                July 25, 2016
-                                            </span>
-                                            <span class="entry-author red-bg">
-                                                <i class="fa fa-user"></i>
-                                                <a href="#">Dr. Sibbir.</a>
-                                            </span>
-                                        </div><!-- /.entry-meta -->
-                                        <h2 class="entry-title">
-                                            <a href="#">Get the best price of taxi in your Town.</a>
-                                        </h2><!-- /.entry-title -->
-                                        <div class="entry-footer">
-                                            <div class="entry-footer-meta">
-                                                <span class="entry-view"><i class="fa fa-eye"></i>35</span>
-                                                <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>09</a></span>
-                                                <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>05</a></span>
-                                            </div><!-- /.entry-footer-meta -->
-                                        </div><!-- /.entry-footer -->
-                                    </div><!-- /.post-content -->
-                                </article><!-- /.post -->
-                            </div></div></div></div><div class="owl-nav disabled"><div class="owl-prev">prev</div><div class="owl-next">next</div></div><div class="owl-dots"><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div></div></div><!-- /.vehicle-slider -->
-                    </div><!-- /.related-blog-->
-
-                    <div id="comments" class="comments-area color-white">
-                        <div class="comments-main-content">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h3 class="comments-title">04 Comments</h3><!--/.comments-title-->
-                                </div><!--/.col-md-12-->
-                            </div><!--/.row-->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <ol class="comment-list">
-                                        <li class="comment">
-                                            <div class="comment-body">
-                                                <div class="comment-meta">
-                                                    <div class="comment-author vcard">
-                                                        <div class="author-img">
-                                                            <img alt="" src="assets/images/comment/comment-one.png" class="avatar photo">
-                                                        </div>
-                                                    </div><!--/.comment-author-->
-                                                    <div class="comment-metadata"><b class="author">Rakib Smith</b>
-                                                        <span class="date">10:35 pm, 17 jan 2016</span>
-                                                    </div><!--/.comment-metadata-->
-                                                </div><!--/.comment-meta-->
-                                                <div class="comment-details">
-                                                    <div class="comment-content">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh nisl. Cras et ma uriseg haset lorem ultricies ferm entum ras vitae nibh nisl. Forem ipsum dolor sit amet. </p>
-                                                    </div><!--/.comment-content-->
-                                                    <div class="reply">
-                                                        <a href="#" class="comment-reply-link">Reply </a>
-                                                    </div><!--/.reply-->
-                                                </div><!-- /.comment-details-->
-                                            </div><!--/.comment-body-->
-                                            <ol class="children">
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <div class="comment-meta">
-                                                            <div class="comment-author vcard">
-                                                                <div class="author-img">
-                                                                    <img alt="" src="assets/images/comment/comment-two.png" class="avatar photo">
-                                                                </div>
-                                                            </div><!--/.comment-author-->
-                                                            <div class="comment-metadata"><b class="author">Sagor Smith</b>
-                                                                <span class="date">10:35 pm, 17 jan 2016</span>
-                                                            </div><!--/.comment-metadata-->
-                                                        </div><!--/.comment-meta-->
-                                                        <div class="comment-details">
-                                                            <div class="comment-content">
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh nisl. Cras et ma uriseg haset lorem ultricies ferm entum ras vitae nibh nisl. Forem ipsum dolor sit amet. </p>
-                                                            </div><!--/.comment-content-->
-                                                            <div class="reply">
-                                                                <a href="#" class="comment-reply-link">Reply </a>
-                                                            </div><!--/.reply-->
-                                                        </div><!-- /.comment-details-->
-                                                    </div><!--/.comment-body-->
-                                                </li><!--/.comment-->
-                                            </ol><!--/.children-->
-                                        </li><!--/.comment-body-->
-                                        <li class="comment">
-                                            <div class="comment-body">
-                                                <div class="comment-meta">
-                                                    <div class="comment-author vcard">
-                                                        <div class="author-img">
-                                                            <img alt="" src="assets/images/comment/comment-three.png" class="avatar photo">
-                                                        </div>
-                                                    </div><!--/.comment-author-->
-                                                    <div class="comment-metadata"><b class="author">Rakib Smith</b>
-                                                        <span class="date">10:35 pm, 17 jan 2016</span>
-                                                    </div><!--/.comment-metadata-->
-                                                </div><!--/.comment-meta-->
-                                                <div class="comment-details">
-                                                    <div class="comment-content">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh nisl. Cras et ma uriseg haset lorem ultricies ferm entum ras vitae nibh nisl. Forem ipsum dolor sit amet. </p>
-                                                    </div><!--/.comment-content-->
-                                                    <div class="reply">
-                                                        <a href="#" class="comment-reply-link">Reply </a>
-                                                    </div><!--/.reply-->
-                                                </div><!-- /.comment-details-->
-                                            </div><!--/.comment-body-->
-                                            <ol class="children">
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <div class="comment-meta">
-                                                            <div class="comment-author vcard">
-                                                                <div class="author-img">
-                                                                    <img alt="" src="assets/images/comment/comment-four.png" class="avatar photo">
-                                                                </div>
-                                                            </div><!--/.comment-author-->
-                                                            <div class="comment-metadata"><b class="author">Sagor Smith</b>
-                                                                <span class="date">10:35 pm, 17 jan 2016</span>
-                                                            </div><!--/.comment-metadata-->
-                                                        </div><!--/.comment-meta-->
-                                                        <div class="comment-details">
-                                                            <div class="comment-content">
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh nisl. Cras et ma uriseg haset lorem ultricies ferm entum ras vitae nibh nisl. Forem ipsum dolor sit amet. </p>
-                                                            </div><!--/.comment-content-->
-                                                            <div class="reply">
-                                                                <a href="#" class="comment-reply-link">Reply </a>
-                                                            </div><!--/.reply-->
-                                                        </div><!-- /.comment-details-->
-                                                    </div><!--/.comment-body-->
-                                                </li><!--/.comment-->
-                                            </ol><!--/.children-->
-                                        </li><!--/.comment-body-->
-                                    </ol><!--/.comment-list-->
-                                </div><!--/.col-md-12-->
-                            </div><!--/.row-->
-                        </div><!-- /.comments-main-content -->
-                    </div><!-- /.comments-area -->
-
-                    <div id="respond" class="comment-respond box-radius bg-gray-color">
-                        <div class="comments-main-content bg-white-color">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h3 class="comment-reply-title">Leave your Reply</h3><!--/.comment-reply-title-->
-                                </div><!--/.col-md-12-->
-                            </div><!--/.row-->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <form action="comments-post.php" method="post" id="comment_form" name="commentForm">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-6 padding-right">
-                                                <p>
-                                                    <input name="name" aria-required="true" placeholder="Name*" class="form-controllar" type="text"> </p>
-                                            </div><!--/.col-md-6-->
-                                            <div class="col-md-6 col-sm-6">
-                                                <p>
-                                                    <input name="email" aria-required="true" placeholder="Email*" class="form-controllar" type="text"> </p>
-                                            </div><!--/.col-md-6-->
-                                            <div class="col-md-12">
-                                                <p>
-                                                    <input placeholder="Website*" aria-required="true" id="url" name="url" class="form-controllar" type="text"> </p>
-                                            </div><!--/.col-md-12-->
-                                            <div class="col-md-12">
-                                                <p>
-                                                    <textarea name="message" id="message" aria-required="true" rows="1" cols="10" placeholder="Write a Comment...." class="form-controllar"></textarea>
-                                                </p>
-                                            </div><!--/.col-md-12-->
-                                            <div class="col-md-12">
-                                                <p class="form-submit ">
-                                                    <button type="submit" id="submit" class="button nevy-bg">Post a comments</button>
-                                                </p>
-                                            </div><!--/.col-md-12-->
-                                        </div><!--/.row-->
-                                    </form><!--/#comment_form-->
-                                </div><!--/.col-md-12-->
-                            </div><!--/.row-->
-                        </div><!-- /.comments-main-content -->
-                    </div><!-- /.comment-respond -->
-                </div><!-- /.col-md-8 -->
-                
                 <!-- Blog Sidebar Content -->
                  <div class="col-md-4 blog-sidebar">
                      <div class="blog-content-right nevy-bg">
                          <div class="widget widget_popular_posts clearfix">
-                             <h4 class="widget-title expand-margin mb-widget">Popular Posts</h4><!-- /.widget-title -->
-
-                             <div class="widget-content" style="display: none;">
-                                 <div class="post-content clearfix">
-                                     <div class="image-content">
-                                         <a href="#">
-                                             <img src="assets/images/post/post01.jpg" alt="post">
-                                         </a>
-                                     </div><!-- /.image-content -->
-                                     <div class="post-info">
-                                         <h5 class="widget-post-title"><a href="#">Europe’s best affordab</a></h5>
-                                         <span class="post-date">Augest 23, 2015</span>
-                                     </div><!-- /.post-info -->
-                                 </div><!-- /.post-content -->
-                                 <div class="post-content clearfix">
-                                     <div class="image-content">
-                                         <a href="#">
-                                             <img src="assets/images/post/post02.jpg" alt="post">
-                                         </a>
-                                     </div><!-- /.image-content -->
-                                     <div class="post-info">
-                                         <h5 class="widget-post-title"><a href="#">Visiting Green Field</a></h5>
-                                         <span class="post-date">Augest 23, 2015</span>
-                                     </div><!-- /.post-info -->
-                                 </div><!-- /.post-content -->
-                                 <div class="post-content clearfix">
-                                     <div class="image-content">
-                                         <a href="#">
-                                             <img src="assets/images/post/post03.jpg" alt="post">
-                                         </a>
-                                     </div><!-- /.image-content -->
-                                     <div class="post-info">
-                                        <h5 class="widget-post-title"><a href="#">Europe’s best affordab</a></h5>
-                                        <span class="post-date">Augest 23, 2015</span>
-                                     </div><!-- /.post-info -->
-                                 </div><!-- /.post-content -->
-                                 <div class="post-content clearfix">
-                                     <div class="image-content">
-                                         <a href="#">
-                                             <img src="assets/images/post/post04.jpg" alt="post">
-                                         </a>
-                                     </div><!-- /.image-content -->
-                                     <div class="post-info">
-                                         <h5 class="widget-post-title"><a href="#">Simple Flower Arements You Can Put.</a></h5>
-                                        <span class="post-date">Augest 23, 2015</span>
-                                     </div><!-- /.post-info -->
-                                 </div><!-- /.post-content -->
+                             <h4 class="widget-title expand-margin mb-widget">Bài viết phổ biến</h4><!-- /.widget-title -->
+                             <div class="widget-content">
+                                {% if blog_most %}
+                                    {% for b in blog_most%}
+                                         <div class="post-content clearfix" style="margin-bottom: 20px; border-bottom: 1px solid #4c4c4c; padding-bottom: 20px;">
+                                             <div class="image-content">
+                                                 <a href="{% url 'frontend:detail_news' b.id %}">
+                                                     <img src="{{b.avatar.url}}" alt="post">
+                                                 </a>
+                                             </div><!-- /.image-content -->
+                                             <div class="post-info">
+                                                 <h5 class="widget-post-title"><a href="#">{{b.title}}</a></h5>
+                                                 <span class="post-date"> {{b.uploaded_at|date:"d-m-Y"}}</span>
+                                             </div><!-- /.post-info -->
+                                         </div><!-- /.post-content -->
+                                    {% endfor %}
+                                {% endif %}     
                              </div><!-- /.widget-content -->
                          </div><!-- /.widget widget_popular_post -->
 
-                         <div class="widget widget_categories clearfix">
-                             <h4 class="widget-title expand-margin mb-widget">Categories</h4> <!-- /.widget-title -->
-                             <ul style="display: none;">
-                                 <li>
-                                     <a href="category.html">Travels</a>
-                                     <span class="count">45</span>
-                                 </li>
-                                 <li>
-                                     <a href="category.html">Lifestyle</a>
-                                     <span class="count">55</span>
-                                 </li>
-                                 <li>
-                                     <a href="category.html">Fashion</a>
-                                     <span class="count">20</span>
-                                 </li>
-                                 <li>
-                                     <a href="category.html">Music</a>
-                                     <span class="count">30</span>
-                                 </li>
-                                 <li>
-                                     <a href="category.html">Video</a>
-                                     <span class="count">50</span>
-                                 </li>
-                             </ul>
-                         </div> <!-- /.widget_categories -->
+                        {% if blog_most %}
+                            <div class="widget widget_categories clearfix">
+                                <h4 class="widget-title expand-margin mb-widget">Categories</h4> <!-- /.widget-title -->
+                             
+                                {% for category in categories%}
+                                 <ul style="display: none;">
+                                    <li style="border-bottom: 1px solid #4c4c4c;">
+                                         <a href="{% url 'frontend:news'%}">{{category.name}}</a>
+                                         <span class="count">{{category.blogs_count}}</span>
+                                     </li>
+                                 </ul>
+                                 {% endfor %}
+                             
+                            </div> <!-- /.widget_categories -->
+                        {% endif %} 
 
-                         <div class="widget widget_adds clearfix">
-                             <h4 class="widget-title expand-margin mb-widget">Ad Unit</h4> 
-                             <div class="add-image" style="display: none;">
-                                 <a href="#"><img src="assets/images/blog-add.png" alt="blog-add"></a>
-                             </div><!-- /.unit -->
-                         </div><!-- /.widget_ads -->
 
                          <div class="widget widget_tagcloud clearfix">
                              <h4 class="widget-title expand-margin mb-widget">Tag Cloud</h4> 
@@ -618,10 +202,6 @@
                      </div><!-- /.blog-content-right -->
                 </div><!-- /.col-md-4 -->
             </div><!-- /.row -->
-            {% else %}
-                <div>
-                    
-                </div>
             {% endif%}
         </div><!-- /.container -->
     </div>
