@@ -81,8 +81,8 @@ class BlogList(ListView):
 		context['categories'] = categories
 		return context
 
-class NewsDetail(DetailView):
-	template_name = 'frontend/detail_news.html'
+class BlogDetail(DetailView):
+	template_name = 'frontend/news_detail.html'
 	model  = Blog #News		
 
 

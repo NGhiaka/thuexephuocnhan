@@ -1,5 +1,5 @@
 {% extends 'frontend/template.html' %}
-
+{% load staticfiles %}
 {% block title %} Blog | Dịch vụ thuê xe du lịch Phước Nhân {% endblock %}
 
 {% block content %}
@@ -17,23 +17,24 @@
 
     <div class="blog-single-block bg-gray-color pd-btm-60">
         <div class="container">
+            {% if blog %}
             <div class="row">
                 <!-- Blog single Content -->
                 <div class="col-md-8">
                     <div class="single-main-content">
                         <article class="post-content">
                             <div class="entry-header">
-                                <h2 class="entry-title">Finding best places to visit in California</h2>
+                                <h2 class="entry-title">{{blog.title}}</h2>
                             </div><!-- /.entry-header -->
 
                             <div class="author-content clearfix hidden-xs">
                                 <div class="entry-author pull-left">
                                     <div class="author-image">
-                                       <img src="assets/images/author.jpg" alt="blog">
+                                       <img src="{% static 'images/avatar/avatar5.png'%}" alt="blog">
                                     </div><!-- /.image -->
 
                                     <div class="author-details">
-                                        <h4 class="author-name">Shagor doe</h4>
+                                        <h4 class="author-name">{{blog.author.get_full_name}}</h4>
                                         <p class="author-designation">Administrator</p>
                                     </div>
                                 </div><!-- /.pull-left -->
@@ -50,71 +51,44 @@
                                 </div><!-- /.post-navigation -->
                             </div><!-- /.author-content -->
     
-                            <figure class="post-thumb">
+                            <!-- <figure class="post-thumb">
                                 <img src="assets/images/single-blog.jpg" alt="blog">
-                            </figure><!-- /.post-thumb -->
+                            </figure> /.post-thumb -->
 
                             <div class="single-post">
                                 <div class="entry-meta">
                                     <div class="entry-date">
-                                        <div class="meta-title">Date</div> 
-                                        <a href="#">July 25, 2017</a>
+                                        <div class="meta-title">Ngày</div> 
+                                        <a href="#">{{blog.uploaded_at|date:"d-m-Y"}}</a>
                                     </div>
                             
                                     <div class="entry-category">
                                         <div class="meta-title">Category</div> 
-                                        <a href="#">food</a>,
-                                        <a href="#">breakfast</a>
+                                        <a href="#">{{blog.category.name}}</a>
                                     </div>      
 
-                                    <div class="entry-tag">
+                                    <!-- <div class="entry-tag">
                                         <div class="meta-title">Tag</div> 
                                         <a href="#">burger</a>,
                                         <a href="#">pixxa</a>,
                                         <a href="#">drink</a>,
                                         <a href="#">hot</a>,
                                         <a href="#">spacial</a>
-                                    </div>          
+                                    </div>  -->         
                                 </div><!-- /.entry-meta -->
 
                                 <div class="entry-content">
-                                    <p>Adipiscing elit commodo ligula eget dolor Morlem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commod ligula eget dolor Cum sociis natoque penatibus et magnis dis parturient montes. Morlem ipsum dolor sit amet nec penatib et magnis dis parturient montes. Morlem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligulaits eget dolor. Aenean massa. Cum sociis nato que pena tibus et magnis dis partu rient montes. Morlem ipsum dolor set amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-                                
-                                    <div class="gallery gallery-columns-4">
-                                        <figure class="gallery-item">
-                                            <a href="#">
-                                                <img src="assets/images/blog/blog-one.png" alt="blog">
-                                            </a>
-                                        </figure><!-- /.gallery-item -->                                    
-                                        <figure class="gallery-item">
-                                            <a href="#">
-                                                <img src="assets/images/blog/blog-two.png" alt="blog">
-                                            </a>
-                                        </figure><!-- /.gallery-item -->
-
-                                        <figure class="gallery-item">
-                                            <a href="#">
-                                                <img src="assets/images/blog/blog-three.png" alt="blog">
-                                            </a>
-                                        </figure><!-- /.gallery-item -->                                    
-                                        <figure class="gallery-item">
-                                            <a href="#">
-                                                <img src="assets/images/blog/blog-one.png" alt="blog">
-                                            </a>
-                                        </figure><!-- /.gallery-item -->
-                                    </div><!-- /.gallery -->
-                                
-                                    <p>Nommodo ligula eget dolor Morlem ipsum dolor sit amet nec, conse ctetuer adipi-scing elit. Aenean commod ligula eget dolor Cum sociis natoque penatibus et magnis dis parturient montes. Morlem ipsum dolor sit amet nec penatib et magnis dis parturient montes. Morlem ipstium dolor sit amet nec, conse ctetuer adipiscing elit. Aenean commodo ligulaits eget is dolor. Aenean massa. Cum sociis nato que pena tibus et magnis dis partu rient montes. Morlem ipsum dolor set amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
+                                   {{blog.content|safe}}
                                 </div><!-- /.entry-content -->
                             </div><!-- /.single-post -->
 
-                            <div class="entry-share">
+                            <!--  <div class="entry-share">
                                 <span class="meta-name">Share:</span>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                                 <a href="#"><i class="fa fa-heart"></i></a>
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
-                            </div><!-- /.entry-share -->
+                            </div>< /.entry-share -->
                         </article><!-- /.post -->
                     </div><!-- /.single-main -->
 
@@ -644,6 +618,11 @@
                      </div><!-- /.blog-content-right -->
                 </div><!-- /.col-md-4 -->
             </div><!-- /.row -->
+            {% else %}
+                <div>
+                    
+                </div>
+            {% endif%}
         </div><!-- /.container -->
     </div>
 {% endblock%}
