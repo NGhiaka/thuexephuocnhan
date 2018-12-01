@@ -3,7 +3,7 @@ from django.conf.urls import url
 from . import views
 app_name = "frontend"
 urlpatterns = [
-    url(r'^$', views.index.as_view(), name='index'),
+    url(r'^$', views.index, name='index'),
     url(r'^trang-chu/$', views.home, name='home'),
     url(r'^thong-tin/$', views.AboutList.as_view(), name='about'),
     url(r'^dat-lich/$', views.BookingShow.as_view(), name='booking'),
