@@ -32,10 +32,10 @@ from django.views.generic.detail import DetailView
 
 # 	# }
 # 	return render(request, 'frontend/index.html')
-# def index(request):
-# 	return render(request, 'frontend/index.html')
-class index(ListView):
-	template_name = 'frontend/index.html'
+def index(request):
+	return render(request, 'frontend/index.html')
+# class index(ListView):
+# 	template_name = 'frontend/index.html'
 	# model  = Content
 
 def home(request):
