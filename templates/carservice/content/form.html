@@ -1,0 +1,26 @@
+{% extends 'carservice/content/template.html' %}
+
+{% block title %} Nội dung trang web {% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Quản lý nội dunb web</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> chi tiết
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    <div class="panel panel-primary">
+        <div class="panel-heading"> Thông tin</div>
+        <div class="panel-body">
+        	<form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+			    {{ form.as_p }}
+			    <input type="submit" value="Tạo" class="btn btn-primary btn-block"/>
+			</form>
+        </div>
+    </div>
+{% endblock %}

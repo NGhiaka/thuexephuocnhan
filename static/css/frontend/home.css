@@ -1,0 +1,302 @@
+a:hover{
+	cursor: pointer;
+}
+.ui.labeled.icon.menu .item > i:not(.dropdown) {
+    height: 1em;
+    display: block;
+    font-size: 25px !important;
+    margin: 0 auto .5rem !important;
+}
+@mixin temp{
+	position: absolute;
+	top: 10px;
+	color: #00bcd4;
+	font-size: 35px;
+}
+.testimonial_left i{
+	left: -17px;
+	position: absolute;
+	top: 10px;
+	color: #00bcd4;
+	font-size: 35px;
+}
+.testimonial_right i{
+	right: -19px;
+	position: absolute;
+	top: 10px;
+	color: #00bcd4;
+	font-size: 35px;
+}
+h1, h2, h3, h4, h5, h6 {
+  clear: both;
+  font-family: none;
+}
+.top-navigation .menu-list > li > a {
+  	font-family: none;
+    
+  }
+.header-two .header-bottom-block .nav-right-content > ul > li > a {
+  font-family: none;
+}
+.header-two .header-content-right ul li {
+  float: left;
+  padding: 0 15px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.015em;
+  font-family: none;
+}
+.tel-contact-number a {
+  color: #E91E22;
+  font-family:none;
+  font-size: 18px;
+  font-weight: 700;
+  margin-right: 15px;
+  position: relative;
+  top: -2px;
+}
+@media only screen and (max-width: 768px) {
+  .brand-carousel .owl-nav.disabled > div {
+    font-family: none;
+    
+  }
+}
+
+.check-content .title {
+  font-size: 35px;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-weight: 900;
+  font-family: none;
+  line-height: 50px;
+}
+
+.check-vehicle-footer button, .check-vehicle-footer input[type="button"], .check-vehicle-footer input[type="reset"], .check-vehicle-footer input[type="submit"] {
+  margin-right: 15px;
+  float: right;
+  color: #1d1d1f;
+  font-family: none;
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: 0.035em;
+  padding: 15px 60px;
+  text-transform: uppercase;
+}
+
+.check-vehicle-footer button, .check-vehicle-footer input[type="button"], .check-vehicle-footer input[type="reset"], .check-vehicle-footer input[type="submit"] {
+  margin-right: 15px;
+  float: right;
+  color: #1d1d1f;
+  font-family: none;
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: 0.035em;
+  padding: 15px 60px;
+  text-transform: uppercase;
+}
+.about-details-content .button {
+  margin-bottom: 0;
+  border-radius: 0;
+  display: inline-block;
+  font-size: 16px;
+  font-family: none;
+  letter-spacing: 0.025em;
+  padding: 10px 30px;
+}
+.faq-bolck .heading-content .subtitle {
+  font-family: none;
+}
+.shipping-from-content .advance-search-query textarea {
+  color: #aeaeae;
+  width: 100%;
+  min-height: 150px;
+  padding: 15px;
+  border-radius: 5px;
+  min-height: 90px;
+  font-size: 13px;
+  font-family: none;
+  font-weight: 600;
+}
+.view-all-item .view-all-btn {
+  font-family: none;
+  background-color: #000;
+  padding: 8px 15px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 800;
+  display: inline-block;
+  height: 39px;
+  border: 1px solid #ddd;
+  letter-spacing: 0.015em;
+}
+.vehicle-bottom-content .meta-item {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.015em;
+  font-family: none;
+}
+
+.vehicle-top-meta .meta-item {
+  float: left;
+  margin-right: 15px;
+  font-family: none;
+}
+@media only screen and (max-width: 768px) {
+  .slider-style-two .owl-nav.disabled > div {
+    font-family: none;
+    background-color: #000;
+    padding: 8px 15px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 800;
+    display: inline-block;
+    height: 39px;
+    border: 1px solid #ddd;
+    letter-spacing: 0.015em;
+    text-transform: capitalize;
+  }
+}
+.milestone-details {
+  font-weight: 700;
+  font-size: 24px;
+  color: #ffffff;
+  font-family: none;
+  margin-bottom: 20px;
+  line-height: 1.15;
+}
+.vehicle-filter-area .nav-tabs li a {
+  padding: 10px 15px;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: bold;
+  background-color: #232C3B !important;
+  color: #ffffff;
+  border: 0 none;
+  border-radius: 0;
+  display: inline-block;
+  margin-right: 0;
+  font-family: none;
+  letter-spacing: 0.015em;
+  font-weight: 700;
+}
+.blog-block .nav-tabs > li > a {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 35px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  font-family: none;
+}
+.pricing-table-item .price .price-title {
+  margin-bottom: 25px;
+  font-weight: 800;
+  letter-spacing: 0.010em;
+  margin-top: 5px;
+  position: relative;
+  font-family: none;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.pricing-table-item .price .price-subtille {
+  margin-bottom: 10px;
+  font-family: none;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+}
+.pricing-table-item .pricing-table-footer .button {
+  font-family: none;
+  font-size: 18px;
+  display: inline-block;
+}
+.social-profile .social-profole-title {
+  color: #cbcaca;
+  margin-right: 5px;
+  font-weight: bold;
+  font-family: none;
+}
+.single-main-content .entry-meta > div .meta-title {
+  font-weight: 800;
+  color: #181818;
+  font-size: 18px;
+  margin-bottom: 5px;
+  font-family: none;
+}
+.commingsoon-count .timer-body-block > div .tab-val {
+  font-size: 45px;
+  font-weight: 900;
+  line-height: 1em;
+  font-family: none;
+}
+.google-map-area .contact-style-one .contact p {
+  font-size: 15px;
+  color: #161616;
+  line-height: 20px;
+  font-family: none;
+}
+.vehicle-sidebar .advance-search-query .form-content label {
+  color: #454545;
+  font-family: none;
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 800;
+}
+.vehicle-sidebar .advance-search-query .form-content .input-filter select {
+  background-color: inherit;
+  border: none;
+  font-size: 24px;
+  color: #232c3b;
+  font-weight: 800;
+  font-family: none;
+  margin-bottom: 20px;
+}
+.comments-area .comment-metadata .author {
+  font-size: 18px;
+  font-weight: 800;
+  font-family: none;
+}
+.widget_popular_posts .post-info .widget-post-title {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: none;
+}
+.widget.widget_menu ul li {
+  line-height: 45px;
+  position: relative;
+  font-family: none;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+.vehicle-section-divider .section-divider-content:before{
+	position: absolute;
+    top: 30px;
+}
+.header-nav-area .site-logo {
+    padding: 15px 0;
+}
+.menu-list li:hover > a, .menu-list > li > a:hover, .menu-list > li > a.active {
+    background-color: transparent;
+    text-decoration: none;
+    color: red;
+}
+
+.preload-container{
+    position: absolute;
+    z-index: 1017;
+    height: 100%;
+    width: 100%;
+    /* top: 50%; */
+    background: #000000;
+    opacity: 0.5;
+}
+.preload-container img{
+    position: relative;
+    top: 30%;
+}

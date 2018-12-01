@@ -1,0 +1,97 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link rel="shortcut icon" href="{% static 'images/icon.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/icon.png' %}" type="image/x-icon">
+    
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+   
+    <script src="{% static 'js/style.js' %}"></script>    
+    
+
+    <title>Đăng Nhập</title>
+</head>
+ 
+<body>
+    
+<div class="header">
+		<div class="header-main">
+		      <h1>Đăng Nhập</h1>
+			<div class="header-bottom">
+				<div class="header-right w3agile">
+					<div class="fadeIn first">
+				
+					<div class="header-left-bottom agileinfo">
+						{% if error_message %}
+	                    	<div class="alert alert-danger" role="alert">{{ error_message }}</div>
+	                    {% endif %}
+						<form method="post">
+	                     	{% csrf_token %}
+			                    <fieldset>
+									 
+									  {{ form.as_p }}
+									  <button type="submit">Đăng Nhập</button>
+=
+						    	  	{# <div class="form-group">
+						    	  		{{ form.username }}	
+						    	  		<!-- <input type="text" value="User name" name="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User name';}"> -->
+						    	  	
+						    		    
+						    		</div>
+						    		<div class="form-group">
+						    			{{ form.password }}
+						    			<!-- <input type="password" value="Password" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}"> -->
+						    			
+						    	
+						    		</div>
+						    		<div class="remember">
+										<span class="checkbox1">
+											<label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Nhớ mật khảu</label>
+										</span>
+										<div class="forgot">
+											<h6><a href="#">Quên mật khẩu?</a></h6>
+										</div>
+										<div class="clear"> </div>
+									</div>
+ #}
+						    		
+						    		{# <input type="submit" value="Đăng Nhập"> #}
+					
+						    	</fieldset>
+				      	</form>
+
+
+						<!-- <div class="header-lèt-top">
+							<div class="sign-up"> <h2>ỏ</h2> </div>
+						</div>
+						<div class="header-social wthree">
+								<a href="#" class="face"><h5>Facebook</h5></a>
+								<a href="#" class="twitt"><h5>Twitter</h5></a>
+						</div> -->
+					</div>
+				</div>
+			  
+			</div>
+		</div>
+</div>
+
+
+
+        
+<!-- https://simpleisbetterthancomplex.com/tutorial/2016/06/27/how-to-use-djangos-built-in-login-system.html -->
+	
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,189 @@
+{% extends 'frontend/template.html' %}
+
+{% block title %} Blog | Dịch vụ thuê xe du lịch Phước Nhân {% endblock %}
+
+{% block content %}
+	<header class="page-header nevy-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">                
+                    <h2 class="page-title">Blog</h2>
+                    <p class="page-description yellow-color">Các bài blog</p>        
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row-->
+        </div><!-- /.container-fluid -->           
+    
+	</header>
+
+
+	<div class="blog-block bg-gray-color">
+       <div class="container">
+           <div class="row">
+                <div class="col-md-12">
+                    <div class="post-filter-block clearfix">
+                        <div class="post-filter-area clearfix">
+                            {% if categories %}
+                            <ul class="nav nav-tabs hidden-sm hidden-xs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab"><span>Tất cả</span></a>
+                                </li>
+                                {% for category in categories%}
+                                    <li role="presentation">
+                                        <a href="#category_{{category.id}}" aria-controls="category_{{category.id}}" role="tab" data-toggle="tab">{{category.name}}</a>
+                                    </li>
+                                    
+                                {% endfor %}
+                            </ul>
+                            <select class="responsive-nav visible-xs-block visible-sm-block">
+                                <option value="0">Tất cả</option>
+                                {% for category in categories%}
+                                    <option value="{{category.id}}">{{category.name}}</option>
+                                {% endfor %}
+                            </select>
+                            {% endif %}
+                            
+                        </div> <!-- /.tab-list -->
+                    </div><!-- /.post-filter-block -->
+
+                   <div class="blog-content-left">
+                        <div class="tab-content">
+                            {% if categories %}
+                                <div role="tabpanel" class="tab-pane active" id="home">
+                                    <div class="row">
+                                        {% if categories %}
+                                            {% for blog in blog_list%}
+                                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                                    <article class="post">
+                                                        <figure class="post-thumb">
+                                                            <a href="{% url 'frontend:detail_news' blog.id %}">
+                                                                <img src="{{blog.avatar.url}}" alt="blog">
+                                                            </a>
+                                                        </figure><!-- /.post-thumb -->
+                                                        <div class="post-content">  
+                                                            <div class="entry-meta">
+                                                                <span class="entry-date nevy-bg">
+                                                                    {{blog.uploaded_at|date:"d-m-Y"}}
+                                                                </span>
+                                                                <span class="entry-author red-bg">
+                                                                    <i class="fa fa-user"></i>
+                                                                    Dr. Sibbir.
+                                                                </span>
+                                                            </div><!-- /.entry-meta -->
+                                                            <h2 class="entry-title">
+                                                                <a href="{% url 'frontend:detail_news' blog.id %}">
+                                                                    {{blog.title}}
+                                                                </a>
+                                                            </h2><!-- /.entry-title -->
+                                                            <div class="entry-footer">
+                                                                <div class="entry-footer-meta">
+                                                                    <span class="entry-view"><i class="fa fa-eye"></i>{{blog.view}}</span>
+                                                                    <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>09</a></span>
+                                                                    <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>05</a></span>
+                                                                </div><!-- /.entry-footer-meta -->
+                                                            </div><!-- /.entry-footer -->
+                                                        </div><!-- /.post-content -->
+                                                    </article><!-- /.post -->
+                                                </div><!-- /.col-md-6 -->
+
+                                            {% endfor %}
+                                        {% else%}
+                                            <div class="alert alert-danger" role="alert">
+                                                Hiện tại chưa có bài viết nào
+                                            </div>
+                                        {% endif %}
+                                    </div><!-- /.row -->
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pagination-link">
+                                                <ul class="pagination">
+                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                                    <li class="active"><a href="#">01</a></li>
+                                                    <li><a href="#">02</a></li>
+                                                    <li><a href="#">03</a></li>
+                                                    <li><a href="#">04</a></li>
+                                                    <li><a href="#">05</a></li>
+                                                    <li><span class="pages-number-dots">...</span></li>
+                                                    <li><a href="#">12</a></li>
+                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                                </ul>
+                                            </div><!-- /.pagination -->
+                                        </div><!-- /.col-md-12 -->
+                                    </div><!-- /.row -->
+                                </div> <!-- /.home -->
+                                {% for category in categories%}
+                                    <div role="tabpanel" class="tab-pane fade" id="#category_{{category.id}}">
+                                        <div class="row">
+                                            {% if blog_list %}
+                                                {% for blog in blog_list%}
+                                                    {% if category.id == blog.category.id %}
+                                                        <div class="col-md-4 col-sm-4 col-xs-4">
+                                                            <article class="post">
+                                                                <figure class="post-thumb">
+                                                                    <a href="{% url 'frontend:detail_news' blog.id %}">
+                                                                        <img src="{{blog.avatar.url}}" alt="blog">
+                                                                    </a>
+                                                                </figure><!-- /.post-thumb -->
+                                                                <div class="post-content">  
+                                                                    <div class="entry-meta">
+                                                                        <span class="entry-date nevy-bg">
+                                                                            {{blog.uploaded_at|date:"d-m-Y"}}
+                                                                        </span>
+                                                                        <span class="entry-author red-bg">
+                                                                            <i class="fa fa-user"></i>
+                                                                            Dr. Sibbir.
+                                                                        </span>
+                                                                    </div><!-- /.entry-meta -->
+                                                                    <h2 class="entry-title">
+                                                                        <a href="{% url 'frontend:detail_news' blog.id %}">
+                                                                            {{blog.title}}
+                                                                        </a>
+                                                                    </h2><!-- /.entry-title -->
+                                                                    <div class="entry-footer">
+                                                                        <div class="entry-footer-meta">
+                                                                            <span class="entry-view"><i class="fa fa-eye"></i>{{blog.view}}</span>
+                                                                            <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>09</a></span>
+                                                                            <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>05</a></span>
+                                                                        </div><!-- /.entry-footer-meta -->
+                                                                    </div><!-- /.entry-footer -->
+                                                                </div><!-- /.post-content -->
+                                                            </article><!-- /.post -->
+                                                        </div><!-- /.col-md-6 -->
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% else%}
+                                                <div class="alert alert-danger" role="alert">
+                                                    Hiện tại chưa có bài viết nào
+                                                </div>
+                                            {% endif %}
+                                        </div><!-- /.row -->
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="pagination-link">
+                                                    <ul class="pagination">
+                                                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                                        <li class="active"><a href="#">01</a></li>
+                                                        <li><a href="#">02</a></li>
+                                                        <li><a href="#">03</a></li>
+                                                        <li><a href="#">04</a></li>
+                                                        <li><a href="#">05</a></li>
+                                                        <li><span class="pages-number-dots">...</span></li>
+                                                        <li><a href="#">12</a></li>
+                                                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                                    </ul>
+                                                </div><!-- /.pagination -->
+                                            </div><!-- /.col-md-12 -->
+                                        </div><!-- /.row -->
+                                    </div> <!-- /.profile -->
+                                {% endfor %}
+                            {% endif %}
+                        </div> <!-- /.tab-content -->
+                   </div><!-- /.blog-content-left -->
+                </div><!-- /.col-md-8 -->
+
+                
+           </div><!-- /.row -->
+       </div><!-- /.container -->
+   </div>
+{% endblock %}

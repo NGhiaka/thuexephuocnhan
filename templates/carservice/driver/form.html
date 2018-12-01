@@ -1,0 +1,41 @@
+{% extends 'carservice/driver/template.html' %}
+
+{% block title %}Thêm tài xế mới{% endblock %}
+
+{% load staticfiles%}
+{% block scripts %}
+    
+    <link href="{% static 'css/jquery_datetimepicker.css' %}" rel="stylesheet">
+    <script src="{% static 'js/build/jquery.datetimepicker.full.js' %}"></script>
+
+{% endblock %}
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Xe</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Thêm tài xế
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">Thêm tài xế mới</div>
+        <div class="panel-body">
+            <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class="form-group">
+                    {{ form }}
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary btn-block" type="submit" value="Thêm" />
+                </div>
+            </form>
+    
+            
+        </div>
+    </div>
+    <a href="{% url 'carservice:driver'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+{% endblock %}
+
+

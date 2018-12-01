@@ -1,0 +1,40 @@
+{% extends 'carservice/car/template.html' %}
+
+{% block title %}Thông tin chi tiết{% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Xe</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Thông tin chi tiết {{ request.resolver_match.url_name }} 
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    {%  if car %}
+        <div class="panel panel-primary">
+            <div class="panel-heading">Thông tin chi tiết về xe <strong>{{ car.nameofcar }}</strong></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-4 col-md-4">
+                        <img src="{{ car.avatar.url }}" class="img-thumbnail img-responsive" >         
+                    </div>
+                    <div class="col-xs-8 col-md-8">
+                        <p>Tên xe: <strong>{{ car.nameofcar }}</strong></p>
+                        <p>Hãng sản xuất: <strong>{{ car.manufacturer }}</strong></p>
+                        <p>Chủ xe: <strong>{{ car.owner }}</strong></p>
+                        <p>Loại xe: <strong>{{ car.typecar }}</strong></p>
+                        <p>Năm sản xuất: <strong>{{ car.yearofmanu }}</strong></p>  
+                        <p>Biển số xe: <strong>{{ car.carid }}</strong></p>        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    {%  endif%}
+    <a href="{% url 'carservice:car'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+{% endblock %}
+

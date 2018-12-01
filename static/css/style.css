@@ -1,0 +1,47 @@
+body{
+	background-image:url(../images/symphony.png);
+}
+.vertical-offset-100{
+    padding-top:100px;
+}
+.filterable {
+    margin-top: 15px;
+}
+/*.filterable .panel-heading .pull-right {
+    margin-top: -20px;
+}*/
+.filterable .filters input[disabled] {
+    background-color: transparent;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+    color: #FFF;
+}
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+    color: #FFF;
+}
+.filterable .filters input[disabled]::-moz-placeholder {
+    color: #FFF;
+}
+.filterable .filters input[disabled]:-ms-input-placeholder {
+    color: #FFF;
+}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+}
+.preload-container{
+    position: absolute;
+    z-index: 1017;
+    height: 100%;
+    width: 100%;
+    /* top: 50%; */
+    background: #000000;
+    opacity: 0.5;
+}
+.preload-container img{
+    position: relative;
+    top: 30%;
+}

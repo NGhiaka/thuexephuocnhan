@@ -1,0 +1,41 @@
+{% extends 'carservice/driver/template.html' %}
+
+{% block title %}Thông tin chi tiết{% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Xe</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Thông tin chi tiết
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    {%  if driver %}
+        <div class="panel panel-primary">
+            <div class="panel-heading">Thông tin chi tiết về tài xế <strong>{{ driver.drivername }}</strong></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-4 col-md-4">
+                        <img src="{{ driver.avatar.url }}" class="img-thumbnail img-responsive" >         
+                    </div>
+                    <div class="col-xs-8 col-md-8">
+                        <p>Tên tài xế: <strong>{{ driver.drivername }}</strong></p>
+                        <p>CMNN: <strong>{{ driver.idcard }}</strong></p>
+                        <p>Số điện thoại: <strong>{{ driver.phone_number }}</strong></p>
+                        <p>Địa chỉ: <strong>{{ driver.address }}</strong></p>
+                        <p>Ngày sinh: <strong>{{ driver.birthday|date:'d/m/Y' }}</strong></p>
+                        <p>Kinh nghiệm: <strong>{{ driver.experience }} năm</strong></p>  
+                        <p>Đôi chút về tài xế: <strong>{{ driver.introduce }}</strong></p>        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    {%  endif%}
+    <a href="{% url 'carservice:driver'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+{% endblock %}
+

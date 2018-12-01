@@ -1,0 +1,55 @@
+{% extends 'frontend/template.html' %}
+{% load staticfiles%}
+
+{% block title %} Giới thiệu | Dịch vụ thuê xe du lịch Phước Nhân {% endblock %}
+
+{% block content %}
+	<header class="page-header nevy-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">                
+                    <h2 class="page-title">Giới thiệu</h2>
+                    <p class="page-description yellow-color">Đôi chút về dịch vụ</p>        
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row-->
+        </div><!-- /.container-fluid -->           
+    
+	</header>
+
+
+	<header class="about-main-content mr-top-90">
+		
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="about-top-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="heading-content-three">
+                                    <h2 class="title">TẠI SAO <br>Chọn Chúng Tôi</h2>
+                                    <h4 class="sub-title">Best offers Information</h4>
+                                </div><!-- /.section-title-area -->
+                            </div><!-- /.col-md-12 -->
+                        </div><!-- /.row -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="extra-big-title text-center">UY TÍNH LÀM NÊN THƯƠNG HIỆU</h2>
+                            </div><!-- /.col-md-12 -->
+                            <div class="col-md-6">
+                                <div class="about-content-left">
+                                    <p>Tài xế được tuyển chọn khắc khe với kinh nghiệm nhiều năm trong ngành vận chuyển hành khách sẽ đảm bảo cho quý khách có sự an toàn tuyệt đối trong suốt chuyến hành trình.</p>
+                                    <p>Chất lượng xe đời mới, hệ thống an toàn, nội thất xe sang trong nhằm tạo cho khách hàng cảm giác thoải mái dễ chịu trong suốt hành trình.</p>
+                                    <p>Tài xế thân thiện – chu đáo – lịch sự.</p>
+                                </div><!-- /.about-content-left-->
+                            </div><!-- /.col-md-5 -->
+                            <div class="col-md-6">
+                                <img src="{% static 'images/vios_car.jpg' %}" alt="car-item">
+                            </div><!-- /.col-md-7 -->
+                        </div><!-- /.row -->
+                    </div><!-- /.top-content -->
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    
+	</header>
+{% endblock %}

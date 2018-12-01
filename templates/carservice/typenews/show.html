@@ -1,0 +1,40 @@
+{% extends 'carservice/typenews/template.html' %}
+
+{% block title %} Xem tin {% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Blog</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> chi tiết
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    {%  if typenews %}
+        <div class="panel panel-primary">
+            <div class="panel-heading">Thông tin chi tiết về xe <strong>{{ car.nameofcar }}</strong></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-4 col-md-4">
+                        <img src="{{ typenews.avatar.url }}" class="img-thumbnail img-responsive" >         
+                    </div>
+                    <div class="col-xs-8 col-md-8">
+                        <p>Tên tài xế: <strong>{{ car.nameofcar }}</strong></p>
+                        <p>Hãng sản xuất: <strong>{{ car.manufacturer }}</strong></p>
+                        <p>Chủ xe: <strong>{{ car.owner }}</strong></p>
+                        <p>Loại xe: <strong>{{ car.typecar }}</strong></p>
+                        <p>Năm sản xuất: <strong>{{ car.yearofmanu }}</strong></p>  
+                        <p>Biển số xe: <strong>{{ car.carid }}</strong></p>        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    {%  endif%}
+    <a href="{% url 'carservice:car'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+{% endblock %}
+

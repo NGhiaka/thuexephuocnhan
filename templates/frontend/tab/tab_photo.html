@@ -1,0 +1,83 @@
+<section style="top: 0px;" id="portfolio_section" class="ui fullscreen modal scrolling transition hidden">
+
+	<!--==================================
+		START === Header
+	===================================-->
+	<div class="header">
+		<div class="ui grid">
+		    <div class="two column row">
+		        <div class="left floated column">
+		        	<div class="ui header backBtn">
+						<i class="fa fa-chevron-left" aria-hidden="true"></i>
+						<div class="content">
+							Trở về
+						</div>
+					</div>
+		        </div>
+		        <div class="right floated column">
+		        	<h2 class="ui header">
+						<i class="fa fa-camera fa-2x" aria-hidden="true"></i>
+						<span class="content">
+							Hình Ảnh
+						</span>
+					</h2>
+		        </div>
+		    </div>
+		</div>
+	</div>
+	<!--==================================
+		END === Header
+	===================================-->
+
+	<!--==================================
+		START === Content
+	===================================-->
+	<div class="content">
+		<div class="ui container">
+			<div class="ui grid">
+				<div class="sixteen wide column">
+
+					<!--==================================
+						START === Profolio Filters
+					===================================-->
+					<div class="ui labeled icon three item stackable menu" id="filter-portfolio-group" data-anim-effect="fadeInDown">
+					    <a class="item active" data-group="all">
+					        Tất cả
+					    </a>
+					    <a class="item" data-group="travel">
+					        Điểm du lịch
+					    </a>
+					    <a class="item" data-group="other">
+					        Khoảnh Khắc
+					    </a>
+					</div>
+					<!--==================================
+						END === Profolio Filters
+					===================================-->
+
+					<!--==================================
+						START === Profolio Gallery
+					===================================-->
+					<div style="display: none; position: relative; overflow: hidden; transition: height 250ms ease-out 0s;" id="portfolio_container" class="ui three column doubling stackable grid container shuffle travels">
+						{% include 'frontend/tab_travel.html' %}
+					</div>	
+				    
+				    <!--==================================
+						END === Profolio Gallery
+					===================================-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--==================================
+		END === Content
+	===================================-->
+	
+</section>
+
+
+
+<!-- {% include 'frontend/tab_about.html' %}
+	{% include 'frontend/tab_schedule.html' %}
+	{% include 'frontend/tab_travels.html' %}
+	{% include 'frontend/tab_contact.html' %} -->

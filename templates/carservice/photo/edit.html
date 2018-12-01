@@ -1,0 +1,33 @@
+{% extends 'carservice/photo/template.html' %}
+
+{% block title %}Chỉnh sửa thông tin album{% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Album</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Cập nhật
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">Chỉnh sửa thông tin</div>
+        <div class="panel-body">
+            <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form }}
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary btn-block" type="submit" value="Cập nhật" />
+            </div>
+        </form>
+        </form>
+            
+        </div>
+    </div>
+    <a href="{% url 'carservice:album'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+{% endblock %}

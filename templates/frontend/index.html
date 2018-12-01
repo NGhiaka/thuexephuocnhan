@@ -1,0 +1,119 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'images/icon.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/icon.png' %}" type="image/x-icon">
+    <!--==================================
+        START === CSS Files
+    ===================================-->
+    <link rel="stylesheet" href="{% static 'css/frontend/semantic.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/frontend/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/frontend/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/frontend/style.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/frontend/home.css' %}">
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="deha%20-%20Professional%20Resume%20&amp;%20Portfolio%20Template_files/magnific-popup.css"> -->
+    
+    
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/frontend/semantic.min.js' %}"></script>
+    <script src="{% static 'js/frontend/morphext.min.js' %}"></script>
+
+    <script src="{% static 'js/frontend/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'js/frontend/jquery.shuffle.min.js' %}"></script>
+    <script src="{% static 'js/frontend/main.min.js' %}"></script>
+    
+    
+
+   
+
+
+    <title>Trang chủ | Dịch vụ thuê xe du lịch Phước Nhân</title>
+</head>
+ 
+    <body>        
+            <main>
+
+		<!--==================================
+			START === Social Icons
+		===================================-->
+		
+		<!--==================================
+			END === Social Icons
+		===================================-->
+		
+		<!--==================================
+			START === Navigation
+		===================================-->
+		<nav class="ui bottom fixed inverted eight item labeled icon menu">
+			<a class="item" href="{% url 'frontend:about'%}">
+				<i class="fa fa-user fa-2x" aria-hidden="true"></i>
+				Giới thiệu
+			</a>
+			<a class="item" href="{% url 'frontend:booking'%}">
+				<i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
+				Đặt lịch
+			</a>
+			<a class="item" href="{% url 'frontend:car'%}">
+				<i class="fa fa-camera fa-2x" aria-hidden="true"></i>
+				Thông tin
+			</a>
+			<a class="item" href="{% url 'frontend:news'%}">
+				<i class="fa fa-user fa-2x" aria-hidden="true"></i>
+				Tin tức
+			</a>
+			<a class="item" href="{% url 'frontend:contact'%}">
+				<i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+				Liên Hệ
+			</a>
+
+		</nav>
+		<!--==================================
+			END === Navigation
+		===================================-->
+		
+		<!--==================================
+			START === Name & Skills
+		===================================-->
+		<div id="name_skills_container">
+			<div id="name_skills">
+				<div class="name">
+					<p>Dịch Vụ Cho Thuê Xe Du Lịch</p> 
+					<p>Phước Nhân</p>
+				</div>
+				<div class="skill-set">
+					<section class="intro">
+						<h1 class="animated_skills">
+							<div class="morphext" id="js-rotating">
+								<span class="animated fadeInDown">Chuyên nghiệp - Uy tín - Chất lượng</span>
+							</div>
+						</h1>
+					</section>
+				</div>
+			</div>
+		</div>
+		<!--==================================
+			END === Name & Skills
+		===================================-->
+
+	</main>
+	<!--==================================
+		END === Home Page 
+	===================================-->
+	
+    </body>
+</html>

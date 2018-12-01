@@ -1,0 +1,153 @@
+{% extends 'frontend/template.html' %}
+
+{% block title %} Đặt lịch | Dịch vụ thuê xe du lịch Phước Nhân {% endblock %}
+
+{% block content %}
+    {% load staticfiles %}
+    <header class="page-header nevy-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">                
+                    <h2 class="page-title">Trang Chủ</h2>
+                    <p class="page-description yellow-color">Đặt lịch trực tuyến</p>        
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row-->
+        </div><!-- /.container-fluid -->           
+    
+    </header>
+
+
+    <div class="vehicle-section-divider night-rider">
+        <div class="contoiner-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-divider-content">
+                        <div class="vehicle-border">
+                            <img src="{% static 'images/icon/top.png'%}" alt="car-item">
+                        </div><!-- /.car-border -->
+                    </div><!-- /.section-divider-content -->
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    
+    <div class="check-vehicle-block gray-20">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="check-content">
+                        <h4 class="top-subtitle"> Tìm xe nhanh chóng</h4>
+                        <h2 class="title yellow-color"> Tiện lợi và hiệu quả</h2>
+                        <h3 class="subtitle"> Thuê xe tốt nhất</h3>
+                    </div><!-- /.check-content -->
+                </div><!-- col-md-4 -->
+
+                <div class="col-md-8">
+                    <form action="#" method="get" class="advance-search-query input-night-rider yellow-theme">
+                        <div class="regular-search">                        
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Loại xe</label>
+                                    <div class="input">
+                                        <i class="fa fa-map-marker"></i>
+                                        <input placeholder="16 chỗ" class="pick-location form-controller" type="text">
+                                    </div><!--/.input-->
+                                </div><!--/.col-md-4-->
+
+                                <div class="col-md-4">
+                                    <label>Ngày đi</label>
+                                    <div class="input">
+                                        <i class="fa fa-calendar"></i>
+                                        <input class="date-start date-selector form-controller" placeholder="dd/mm/yy" type="text">
+                                    </div><!--/.input-->
+                                </div><!--/.col-md-4-->
+
+                                <div class="col-md-4">
+                                    <label>Picking up Time</label>
+                                    <div class="input">
+                                        <i class="fa fa-clock-o"></i>
+                                        <input class="time-selector form-controller" placeholder="15:00 am" type="text">
+                                      </div><!--/.input-->
+                                </div><!--/.col-md-4-->
+                                
+                                <div class="clearfix"></div><!-- /.clearfix -->
+
+                                <div class="col-md-4">
+                                    <label>Hãng xe</label>
+                                    <div class="input">
+                                        <i class="fa fa-map-marker"></i>
+                                        <input placeholder="Off your location" class="drop-location form-controller" type="text">
+                                    </div><!--/.input-->
+                                </div><!--/.col-md-4-->
+
+                                <div class="col-md-4">
+                                    <label>Dropping off date</label>
+                                    <div class="input">
+                                        <i class="fa fa-calendar"></i>
+                                        <input class="date-end date-selector form-controller" placeholder="dd/mm/yy" type="text">
+                                    </div><!--/.input-->
+                                </div><!--/.col-md-4-->
+
+                                <div class="col-md-4">
+                                    <label>Dropping off date</label>
+                                    <div class="input">
+                                        <i class="fa fa-clock-o"></i>
+                                        <input class="time-selector form-controller" placeholder="12:00 am" type="text">
+                                    </div><!--/.input-->
+                                </div><!--/.col-md-4-->
+                            </div><!-- /.row -->
+                        </div><!-- /.regular-search -->
+
+                        <div class="advance-search">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Your Budget</label>
+                                    <div class="input">
+                                        <i class="fa fa-money"></i>
+                                        <input class="budget-fields form-controller" placeholder="Start form $20" type="text">
+                                    </div><!--/.input-->
+                                </div><!--/.col-md-4-->
+                                <div class="col-md-4">
+                                    <label>Class</label>
+                                    <div class="input">
+                                        <select>
+                                            <option value="0" selected="selected">Intermediate</option>
+                                            <option value="1">Intermediate</option>
+                                            <option value="2">Compact</option>
+                                            <option value="3">Station Wagon</option>
+                                            <option value="4">SUV</option>
+                                            <option value="5">Minibus</option>
+                                        </select>
+                                    </div><!--/.input-->
+                                </div><!--/.col-md-4-->
+                                <div class="col-md-4">
+                                    <label>Fuel</label>
+                                    <div class="input">
+                                        <select>
+                                            <option value="0" selected="selected">Petrol</option>
+                                            <option value="1">Diesel</option>
+                                            <option value="2">Octen</option>
+                                        </select>
+                                    </div><!--/.input-->
+                                </div><!--/.col-md-4-->
+                            </div><!-- /.row -->
+                        </div><!-- /.advance-search -->
+
+                        <div class="check-vehicle-footer">
+                            <div class="row">                            
+                                <!-- <div class="advanced-search">
+                                    <a href="#" class="advanced-search-btn"><i class="fa fa-search"></i>Advanced search</a>
+                                </div> -->
+                                <button type="submit" class="button">Tìm xe</button>
+                            </div><!-- /.row -->
+                        </div><!-- /.check-vehicle-footer -->
+                    </form><!-- /.advance_search_query -->
+                </div><!-- /.col-md-8 -->
+            </div><!-- /.row -->
+        </div><!--/.container -->
+    </div>
+
+
+    <div class="vehicle-multi-border yellow-black"></div>
+    
+{% endblock %}

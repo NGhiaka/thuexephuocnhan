@@ -1,0 +1,75 @@
+{% extends 'carservice/schedule/template.html' %}
+
+{% block title %}Quản lý xe{% endblock %}
+
+
+{% block navibase %}
+    <li><a href="{% url 'carservice:index' %}"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+    <li class="active">Lịch trình</li>
+{% endblock %}
+                
+{% block contain %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">Danh sách các xe của dịch vụ du lịch <strong>Phước Nhân</strong></div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr class="bg-primary">
+                        <th>STT</th>
+                        <th>Tên khách hàng</th>
+                        <th>Số điện thoại</th>
+                        <th>Ngày đi</th>
+                        <th>Điểm đến</th>
+    
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    {%  if object_list %}
+                        {%  for sch in object_list %}
+                            <tr class='clickable-row' data-href="chi-tiet/{{sch.id}}">
+                                <th>{{ sch.id }}</th>
+                                <th>{{ sch.customer}}</th>
+                                <th>{{ sch.customer.phone}}</th>
+                                <th>{{ sch.departure_day|date:'d/m/Y'}}</th>
+                                <th>{{ sch.destination}}</th>
+
+                                <th style="text-align: center;">
+
+                                    <a href="cap-nhat/{{sch.id}}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+
+                                    <a href="xoa/{{sch.id}}" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>
+                                </th>
+                            </tr>
+                        {%  endfor %}
+                    {%  endif%}
+                    
+                </tbody>
+            </table>    
+            {% if is_paginated %}
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+            <div id="test" data-list="{{car_list}}"></div>
+        </div>
+    </div>
+    <a href="{% url 'carservice:schedule_choose'%}">Thêm lịch +</a>
+{% endblock %}
+

@@ -1,0 +1,44 @@
+{% extends 'carservice/template/template.html' %}
+
+{% block title %}{% endblock %}
+
+                    
+{% block contenter %}
+
+	<!-- Page Heading -->
+    <section class="content-header">
+      <h1>
+        Thể Loại
+        <small></small>
+      </h1>
+      <ol class="breadcrumb">
+        {% block navibase %}
+
+        {% endblock %}
+      </ol>
+    </section>
+
+    <!-- /.row -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <i class="fa fa-info-circle"></i>  Thông tin về hãng xe du lịch <strong>Phước Nhân</strong>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                {% block contain %}
+
+                {% endblock %}
+
+            </div>
+        </div>
+    </section>
+    <!-- /.row -->
+
+{% endblock %}

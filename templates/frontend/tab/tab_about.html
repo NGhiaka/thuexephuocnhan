@@ -1,0 +1,118 @@
+
+{% extends 'frontend/template.html' %}
+
+{% block title %} Dịch vụ thuê xe du lịch Phước Nhân {% endblock %}
+
+{% block content %}
+
+
+<section style="top: 0px;" id="about_section" class="ui fullscreen modal scrolling transition hidden">
+
+		<!--==================================
+			START === Header
+		===================================-->
+		<div class="header">
+			<div class="ui grid">
+			    <div class="two column row">
+			        <div class="left floated column">
+			        	<div class="ui header backBtn">
+							<i class="fa fa-chevron-left" aria-hidden="true"></i>
+							<div class="content">
+								Trở về
+							</div>
+						</div>
+			        </div>
+			        <div class="right floated column">
+			        	<h2 class="ui header">
+							<i class="fa fa-user" aria-hidden="true"></i>
+							<span class="content">
+								Thông Tin
+							</span>
+						</h2>
+			        </div>
+			    </div>
+			</div>
+		</div>
+		<!--==================================
+			END === Header
+		===================================-->
+
+		<!--==================================
+			START === Content
+		===================================-->
+		<div class="content">
+			<div class="ui container">
+				<div class="ui grid">
+					{%  if object_list %}
+                        {%  for c in object_list %}
+
+						<div class="sixteen wide column">
+						<div class="ui items">
+						    <div class="item">
+						  		{% load static %}
+					            <img src='{{ c.avatar.url }}' class="ui large image" data-anim-effect="fadeInLeft" />
+						        <div class="content">
+						            <h2 class="ui header" data-anim-effect="fadeInRight" data-anim-delay="100">Dịch vụ du lịch</h2>
+						            <div class="meta">
+										<div class="" data-anim-effect="fadeInRight" data-anim-delay="200">Xe 16 chỗ đời mới 2016 (Ford Transit)</div>
+										<h4 class="ui dividing header" data-anim-effect="fadeInRight" data-anim-delay="300">
+											<i class="fa fa-car" aria-hidden="true"></i>
+											<span class="content">
+												Dịch vụ
+												<span class="sub header">{{ c.title }}</span>
+											</span>
+										</h4>
+										<h4 class="ui dividing header" data-anim-effect="fadeInRight" data-anim-delay="300">
+											<i class="fa fa-car" aria-hidden="true"></i>
+											<span class="content">
+												Địa chỉ
+												<span class="sub header">{{ c.address }}</span>
+											</span>
+										</h4>
+										
+										<h4 class="ui dividing header" data-anim-effect="fadeInRight" data-anim-delay="400">
+											<i class="fa fa-phone" aria-hidden="true"></i>
+									        <span class="content">
+									            Số Điện thoại
+									            <span class="sub header">{{ c.phone }}</span>
+									        </span>
+										</h4>
+										<h4 class="ui dividing header" data-anim-effect="fadeInRight" data-anim-delay="500">
+											<i class="fa fa-envelope" aria-hidden="true"></i>
+
+									        <span class="content">
+									            Email
+									            <span class="sub header"><a href="mailto:{{ c.email }}">{{ c.email }}</a></span>
+									        </span>
+										</h4>
+										<h4 class="ui dividing header" data-anim-effect="fadeInRight" data-anim-delay="600">
+											<i class="fa fa-link" aria-hidden="true"></i>
+									        <span class="content">
+									            Website
+									            <span class="sub header"><a href="{{ c.link }}">{{ c.link }}</a></span>
+									        </span>
+										</h4>
+									</div>
+						        </div>
+						    </div>
+						</div>
+					</div>
+					<div class="sixteen wide column" data-anim-effect="fadeInUp" data-anim-delay="700">
+						{{ c.summary }}
+					</div>
+
+
+						{% endfor %}
+					{% endif %}
+					
+
+				</div>
+			</div>
+		</div>
+		<!--==================================
+			END === Content
+		===================================-->
+
+	</section>
+
+{% endblock%}

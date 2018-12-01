@@ -1,0 +1,46 @@
+{% extends 'carservice/content/template.html' %}
+
+{% block title %} Nội dung trang web {% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Quản lý nội dunb web</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> chi tiết
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    <div class="panel panel-primary">
+        <div class="panel-heading"> Thông tin</div>
+        <div class="panel-body">
+        	{% if object_list%}
+				{% for content in object_list %}
+				    <div class="col-xs-6 col-md-4">
+                        <img src="{{ content.avatar.url }}" class="img-thumbnail img-responsive" >         
+                    </div>
+                    <div class="col-xs-6 col-md-8">
+                        <h2><strong>{{ content.title }}</strong></h2>
+                        <p><strong><i class="fa fa-phone-square" aria-hidden="true"></i></strong> {{ content.phone }}</p>
+                        <p><strong><i class="fa fa-mobile" aria-hidden="true"></i></strong> {{ content.mobile }}</p>
+                        <p><strong><i class="fa fa-hand-rock-o" aria-hidden="true"></i></strong> {{ content.slogan }}</p>
+                        <p><strong><i class="fa fa-envelope" aria-hidden="true"></i></strong> {{ content.email }}</p>
+                        <p><strong><i class="fa fa-address-book" aria-hidden="true"></i></strong> {{ content.address }}</p>                         
+                        <p><strong><i class="fa fa-link" aria-hidden="true"></i></strong> {{ content.link }}</p>
+                    </div>
+                    <div class="col-xs-12 col-md-12 ">{{ content.summary|safe }}</div>
+			    	<a href="{% url 'carservice:content_edit' content.id%}"> Sửa nội dung</a>
+			    {% endfor %}
+			    
+			{% else %}
+				<a href="{% url 'carservice:content_new' %}"> Thêm nội dung</a>
+			{% endif%}
+                     
+        </div>
+    </div>
+{% endblock %}
+
+
+

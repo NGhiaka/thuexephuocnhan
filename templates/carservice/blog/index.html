@@ -1,0 +1,118 @@
+{% extends 'carservice/blog/template.html' %}
+{% load staticfiles %}
+
+{% block title %}Quản lý blog {% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Blog</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Hiển thị
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#Category" aria-controls="Category" role="tab" data-toggle="tab">Thể loại</a></li>
+    <li role="presentation"><a href="#Blog" aria-controls="Blog" role="tab" data-toggle="tab">Blog</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    {# Tab chua ablbum #}
+    <div role="tabpanel" class="tab-pane active" id="Category">
+        <div class="row">
+                <a href="{% url 'carservice:blog_new'%}">
+                    <div class="col-md-4 padding">
+                        <div class="block-contain">
+                            <img src="{% static 'images/default.jpeg' %}">
+                            <div class="create-contain">
+                                <span class="">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    Thêm tin
+                                </span>
+                            </div>
+                        </div>                    
+                    </div>
+                </a>
+                {%  if Category_list %}
+                    {%  for al in Category_list %}
+                            <div class="col-md-4 padding">
+                                <div class="block-contain">
+                                    <img src="{{ al.avatar.url }}">
+                                    <div class="title-contain">
+                                        <span class="title">
+                                            <a href="{% url 'carservice:blog_list' al.id %}">
+                                                {{ al.name}}
+                                            </a>
+                                        </span>
+                                        <span class="sub-contain"></span>
+                                    </div>
+                                    <div class="dropdown edit-dropdown">
+                                        <button id="dLabel" class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                            <li>
+                                                <a href="{% url 'carservice:category_edit' al.id %}" alt="Chỉnh sửa thông tin">Sửa</a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'carservice:category_delete' al.id %}" alt="Xóa">Xóa</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                    {%  endfor %}
+                {%  endif%}
+
+            </div>
+
+    </div>
+
+    {# tab chua anh #}
+    <div role="tabpanel" class="tab-pane" id="Blog">
+        <div class="row">
+                {%  if Blog_list %}
+                    {%  for blog in Blog_list %}
+                        <div class="col-sm-6 col-md-3">
+                            <div class="thumbnail" style=" margin-top: 10px;">
+                                <div class="avatar-thumbnail">
+                                    <img src="{{ blog.avatar.url }}" alt="..." height="real_height" width="real_width" onload="resizeImg(this)">
+                                </div>
+                                <div class="caption caption-title">
+                                    <h3>{{ blog.title }}</h3>
+                                    <p><a href="{% url 'carservice:blog_detail' blog.id %}" class="btn btn-primary" role="button">Xem tin</a></p>
+                                </div>
+
+                                <div class="dropdown edit-dropdown">
+                                    <button id="dLabel" class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                        <li>
+                                            <a href="{% url 'carservice:blog_edit' blog.id %}" alt="Chỉnh sửa thông tin">Sửa</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'carservice:blog_delete' blog.id %}" alt="Xóa">Xóa</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+
+                            
+                        </div>
+                    {%  endfor%}
+                {%  endif%}
+
+            </div>
+
+    </div>
+    
+  </div>
+{% endblock %}
+

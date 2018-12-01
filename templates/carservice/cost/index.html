@@ -1,0 +1,80 @@
+{% extends 'carservice/cost/template.html' %}
+
+{% block title %}Quản lý chi phí{% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Hóa đơn</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Hiển thị
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">Danh sách doanh thu của dịch vụ du lịch <strong>Phước Nhân</strong></div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr class="bg-primary">
+                        <th>STT</th>
+                        <th>Lịch trình</th>
+                        <th>Tiền cho thuê</th>
+                        <th>Phí dầu</th>
+                        <th>Phí tài xế</th>
+                        <th>Phí phát sinh</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    {%  if cost_list %}
+                        {%  for cost in cost_list %}
+                            <tr class='clickable-row' data-href="chitiet/{{cost.id}}">
+                                <th>{{ cost.id }}</th>
+                                <th>Từ ngày {{ cost.schedule.departure_day|date:'d/m/Y'}} -> ngày {{ cost.schedule.destination_day|date:'d/m/Y'}}</th>
+                                <th>{{ cost.total_revenue}}</th>
+                                <th>{{ cost.spent_oil}}</th>
+                                <th>{{ cost.spent_steersman}}</th>
+                                <th>{{ cost.spent_arises}}</th>
+                                <th style="text-align: center;">
+                                    
+                                    <a href="cap-nhat/{{cost.id}}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i>Sửa</a>
+
+                                    <a href="xoa/{{cost.id}}" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i>Xóa</a>
+                                </th>
+                            </tr>
+                        {%  endfor %}
+                        
+                    {%  endif%}
+                   
+                </tbody>
+            </table>    
+            {% if is_paginated %}
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+            
+        </div>
+    </div>
+    <a href="{% url 'carservice:cost_new'%}">Thêm chi phi +</a>
+{% endblock %}
+

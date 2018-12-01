@@ -1,0 +1,34 @@
+{% extends 'carservice/blog/template.html' %}
+
+{% block title %} Xem tin {% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Blog</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Xem tin
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    {%  if blog %}
+        <div class="panel panel-primary">
+            <div class="panel-heading">Xem tin</div>
+            <div class="panel-body">
+                <div class="title-blog page-header">
+                    <div class="title">
+                        <h1>{{blog.title}}</h1>
+                        <small>Ngày {{blog.uploaded_at|date:"d-m-Y, H:i"}}</small>
+                    </div>
+                </div>
+                <div class="content-blog">
+                     {{blog.content|safe}}
+                </div>
+            </div>
+        </div>
+    {%  endif%}
+    <a href="{% url 'carservice:blog'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+{% endblock %}
+

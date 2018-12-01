@@ -1,0 +1,108 @@
+{% extends 'carservice/album/template.html' %}
+{% load staticfiles %}
+
+{% block title %}Quản lý Album{% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Album</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Hiển thị
+    </li>
+{% endblock %}
+                
+{% block contain %}
+     <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#album" aria-controls="album" role="tab" data-toggle="tab">Album</a></li>
+    <li role="presentation"><a href="#photo" aria-controls="photo" role="tab" data-toggle="tab">Ảnh</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    {# Tab chua ablbum #}
+    <div role="tabpanel" class="tab-pane active" id="album">
+        <div class="row">
+                <a href="{% url 'carservice:album_new'%}">
+                    <div class="col-md-4 padding">
+                        <div class="block-contain">
+                            <img src="{% static 'images/default.jpeg' %}">
+                            <div class="create-contain">
+                                <span class="">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    Tạo album
+                                </span>
+                            </div>
+                        </div>                    
+                    </div>
+                </a>
+                {%  if album_list %}
+                    {%  for al in album_list %}
+                            <div class="col-md-4 padding">
+                                <div class="block-contain">
+                                    <img src="{{ al.avatar.url }}">
+                                    <div class="title-contain">
+                                        <span class="title">
+                                            <a href="{% url 'carservice:album_detail' al.id %}">
+                                                {{ al.title}}
+                                            </a>
+                                        </span>
+                                        <span class="sub-contain"></span>
+                                    </div>
+                                    <div class="dropdown edit-dropdown">
+                                        <button id="dLabel" class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                            <li>
+                                                <a href="{% url 'carservice:album_edit' al.id %}" alt="Chỉnh sửa thông tint">Sửa Album</a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'carservice:album_delete' al.id %}" alt="Xóa">Xóa Album</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                    {%  endfor %}
+                {%  endif%}
+
+            </div>
+
+    </div>
+
+    {# tab chua anh #}
+    <div role="tabpanel" class="tab-pane" id="photo">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                {%  if photo_list %}
+                <div class="row">
+                    <div class="col-xs-8 col-md-8">
+                   
+                        {%  for al in photo_list %}
+                                    <div class="block-thumnail-image">
+                                        <a href="javascript:void(0)" onclick="ImageDetail('{{ al.path_img.url }}', {{al.id}})">
+                                            <img src="{{ al.path_img.url }}" class="img-thumbnail img-responsive" >
+                                        </a>
+                                    </div>
+                        {%  endfor %}
+            
+                    </div>
+                    <div class="col-xs-4 col-md-4 show-img">
+                        <img src="{{ photo_list.0.path_img.url }}" class="img-thumbnail img-responsive" >
+                        <div class="action-img">
+                            <a href="{% url 'carservice:album_photo_delete' photo_list.0.id%}" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>
+                        </div>
+                    </div>
+                </div>
+                {%  endif%}    
+            </div>
+        </div>
+    </div>
+    
+  </div>
+
+{% endblock %}
+

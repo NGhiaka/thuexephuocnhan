@@ -1,0 +1,36 @@
+
+{%if images%}
+	{%for photo in images%}
+		{% if photo.album.id == 1%}
+			<div style="position: absolute; top: 0px; left: 0px; visibility: visible; transition: transform 250ms ease-out 0s, opacity 250ms ease-out 0s;" class="portfolio_item column shuffle-item filtered" data-groups="travel">
+		{% else%}
+			<div style="position: absolute; top: 0px; left: 0px; visibility: visible; transition: transform 250ms ease-out 0s, opacity 250ms ease-out 0s;" class="portfolio_item column shuffle-item filtered" data-groups="other">
+		{% endif%}
+
+			<div class="" data-anim-effect="zoomIn" data-anim-delay="200">
+		        <a href="#popup-{{photo.id}}" class="open-popup-link">
+		        	<img src="{{photo.path_img.url}}">
+		        </a>
+			</div>
+			<div id="popup-{{photo.id}}" class="white-popup mfp-hide" >
+				<div class="ui items">
+				    <div class="item">
+				        <div class="ui image">
+				            <img src="{{photo.path_img.url}}">
+				        </div>
+				        <div class="content">
+				            <div class="header">{{photo.album}}</div>
+				            <div class="meta">
+				                <span>{{photo.id}}</span>
+				            </div>
+				            <div class="description">
+				                <p>{{photo.comment_img}}</p>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+
+		</div>
+	{%endfor%}
+{%endif%}

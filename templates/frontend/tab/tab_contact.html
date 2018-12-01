@@ -1,0 +1,89 @@
+<section style="top: 0px;" id="contact_section" class="ui fullscreen modal scrolling transition hidden">
+
+		<!--==================================
+			START === Header
+		===================================-->
+		<div class="header">
+			<div class="ui grid">
+			    <div class="two column row">
+			        <div class="left floated column">
+			        	<div class="ui header backBtn">
+							<i class="fa fa-chevron-left" aria-hidden="true"></i>
+							<div class="content">
+								Trở về
+							</div>
+						</div>
+			        </div>
+			        <div class="right floated column">
+			        	<h2 class="ui header">
+			        		<i class="fa fa-envelope" aria-hidden="true"></i>
+							<span class="content">
+								Liên Hệ
+							</span>
+						</h2>
+			        </div>
+			    </div>
+			</div>
+		</div>
+		<!--==================================
+			END === Header
+		===================================-->
+
+		<!--==================================
+			START === Content
+		===================================-->
+		<div class="content">
+			<div class="ui container">
+				<div class="ui grid">
+					<div class="sixteen wide column row">
+
+						<!--==================================
+							START === Contact Form
+						===================================-->
+						<div>
+							
+						</div>
+						<div>
+							<form action="send-email-mailgun.php" id="contact-form" name="contact-form">
+								<div class="ui form">
+									<div class="field" data-anim-effect="fadeInUp">
+										<label>Name</label>
+										<input name="name" placeholder="Name" type="text">
+									</div>
+									<div class="field" data-anim-effect="fadeInUp" data-anim-delay="100">
+										<label>Email</label>
+										<input name="email" placeholder="Email" type="email">
+									</div>
+									<div class="field" data-anim-effect="fadeInUp" data-anim-delay="200">
+										<label>Subject</label>
+										<input name="subject" placeholder="Subject" type="text">
+									</div>
+									<div class="field" data-anim-effect="fadeInUp" data-anim-delay="300">
+										<label>Message</label>
+										<textarea name="message"></textarea>
+									</div>
+									<div style="display: none;" class="ui warning message">
+									    <i class="close icon"></i>
+									    <div id="form-messages">Something went wrong!</div>
+									</div>
+									<div class="field" data-anim-effect="fadeInUp" data-anim-delay="400">
+										<div class="ui submit button">Submit</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<!--==================================
+							END === Contact Form
+						===================================-->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--==================================
+			END === Content
+		===================================-->
+
+	</section>
+
+

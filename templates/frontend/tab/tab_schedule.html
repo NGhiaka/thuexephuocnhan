@@ -1,0 +1,146 @@
+
+<section style="top: 0px;" id="resume_section" class="ui fullscreen modal scrolling transition hidden">
+
+		<!--==================================
+			START === Header
+		===================================-->
+		<div class="header">
+			<div class="ui grid">
+			    <div class="two column row">
+			        <div class="left floated column">
+			        	<div class="ui header backBtn">
+							<i class="fa fa-chevron-left" aria-hidden="true"></i>
+							<div class="content">
+								Trở về
+							</div>
+						</div>
+			        </div>
+			        <div class="right floated column">
+			        	<h2 class="ui header">
+							<i class="fa fa-calendar" aria-hidden="true"></i>
+							<span class="content">
+								Lịch Trình
+							</span>
+						</h2>
+			        </div>
+			    </div>
+			</div>
+		</div>
+		<!--==================================
+			END === Header
+		===================================-->
+
+		<!--==================================
+			START === Content
+		===================================-->
+		<div class="content">
+			<div class="ui container">
+				<div class="ui grid">
+					<div class="sixteen wide column">
+
+						<!--==================================
+							START === Resume Filters
+						===================================-->
+						<div class="ui labeled icon four item stackable menu" id="filter-resume-group" data-anim-effect="fadeInDown">
+						    <a class="item active" data-group="education">
+						        <i class="fa fa-calendar" aria-hidden="true"></i> Lịch chạy
+						    </a>
+						    <a class="item" data-group="experience">
+						        <i class="fa fa-calendar-o" aria-hidden="true"></i> Lịch trống
+						    </a>
+						    <a class="item" data-group="skills">
+						        <i class="fa fa-area-chart" aria-hidden="true"></i> Thống Kê
+						    </a>
+						    <a class="item " data-group="testimonials">
+						        <i class="fa fa-comment" aria-hidden="true"></i> Dịch vụ
+						    </a>
+						</div>
+						<!--==================================
+							END === Resume Filters
+						===================================-->
+
+						<!--==================================
+							START === Education Section
+						===================================-->
+						<div style="display: block;" class="resume-section education">
+							<div> Loại xe
+								<select class="selectpicker" onchange="getval(this);">
+									{% if cars %}
+										<option>Tất cả</option>
+										{%for car in cars%}
+											<option value="{{car.carid}}">{{car.nameofcar}} [{{car.typecar}}-{{car.carid}}]</option>
+										{%endfor%}
+									{% endif%}
+								</select>
+							</div>
+							<div class="timeline-container">
+								{% if schedules %}
+									{% include 'frontend/tab/tab1_cal.html' %}
+								{% else%}
+									{% include 'frontend/tab/tab1_nonecal.html' %}
+								{% endif%}
+
+							</div>
+						</div>
+						<!--==================================
+							END === Education Section
+						===================================-->
+
+						<!--==================================
+							START === Experience Section
+						===================================-->
+						<div style="display: none;" class="resume-section experience">
+							<div class="timeline-container">
+								<% 
+								@tm = 100
+								@tt = Time.now
+								@et = Time.now + 6.months
+								if @schedules.length == 0 %>
+									<%= render "schedule/tab2_nonecal" %>
+
+								<% else %>
+									<%= render "schedule/tab2_cal" %>
+								<% end %>
+								
+							</div>
+						</div>
+
+						<!--==================================
+							END === Experience Section
+						===================================-->
+
+						<!--==================================
+							START === Skills Section
+						===================================-->
+						<div style="display: none;" class="resume-section skills">
+							<div class="ui grid">
+								<div class="ui text container">
+									<%= render "schedule/tab3_chart" %>
+								</div>
+							</div>
+						</div>
+						<!--==================================
+							END === Skills Section
+						===================================-->
+
+						<!--==================================
+							START === Testimonials Section 
+						===================================-->
+						<div style="display: none;" class="resume-section testimonials">
+							<div class="ui one column stackable grid">
+								{% include 'frontend/tab/tab4_service.html' %}
+							</div>
+						</div>
+						<!--==================================
+							END === Testimonials Section
+						===================================-->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--==================================
+			END === Content
+		===================================-->
+
+	</section>

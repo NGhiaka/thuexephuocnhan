@@ -1,0 +1,74 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'images/icon.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/icon.png' %}" type="image/x-icon">
+    <!--==================================
+        START === CSS Files
+    ===================================-->
+    {# <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> #}
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/frontend/plugins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/frontend/icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/frontend/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/frontend/color-schemer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/frontend/settings.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/frontend/layers.css' %}">
+    <link rel="stylesheet" href="{% static 'css/frontend/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/frontend/home.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/frontend/jquery-ui.min.css' %}">
+    <!-- <link rel="stylesheet" href="deha%20-%20Professional%20Resume%20&amp;%20Portfolio%20Template_files/magnific-popup.css"> -->
+    
+    
+    
+    <title>{% block title %}{% endblock %}</title>
+</head>
+ 
+    <body>    
+        <div id="preload" class="preload-container text-center">
+            <img src="{% static "images/loading.gif" %}">
+        </div>  
+        {% include 'frontend/subtab_template/top_header.html' %}
+        {% include 'frontend/subtab_template/menu_header.html' %}
+
+        {% block content %}
+
+        {% endblock %}
+        <a href="#top" id="scroll-top" class="topbutton btn-show"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        {% include 'frontend/subtab_template/footer.html' %}
+
+
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/frontend/semantic.min.js' %}"></script>
+        <script src="{% static 'js/frontend/morphext.min.js' %}"></script>
+
+        <script src="{% static 'js/frontend/jquery.magnific-popup.js' %}"></script>
+        <script src="{% static 'js/frontend/jquery.shuffle.min.js' %}"></script>
+        <script src="{% static 'js/frontend/main.min.js' %}"></script>
+        <script src="{% static 'js/frontend/shuffle.js' %}"></script>
+
+        
+        <script src="{% static 'js/frontend/style.js' %}"></script>    
+
+        <script src="{% static 'js/frontend/assets/carrent.min.js' %}"></script>
+        <script src="{% static 'js/frontend/assets/plugins.min.js' %}"></script>
+        <script src="{% static 'js/frontend/jquery-ui.min.js' %}"></script>
+    </body>
+</html>
+
+<!-- https://htmlguru.net/carrent-html/index.html -->

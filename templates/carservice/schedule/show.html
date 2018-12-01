@@ -1,0 +1,62 @@
+{% extends 'carservice/schedule/template.html' %}
+
+{% block title %}Thông tin chi tiết{% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Lịch trình</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Thông tin chi tiết
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    {%  if schedule %}
+        <div class="panel panel-primary">
+            <div class="panel-heading">Lịch trình của xe <strong>{{ schedule.car.nameofcar }} ({{ schedule.car.carid }})</strong></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-4 col-md-4">
+                        <p>Người thuê xe: </p>
+                        <p>Số điện thoại:</p>
+                        <p>Xe: </p>
+                        <p>Đi từ ngày:</p>
+                        <p>Điểm khởi hành:</p>  
+                        <p>Điểm đến:</p> 
+                        <p>Đón khách lúc:</p>
+                        <p>Chi phí:</p> 
+                        <p>Tiền cọc:</p>   
+                    </div>
+                    <div class="col-xs-8 col-md-8">
+                        <p>
+                            <strong>{{ schedule.customer }}</strong>
+                            <a href="{% url 'carservice:customer_edit' schedule.customer.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Thay đổi thông tin khách hàng</a>
+                        </p>
+                        <p><strong>{{ schedule.customer.phone }}</strong></p>
+                        <p>
+                            <strong>{{ schedule.car }}</strong>
+                            <a href="{% url 'carservice:car_edit' schedule.car.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Thay đổi thông tin xe</a>
+                        </p>
+                        <p><strong>{{ schedule.departure_day|date:'d/m/Y' }} đến {{ schedule.destination_day|date:'d/m/Y' }}</strong></p>
+                        <p><strong>{{ schedule.departure }}</strong></p>  
+                        <p><strong>{{ schedule.destination }}</strong></p> 
+                        <p><strong>{{ schedule.departure_time }}</strong></p>  
+                        <p><strong>{{ schedule.price }}</strong></p>  
+                        <p><strong>{{ schedule.deposit }}</strong></p>        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    {%  endif%}
+    <a href="{% url 'carservice:schedule'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+{% endblock %}
+
+<script type="text/javascript">
+    $(function () {
+        $('#datepicker1').datetimepicker();
+    });
+</script>

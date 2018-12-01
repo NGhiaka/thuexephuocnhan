@@ -1,0 +1,61 @@
+{% extends 'carservice/blog/template.html' %}
+
+{% block title %} Đăng tin {% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Blog</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Đăng tin
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                {%  if categories %}
+                    <div class="form-group">
+                        <select class="form-control"  name="category" id="choose-category">
+                            <option value=""> Thêm thể loại mới +</option>
+                            {%  for cat in categories %}
+                                <option value="{{ cat.id}}"> {{cat}}</option>
+                            {% endfor%}
+                        </select>
+                    </div>
+                    <div class="form-group new-category">
+                            {{ categoryform.as_p }}
+                    </div>
+                {% elif category %}
+                    <select class="form-control"  name="category" id="choose-category">
+                        <option value="{{ category.0.id}}"> {{category.0}}</option>
+                    </select>
+                {% else %}
+                    <div class="form-group">
+                        <div class="input-group">
+                            {{ categoryform.as_p }}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <div class="box-body pad">
+                        <div class="form-group">
+                            {{ formset.as_p }}
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-primary btn-block" type="submit" value="Thêm" />
+                        </div>  
+                </div>
+                
+            </div>
+        </div>
+    </form>
+    <a href="{% url 'carservice:blog'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+{% endblock %}

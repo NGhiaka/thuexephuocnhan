@@ -1,0 +1,67 @@
+{% extends 'carservice/schedule/template.html' %}
+
+{% load staticfiles%}
+
+{% block title %} Chọn xe | Dịch vụ xe du lịch Phước Nhân {% endblock %}
+
+{% block scripts %}
+    <script>
+        var url = window.location.pathname;
+        var id = url.substring(url.lastIndexOf('/') + 1);
+        $("#add_button").click(function() {
+            // var link = 'lichtrinh/them/' + $("#submit_car").val();
+            var url = window.location.pathname;
+            var carid = url.substring(url.lastIndexOf('/') + 1);
+            var link = "{% url 'carservice:schedule_new' 1 2 %}";
+            link = link.replace('1', carid);
+            link = link.replace('2', $("#submit_customer").val());
+            window.location.href = link;
+            // alert(link);
+        });
+    </script>
+
+{% endblock%}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Thêm khách hàng</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Chọn khách hàng
+    </li>
+{% endblock %}
+                
+{% block contain %}
+
+    
+    <div class="panel panel-primary">
+        <div class="panel-body">
+        {%  if object_list %}
+            <div class="form-group">
+                <div class="input-group">
+                    <select class="form-control"  name="submit_customer" id="submit_customer">
+                        {%  for customer in object_list %}
+                            <option value="{{ customer.id}}"> {{customer}}</option>
+        
+                        {% endfor%}
+                    </select>
+                    <div class="input-group-btn">
+                        <button type="submit_type" class="btn btn-primary" id="add_button">Tiếp</button>
+                    <!-- Buttons -->
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <a href="{% url 'carservice:customer_new'%}" class="btn btn-primary">Thêm khách hàng</a>
+            </div>
+        {% else %}
+            <a href="{% url 'carservice:customer_new'%}" class="btn btn-primary">Thêm khách hàng</i></a>
+        {% endif %}
+
+        </div>
+
+    </div>
+     <a href="{% url 'carservice:schedule'%}" class="btn btn-primary">Bỏ qua</i></a>
+{% endblock %}
+

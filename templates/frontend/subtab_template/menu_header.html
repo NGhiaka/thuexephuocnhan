@@ -1,0 +1,83 @@
+{% load staticfiles %}
+
+<header class="header-nav-area">
+	
+        <div class="container">        
+            <div class="row">
+                <div class="col-md-3 col-sm-10 col-xs-10">
+                    <div class="site-logo">
+                        <a href="{% url 'frontend:index'%}"><img src=" {% static "images/avatar/logo.png" %}"></a>
+                    </div><!-- /.logo -->
+                </div><!-- /.col-md-3 -->
+                <div class="col-md-9 col-sm-2 col-xs-2 pd-right-0">
+                    <nav class="site-navigation top-navigation nav-style-one">
+                        <div class="menu-wrapper">
+                            <div class="menu-content">
+                                <ul class="menu-list">
+                                    <li>
+                                        <a href="{% url 'frontend:home'%}" class="{% if request.resolver_match.url_name == 'home' %} active{% endif %}">Trang chủ</a>
+                                     
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'frontend:about'%}" class="{% if request.resolver_match.url_name == 'about' %} active{% endif %}">Giới thiệu</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'frontend:booking'%}" class="{% if request.resolver_match.url_name == 'booking' %} active{% endif %}">Đặt xe</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'frontend:car'%}" class="{% if request.resolver_match.url_name == 'car' %} active{% endif %}">Thông tin</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'frontend:news'%}" class="{% if request.resolver_match.url_name == 'news' %} active{% endif %}"> Blog</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'frontend:contact'%}" class="{% if request.resolver_match.url_name == 'contact' %} active{% endif %}"> Liên hệ</a>
+                                    </li>
+
+                                </ul> <!-- /.menu-list -->
+                            </div> <!-- /.menu-content-->
+                        </div> <!-- /.menu-wrapper --> 
+                    </nav><!-- /.site-navigation -->
+                    <!--Mobile Main Menu-->
+                    <div class="mobile-menu-main hidden-md hidden-lg">
+                        <div class="menucontent overlaybg menuclose"> </div>
+                        <div class="menuexpandermain slideRight">
+                            <a id="navtoggole-main" class="animated-arrow slideLeft menuclose">
+                                <span></span>
+                            </a>
+                        </div><!--/.menuexpandermain-->
+
+                        <div id="mobile-main-nav" class="mb-navigation slideLeft menuclose">
+                            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><div class="menu-wrapper" style="overflow: hidden; width: auto; height: 100%;">
+                                <div id="main-mobile-container" class="menu-content clearfix">
+                                    <ul class="menu-list">
+                                        <li>
+                                            <a href="{% url 'frontend:home'%}" class="{% if request.resolver_match.url_name == 'home' %} active{% endif %}">Trang chủ</a>
+                                         
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'frontend:about'%}" class="{% if request.resolver_match.url_name == 'about' %} active{% endif %}">Giới thiệu</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'frontend:booking'%}" class="{% if request.resolver_match.url_name == 'booking' %} active{% endif %}">Đặt xe</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'frontend:car'%}" class="{% if request.resolver_match.url_name == 'car' %} active{% endif %}">Thông tin</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'frontend:news'%}" class="{% if request.resolver_match.url_name == 'news' %} active{% endif %}"> Blog</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'frontend:contact'%}" class="{% if request.resolver_match.url_name == 'contact' %} active{% endif %}"> Liên hệ</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><div class="slimScrollBar" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; width: 5px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 560px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                        </div><!--/#mobile-main-nav-->
+                    </div><!--/.mobile-menu-main-->
+                </div><!-- /.col-md-9 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    
+
+</header>

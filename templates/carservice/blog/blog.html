@@ -1,0 +1,55 @@
+{% extends 'carservice/blog/template.html' %}
+
+{% block title %} Xem tin {% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Blog</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> các blog
+    </li>
+{% endblock %}
+                
+{% block contain %}
+
+    {%  if blog_list %}
+        <div class="row">
+            {%  for blog in blog_list %}
+              <div class="col-sm-6 col-md-3">
+                <div class="thumbnail" style=" margin-top: 10px;">
+                    <div class="avatar-thumbnail">
+                        <img src="{{ blog.avatar.url }}" alt="..." height="real_height" width="real_width" onload="resizeImg(this)">
+                    </div>
+                    <div class="caption caption-title">
+                        <h3>{{ blog.title }}</h3>
+                        <p><a href="{% url 'carservice:blog_detail' blog.id %}" class="btn btn-primary" role="button">Xem tin</a></p>
+                    </div>
+
+                    <div class="dropdown edit-dropdown">
+                        <button id="dLabel" class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li>
+                                <a href="{% url 'carservice:blog_edit' blog.id %}" alt="Chỉnh sửa thông tin">Sửa</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'carservice:blog_delete' blog.id %}" alt="Xóa">Xóa</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>
+              </div>
+            {%  endfor%}
+        </div>
+    {%  else %}
+        <div class="alert alert-success" role="alert"> Chưa có tin nào</div>
+    {%  endif%}
+    <a href="{% url 'carservice:blog'%}" class="btn btn-primary">Quay lại</a>
+    <a href="{% url 'carservice:blog_new' category_id%}" class="btn btn-primary">Thêm Tin + </a>
+{% endblock %}
+

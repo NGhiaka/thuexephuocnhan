@@ -1,0 +1,32 @@
+{% extends 'carservice/typenews/template.html' %}
+
+{% block title %} Thể loại tin {% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Thê loại Tin Tức</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Thể loại
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    <div class="panel panel-primary">
+        <div class="panel-heading"> Thể loại bài viết</div>
+        <div class="panel-body">
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary btn-block" type="submit" value="Thêm" />
+                </div>
+            </form>
+            
+        </div>
+    </div>
+    <a href="{% url 'carservice:blog'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+{% endblock %}

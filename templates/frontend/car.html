@@ -1,0 +1,448 @@
+{% extends 'frontend/template.html' %}
+
+{% block title %} Thông tin xe | Dịch vụ thuê xe du lịch Phước Nhân {% endblock %}
+
+{% block content %}
+	<header class="page-header nevy-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">                
+                    <h2 class="page-title"> Thông tin xe</h2>
+                    <p class="page-description yellow-color">Thông tin về các loại xe</p>        
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row-->
+        </div><!-- /.container-fluid -->           
+    
+	</header>
+
+
+    <div class="available-block vehicle-padding bg-gray-color">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-9 clearfix">
+                            <h2 class="available-title">Available Vehicles</h2>
+                        </div><!-- /.col-md-9 -->
+                        <div class="col-md-3 col-sm-3">
+                            <div class="vehicle-category pull-right">
+                                <select name="vehicle-category" id="vehicle-cat-list">
+                                    <option value="">All</option>
+                                    <option value="toyota">Toyota</option>
+                                    <option value="mercedes">Mercedes</option>
+                                    <option value="audi">Audi</option>
+                                </select>
+                            </div><!-- /.vehicle-category -->
+                        </div><!-- /.col-md-3 -->
+                    </div><!-- /.row -->
+
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="vehicle-content theme-yellow">
+                                <div class="vehicle-thumbnail">
+                                    <a href="#">
+                                        <img src="assets/images/popular/popular-01.png" alt="car-item">
+                                    </a>
+                                </div><!-- /.vehicle-thumbnail -->
+                                <div class="vehicle-bottom-content">
+                                    <h2 class="vehicle-title"><a href="#">Toyota Aygo</a></h2>
+                                    <div class="vehicle-meta">
+                                        <div class="meta-item">
+                                            <span>Rent:  $200 / </span> Day, -  $12 / Km,
+                                        </div>
+                                    </div><!-- /.meta-left -->
+                                </div><!-- /.vehicle-bottom-content -->
+                            </div><!-- /.car-content -->
+                        </div><!-- /.col-md-4 -->
+                        
+                        <div class="col-md-4 col-sm-6">
+                            <div class="vehicle-content theme-yellow">
+                                <div class="vehicle-thumbnail">
+                                    <a href="#">
+                                        <img src="assets/images/popular/popular-02.png" alt="car-item">
+                                    </a>
+                                </div><!-- /.vehicle-thumbnail -->
+                                <div class="vehicle-bottom-content">
+                                    <h2 class="vehicle-title"><a href="#">Toyota Aygo</a></h2>
+                                    <div class="vehicle-meta">
+                                        <div class="meta-item">
+                                            <span>Rent:  $200 / </span> Day, -  $12 / Km,
+                                        </div>
+                                    </div><!-- /.meta-left -->
+                                </div><!-- /.vehicle-bottom-content -->
+                            </div><!-- /.car-content -->
+                        </div><!-- /.col-md-4 -->
+
+                        <div class="clearfix hidden-md hidden-lg"></div>
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="vehicle-content theme-yellow">
+                                <div class="vehicle-thumbnail">
+                                    <a href="#">
+                                        <img src="assets/images/popular/popular-03.png" alt="car-item">
+                                    </a>
+                                </div><!-- /.vehicle-thumbnail -->
+                                <div class="vehicle-bottom-content">
+                                    <h2 class="vehicle-title"><a href="#">Toyota Aygo</a></h2>
+                                    <div class="vehicle-meta">
+                                        <div class="meta-item">
+                                            <span>Rent:  $200 / </span> Day, -  $12 / Km,
+                                        </div>
+                                    </div><!-- /.meta-left -->
+                                </div><!-- /.vehicle-bottom-content -->
+                            </div><!-- /.car-content -->
+                        </div><!-- /.col-md-4 -->
+
+                        <div class="clearfix"></div><!-- /.clearfix -->
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="vehicle-content theme-yellow">
+                                <div class="vehicle-thumbnail">
+                                    <a href="#">
+                                        <img src="assets/images/popular/popular-04.png" alt="car-item">
+                                    </a>
+                                </div><!-- /.vehicle-thumbnail -->
+                                <div class="vehicle-bottom-content">
+                                    <h2 class="vehicle-title"><a href="#">Toyota Aygo</a></h2>
+                                    <div class="vehicle-meta">
+                                        <div class="meta-item">
+                                            <span>Rent:  $200 / </span> Day, -  $12 / Km,
+                                        </div>
+                                    </div><!-- /.meta-left -->
+                                </div><!-- /.vehicle-bottom-content -->
+                            </div><!-- /.car-content -->
+                        </div><!-- /.col-md-4 -->
+
+                        <div class="clearfix hidden-md hidden-lg"></div>
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="vehicle-content theme-yellow">
+                                <div class="vehicle-thumbnail">
+                                    <a href="#">
+                                        <img src="assets/images/popular/popular-05.png" alt="car-item">
+                                    </a>
+                                </div><!-- /.vehicle-thumbnail -->
+                                <div class="vehicle-bottom-content">
+                                    <h2 class="vehicle-title"><a href="#">Toyota Aygo</a></h2>
+                                    <div class="vehicle-meta">
+                                        <div class="meta-item">
+                                            <span>Rent:  $200 / </span> Day, -  $12 / Km,
+                                        </div>
+                                    </div><!-- /.meta-left -->
+                                </div><!-- /.vehicle-bottom-content -->
+                            </div><!-- /.car-content -->
+                        </div><!-- /.col-md-4 -->
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="vehicle-content theme-yellow">
+                                <div class="vehicle-thumbnail">
+                                    <a href="#">
+                                        <img src="assets/images/popular/popular-06.png" alt="car-item">
+                                    </a>
+                                </div><!-- /.vehicle-thumbnail -->
+                                <div class="vehicle-bottom-content">
+                                    <h2 class="vehicle-title"><a href="#">Toyota Aygo</a></h2>
+                                    <div class="vehicle-meta">
+                                        <div class="meta-item">
+                                            <span>Rent:  $200 / </span> Day, -  $12 / Km,
+                                        </div>
+                                    </div><!-- /.meta-left -->
+                                </div><!-- /.vehicle-bottom-content -->
+                            </div><!-- /.car-content -->
+                        </div><!-- /.col-md-4 -->
+
+                        <div class="clearfix hidden-md hidden-lg"></div>
+
+                        <div class="clearfix"></div><!-- /.clearfix -->
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="vehicle-content theme-yellow">
+                                <div class="vehicle-thumbnail">
+                                    <a href="#">
+                                        <img src="assets/images/popular/popular-07.png" alt="car-item">
+                                    </a>
+                                </div><!-- /.vehicle-thumbnail -->
+                                <div class="vehicle-bottom-content">
+                                    <h2 class="vehicle-title"><a href="#">Toyota Aygo</a></h2>
+                                    <div class="vehicle-meta">
+                                        <div class="meta-item">
+                                            <span>Rent:  $200 / </span> Day, -  $12 / Km,
+                                        </div>
+                                    </div><!-- /.meta-left -->
+                                </div><!-- /.vehicle-bottom-content -->
+                            </div><!-- /.car-content -->
+                        </div><!-- /.col-md-4 -->
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="vehicle-content theme-yellow">
+                                <div class="vehicle-thumbnail">
+                                    <a href="#">
+                                        <img src="assets/images/popular/popular-08.png" alt="car-item">
+                                    </a>
+                                </div><!-- /.vehicle-thumbnail -->
+                                <div class="vehicle-bottom-content">
+                                    <h2 class="vehicle-title"><a href="#">Toyota Aygo</a></h2>
+                                    <div class="vehicle-meta">
+                                        <div class="meta-item">
+                                            <span>Rent:  $200 / </span> Day, -  $12 / Km,
+                                        </div>
+                                    </div><!-- /.meta-left -->
+                                </div><!-- /.vehicle-bottom-content -->
+                            </div><!-- /.car-content -->
+                        </div><!-- /.col-md-4 -->
+
+                        <div class="clearfix hidden-md hidden-lg"></div>
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="vehicle-content theme-yellow">
+                                <div class="vehicle-thumbnail">
+                                    <a href="#">
+                                        <img src="assets/images/popular/popular-01.png" alt="car-item">
+                                    </a>
+                                </div><!-- /.vehicle-thumbnail -->
+                                <div class="vehicle-bottom-content">
+                                    <h2 class="vehicle-title"><a href="#">Toyota Aygo</a></h2>
+                                    <div class="vehicle-meta">
+                                        <div class="meta-item">
+                                            <span>Rent:  $200 / </span> Day, -  $12 / Km,
+                                        </div>
+                                    </div><!-- /.meta-left -->
+                                </div><!-- /.vehicle-bottom-content -->
+                            </div><!-- /.car-content -->
+                        </div><!-- /.col-md-4 -->
+
+                        <div class="clearfix"></div><!-- /.clearfix -->
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="vehicle-content theme-yellow">
+                                <div class="vehicle-thumbnail">
+                                    <a href="#">
+                                        <img src="assets/images/popular/popular-02.png" alt="car-item">
+                                    </a>
+                                </div><!-- /.vehicle-thumbnail -->
+                                <div class="vehicle-bottom-content">
+                                    <h2 class="vehicle-title"><a href="#">Toyota Aygo</a></h2>
+                                    <div class="vehicle-meta">
+                                        <div class="meta-item">
+                                            <span>Rent:  $200 / </span> Day, -  $12 / Km,
+                                        </div>
+                                    </div><!-- /.meta-left -->
+                                </div><!-- /.vehicle-bottom-content -->
+                            </div><!-- /.car-content -->
+                        </div><!-- /.col-md-4 -->
+
+                        <div class="clearfix hidden-md hidden-lg"></div>
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="vehicle-content theme-yellow">
+                                <div class="vehicle-thumbnail">
+                                    <a href="#">
+                                        <img src="assets/images/popular/popular-03.png" alt="car-item">
+                                    </a>
+                                </div><!-- /.vehicle-thumbnail -->
+                                <div class="vehicle-bottom-content">
+                                    <h2 class="vehicle-title"><a href="#">Toyota Aygo</a></h2>
+                                    <div class="vehicle-meta">
+                                        <div class="meta-item">
+                                            <span>Rent:  $200 / </span> Day, -  $12 / Km,
+                                        </div>
+                                    </div><!-- /.meta-left -->
+                                </div><!-- /.vehicle-bottom-content -->
+                            </div><!-- /.car-content -->
+                        </div><!-- /.col-md-4 -->
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="vehicle-content theme-yellow">
+                                <div class="vehicle-thumbnail">
+                                    <a href="#">
+                                        <img src="assets/images/popular/popular-04.png" alt="car-item">
+                                    </a>
+                                </div><!-- /.vehicle-thumbnail -->
+                                <div class="vehicle-bottom-content">
+                                    <h2 class="vehicle-title"><a href="#">Toyota Aygo</a></h2>
+                                    <div class="vehicle-meta">
+                                        <div class="meta-item">
+                                            <span>Rent:  $200 / </span> Day, -  $12 / Km,
+                                        </div>
+                                    </div><!-- /.meta-left -->
+                                </div><!-- /.vehicle-bottom-content -->
+                            </div><!-- /.car-content -->
+                        </div><!-- /.col-md-4 -->
+                    </div><!-- /.row -->
+
+                    <div class="row">
+                        <div class="col-md-12 clearfix">
+                            <div class="pagination-link">
+                                <ul class="pagination">
+                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                    <li class="active"><a href="#">01</a></li>
+                                    <li><a href="#">02</a></li>
+                                    <li><a href="#">03</a></li>
+                                    <li><a href="#">04</a></li>
+                                    <li><a href="#">05</a></li>
+                                    <li><span class="pages-number-dots">...</span></li>
+                                    <li><a href="#">12</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                </ul>
+                            </div><!-- /.pagination -->
+                        </div><!-- /.col-md-12 -->
+                    </div><!-- /.row -->
+                </div><!-- /.col-md-9 -->
+
+                <div class="col-md-3">
+                    <div class="vehicle-sidebar">                    
+                        <form action="#" method="get" class="advance-search-query">
+                            <h2 class="form-title">Filters</h2>
+                            <div class="form-content available-filter">
+                                <div class="form-group">
+                                    <div class="input">
+                                        <input placeholder="quick search" class="calendar form-controller" type="text">
+                                    </div><!--/.input-->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>Available On</label>
+                                    <div class="input">
+                                        <i class="fa fa-calendar"></i>
+                                        <input class="date-start  date-selector form-controller" placeholder="Hire On" type="text">
+                                    </div><!--/.input-->
+                                    <div class="input">
+                                        <i class="fa fa-calendar"></i>
+                                        <input class="date-end date-selector form-controller" placeholder="Return On" type="text">
+                                    </div><!--/.input-->
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <div class="input">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <input placeholder="$12" class="calendar form-controller min" type="text">
+                                            </div><!-- /.col-xs-6 -->
+                                            <div class="col-xs-6">
+                                                <input placeholder="$1500" class="calendar form-controller" type="text">
+                                            </div><!-- /.col-xs-6 -->
+                                        </div><!-- /.row -->
+                                    </div><!--/.input-->
+                                </div><!-- /.form-group -->
+
+                                <div class="advance-filters">
+                                    <label>Car Type</label>
+                                    <ul class="checkbox-content">
+                                        <li>
+                                            <input id="cupon" name="chack" value="chack" type="checkbox">
+                                            <label for="cupon">Coupe</label>
+                                        </li>
+                                        <li>
+                                            <input id="limo" name="chack" value="chack" type="checkbox">
+                                            <label for="limo">Limo</label>
+                                        </li>
+                                        <li>
+                                            <input id="sedan" name="chack" value="chack" type="checkbox">
+                                            <label for="sedan">Limo</label>
+                                        </li>
+                                        <li>
+                                            <input id="van" name="chack" value="chack" type="checkbox">
+                                            <label for="van">Van</label>
+                                        </li>
+                                    </ul>
+
+                                    <label>Categories</label>
+                                    <ul class="checkbox-content">
+                                        <li>
+                                            <input id="compact" name="chack" value="chack" type="checkbox">
+                                            <label for="compact">Compact</label>
+                                        </li>
+                                        <li>
+                                            <input id="family" name="chack" value="chack" type="checkbox">
+                                            <label for="family">Family</label>
+                                        </li>
+                                        <li>
+                                            <input id="full-size-1" name="chack" value="chack" type="checkbox">
+                                            <label for="full-size-1">Full size</label>
+                                        </li>
+                                        <li>
+                                            <input id="intermediate" name="chack" value="chack" type="checkbox">
+                                            <label for="intermediate">Intermediate</label>
+                                        </li>
+                                        <li>
+                                            <input id="mini-1" name="chack" value="chack" type="checkbox">
+                                            <label for="mini-1">Mini</label>
+                                        </li>
+                                        <li>
+                                            <input id="standard-1" name="chack" value="chack" type="checkbox">
+                                            <label for="standard-1">Standard</label>
+                                        </li>
+                                    </ul>
+
+                                    <label>Car Brands</label>
+                                    <ul class="checkbox-content">
+                                        <li>
+                                            <input id="astonmartin-1" name="chack" value="chack" type="checkbox">
+                                            <label for="astonmartin-1">Astonmartin</label>
+                                        </li>
+                                        <li>
+                                            <input id="audi-1" name="chack" value="chack" type="checkbox">
+                                            <label for="audi-1">Audi</label>
+                                        </li>
+                                        <li>
+                                            <input id="ford-1" name="chack" value="chack" type="checkbox">
+                                            <label for="ford-1">Ford</label>
+                                        </li>
+                                        <li>
+                                            <input id="maruti-1" name="chack" value="chack" type="checkbox">
+                                            <label for="maruti-1">Maruti</label>
+                                        </li>
+                                        <li>
+                                            <input id="mercedes-benz-1" name="chack" value="chack" type="checkbox">
+                                            <label for="mercedes-benz-1">Mercedes-Benz</label>
+                                        </li>
+                                        <li>
+                                            <input id="terasa-1" name="chack" value="chack" type="checkbox">
+                                            <label for="terasa-1">Terasa</label>
+                                        </li>
+                                    </ul>
+
+                                    <label>Car Models</label>
+                                    <ul class="checkbox-content">
+                                        <li>
+                                            <input id="audi-2007-model-1" name="chack" value="chack" type="checkbox">
+                                            <label for="audi-2007-model-1">Audi 2007 model</label>
+                                        </li>
+                                        <li>
+                                            <input id="audi-a9-1" name="chack" value="chack" type="checkbox">
+                                            <label for="audi-a9-1">Audi A9</label>
+                                        </li>
+                                        <li>
+                                            <input id="c-class-sedan-1" name="chack" value="chack" type="checkbox">
+                                            <label for="c-class-sedan-1">C-Class Sedan</label>
+                                        </li>
+                                        <li>
+                                            <input id="ford-t-van" name="chack" value="chack" type="checkbox">
+                                            <label for="ford-t-van">Ford T Van</label>
+                                        </li>
+                                        <li>
+                                            <input id="maruti-2008-model-1" name="chack" value="chack" type="checkbox">
+                                            <label for="maruti-2008-model-1">Maruti 2008 Model</label>
+                                        </li>
+                                        <li>
+                                            <input id="terasa--2007-1" name="chack" value="chack" type="checkbox">
+                                            <label for="terasa--2007-1">Teresa 2007</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="filter-button">
+                                    <a href="#" class="button nevy-bg">Filter</a>
+                                    <a href="#" class="button nevy-bg">Reset</a>
+                                </div><!-- /.filter-button -->
+                            </div><!-- /.from-cotent -->
+                        </form><!-- /.advance_search_query -->
+                    </div><!-- /.vehicle-sidebar -->
+                </div><!-- /.col-md-3 -->
+            </div><!-- /.row -->
+        </div><!-- /.container  -->
+    </div>
+
+	
+{% endblock %}

@@ -1,0 +1,20 @@
+{% with 100 as tm %}
+{%for sch in schedules%}
+	<div class="timeline-block">
+		<div class="timeline-img" data-anim-effect = 'zoomIn' data-anim-delay = {{ tm }} >
+			<i>
+				[{{ sch.departure_day|date:'d-m-Y'}}]
+			</i>
+		</div>
+		<div class="timeline-content" data-anim-effect = '{% cycle "fadeInRight" "fadeInLeft" %}' data-anim-delay = {{ tm}}>
+			<h2>
+				<strong>{{sch.destination}}</strong>
+				<p style="padding: 0 10px"> - {{ sch.departure_day|date:'d-m-Y'}} -> {{ sch.destination_day|date:'d-m-Y'}}</p>
+				<p style="padding: 0 10px"> - {{sch.car}}</p>
+			</h2>
+		</div>
+	</div>
+
+{%endfor%}
+
+{% endwith%}

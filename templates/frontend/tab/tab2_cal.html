@@ -1,0 +1,22 @@
+<% @schedules.each do |schedule| 
+	@tm = @tm + 100
+	@tt = schedule.enddate + 1.days
+	@non = true
+	if schedule.startdate > Time.now
+		@non = false
+	%>
+		<%= content_tag :div, class: "timeline-block" do -%>
+				<%= content_tag :div, class: "timeline-img",:'data-anim-effect'=>"zoomIn", :'data-anim-delay'=>@tm do -%>
+					<%= content_tag(:i,@tt.strftime("%d/%m/%Y"), class: nil)-%>
+				<% end -%>	
+				<%= content_tag :div, class: "timeline-content",:'data-anim-effect'=>cycle("fadeInRight", "fadeInLeft"), :'data-anim-delay'=>@tm do -%>
+					<h2>Từ ngày: <%= content_tag(:strong,@tt.strftime("%d/%m/%Y") + " - " + @et.strftime("%d/%m/%Y"), class: nil)-%></h2>
+					<%= content_tag(:p,"Liên hệ: 0915630032, gặp Nhân. Đặt xe ngay", class: nil)-%>
+				<% end -%>
+		<% end -%>
+		<% @et = schedule.startdate - 1.days %>
+	<%end %>
+<% end %>
+<% if !@non%>
+	<%= render "schedule/tab2_nonecal" %>
+<% end%>

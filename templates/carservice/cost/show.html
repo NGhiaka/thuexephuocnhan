@@ -1,0 +1,46 @@
+{% extends 'carservice/cost/template.html' %}
+
+{% block title %}Thông tin chi tiết{% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Hóa đơn</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Thông tin chi tiết
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    {%  if cost %}
+        <div class="panel panel-primary">
+            <div class="panel-heading">Thông tin chi tiết về hóa đơn <strong>{{ cost.schedule.departure_day|date:'d/m/Y'}} -> {{ cost.schedule.destination_day|date:'d/m/Y'}}</strong></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-4 col-md-4">
+                        <p>Lịch trình: </p>
+                        <p>Doanh thu:</p>
+                        <p>Phi nhiên liệu:</p>
+                        <p>Phí tài xế:</p>
+                        <p>Phí phát sinh:</p>  
+                        <p>Tổng doanh thu</p> 
+                         
+                    </div>
+                    <div class="col-xs-8 col-md-8">
+                        <p><strong>Từ ngày {{ cost.schedule.departure_day|date:'d/m/Y'}} -> ngày {{ cost.schedule.destination_day|date:'d/m/Y'}}</strong></p>
+                        <p><strong>{{ cost.total_revenue }} đồng</strong></p>
+                        <p><strong>{{ cost.spent_oil }} đồng</strong></p>
+                        <p><strong>{{ cost.spent_steersman }} đồng</strong></p>
+                        <p><strong>{{ cost.spent_arises }} đồng</strong></p>  
+                        <p><strong>{{ total_cost }} đồng</strong></p>        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    {%  endif%}
+    <a href="{% url 'carservice:cost'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+{% endblock %}
+

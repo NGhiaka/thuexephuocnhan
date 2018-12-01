@@ -1,0 +1,36 @@
+{% extends 'carservice/cost/template.html' %}
+
+{% block title %}Tiền hóa đơn cho lịch trình{% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i>Doanh thu</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Thêm hóa đơn
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">Thêm hóa đơn</div>
+        <div class="panel-body">
+            <form method="post" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                <!-- <label for="exampleInputEmail1"> {{ form.label_tag }}</label> -->
+                {{ form }}
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary btn-block" type="submit" value="Thêm" />
+            </div>
+        </form>
+        </form>
+            
+        </div>
+    </div>
+    <a href="{% url 'carservice:cost'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+{% endblock %}
+
+

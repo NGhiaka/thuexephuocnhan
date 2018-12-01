@@ -1,0 +1,133 @@
+#myTable tr{
+	cursor: pointer;
+}
+/*tạo block hiển thị ảnh hoặc blog*/
+.block-contain{
+    height: 150px;
+    margin: 10px 0px 0 0px;
+}
+.block-contain img{
+    width: 100%;
+    height: 150px;
+    position: absolute;
+    padding: 0 8px;
+    left: 8px;
+}
+
+.create-contain{
+	text-align: center;
+    height: 100%;
+    line-height: 7;
+    color: #FFF;
+    font-size: 20px;
+    position: relative;
+    background: rgba(31, 30, 30, 0.4);
+}
+.edit-dropdown{
+    top: 15px;
+    left: 20px;
+    position: absolute;
+}
+.dropdown buttom i{
+    top: 5px;
+    right: 5px;
+    position: absolute;
+}
+.title-contain{
+    position: absolute;
+    margin-left: 3%;
+    bottom: 30px;
+    width: 90%;
+    border-bottom: 1px solid #ffffff;
+    color: #FFF;
+}
+.title-contain .title{
+	font-size: 20px;
+    padding: 0 10px;	
+}
+.title-contain .title a{
+	color: #FFF;
+}
+.form-contain{
+	padding: 15px;
+}
+.input-img-contain{
+	padding: 0 30px;
+}
+.padding{
+	padding-right: 0px;
+	/*padding-left: 10px; */
+}
+
+.action-img{
+	padding: 15px 0;
+	text-align: center;
+}
+.block-thumnail-image{
+    width: 15%;
+    /* position: relative; */
+    /* padding: 5px; */
+    margin: 10px;
+    float: left;
+}
+/*.caption-title{
+	white-space: nowrap;
+	width: 150px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}*/
+
+.thumbnail .avatar-thumbnail {
+	    position: relative;
+    display: block;
+    overflow: hidden;
+
+}
+.thumbnail .avatar-thumbnail:before {
+	display: block;
+    padding-top: calc(900% / 16);
+    content: '';
+}
+
+.thumbnail .avatar-thumbnail img{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: none;
+    height: auto;
+}
+
+.caption.caption-title h3 {
+	overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+}
+
+.edit-dropdown button {
+	background-color: #fff;
+	outline: none;
+	border: 1px solid #367fa9;
+	width: 30px;
+	height: 30px;
+	border-radius: 4px;
+	line-height: 18px;
+	padding-bottom: 4px;
+	    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.edit-dropdown button i {
+	color: #367fa9;
+	font-size: 18px;
+	border-bottom: 2px solid #367fa9;
+}
+
+.edit-dropdown button:hover {
+ 	    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+ }
