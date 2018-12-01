@@ -28,5 +28,5 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-    # handler404 = 'carservice.views.handler404'
-    # handler500 = 'carservice.views.handler500'
+handler404 = 'frontend.views.handler404'
+handler500 = 'frontend.views.handler500'

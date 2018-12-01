@@ -1,20 +1,416 @@
 {% extends 'frontend/template.html' %}
+{% load staticfiles %}
 
 {% block title %} Đặt lịch | Dịch vụ thuê xe du lịch Phước Nhân {% endblock %}
 
 {% block content %}
-    {% load staticfiles %}
-    <header class="page-header nevy-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">                
-                    <h2 class="page-title">Trang Chủ</h2>
-                    <p class="page-description yellow-color">Đặt lịch trực tuyến</p>        
-                </div><!-- /.col-md-12 -->
-            </div><!-- /.row-->
-        </div><!-- /.container-fluid -->           
-    
-    </header>
+    <!-- ======= Main Slider Area =======-->
+    <div class="slider-block">    
+        <div class="rev_slider_wrapper">
+            <div class="rev_slider carrent-slider" >
+                <ul>
+                    <!-- slide 1 --> 
+                    <li data-transition="fade" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="materialize Material" data-description="">
+
+                        <!-- main image -->
+                        <img src="{% static 'images/slider-bg.jpg'%}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+
+
+                        <!-- layer no 1 -->
+                        <div class="tp-caption tp-resizeme rev-subheading"
+                            data-type="text" 
+                            data-x="['left','left','left','center']" data-hoffset="['105','105','75','-85']" 
+                            data-y="['middle']" data-voffset="['-163','-163','-130','-130']"
+                            data-fontsize= "['22','22','22','22']"
+                            data-lineheight="['30','30','30','30']"
+                            data-width="none"
+                            data-height="none"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="1000" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">Xe du lịch 4 chỗ
+                        </div>
+
+                        <!-- layer no 2 -->
+                        <div class="tp-caption tp-resizeme rev-subheading"
+                            data-type="text" 
+                            data-x="['left','left','left','center']" data-hoffset="['102','102','75','-75']" 
+                            data-y="['middle']" data-voffset="['-110','-110','-90','-90']"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-fontsize="['60','60','45','45']"
+                            data-lineheight="['60','60','60','60']"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="1000" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 6; color: #e91e22; font-family: 'Exo', sans-serif; font-weight: 800;">TOYOTA VIOS
+                        </div>
+
+                        <!-- layer no 3 -->
+                        <div class="tp-caption tp-resizeme NotGeneric-Title"
+                            data-type="text" 
+                            data-x="['left','left','left','center']" data-hoffset="['103','103','75','0']" 
+                            data-y="['middle']" data-voffset="['0']"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-fontsize="['30','30','30','30']"
+                            data-lineheight="['40','40','35','35']"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="800" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 7; color: #000000; font-family: 'Exo', sans-serif; font-weight: 600; text-transform: capitalize;">
+                            Chất lượng xe đời mới<br> 
+                            Hệ thống an toàn<br> 
+                            Nội thất xe sang trọng <br>
+                        </div>
+
+                        <!-- layer no 4 -->
+                        <div class="tp-caption rev-subheading tp-resizeme"
+                            data-type="text" 
+                            data-x="['left','left','left','center']" data-hoffset="['105','105','75','-28']" 
+                            data-y="['middle']" data-voffset="['95','95','75','75']"
+                            data-fontsize="['24']"
+                            data-lineheight="['20']"
+                            data-width="none"
+                            data-height="none"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="800" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">Thuê xe tốt nhất!!!!!
+                        </div>
+
+                        <!-- layer no 5 -->
+                        <div class="tp-caption tp-resizeme"
+                            data-x="['left','left','left','center']" data-hoffset="['105','105','75','-105']" 
+                            data-y="['middle']" data-voffset="['150','150','135','120']"
+                            data-fontsize="['22']"
+                            data-lineheight="['45']"
+                            data-width="none"
+                            data-height="none"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-style_hover="cursor:default;"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:600;e:Power2.easeInOut;s:600;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="1200" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 7; font-weight: bold; font-family: 'Exo', sans-serif;">
+                            <a href="{% url 'frontend:contact'%}" class="button black-button slider-button" data-fontsize="['22','22','22','22']">Liên hệ ngay</a>
+                        </div>
+
+                        <!-- layer no 6 -->
+                        <div class="tp-caption tp-resizeme"
+                            data-x="['right','right','right','center']" data-hoffset="['0','-15','30','-10']"
+                            data-y="['middle','middle','middle','bottom']" data-voffset="['15','15','0','0']"
+                            data-transform_idle="o:1;" 
+                            data-visibility="['on','on','on','off']"
+                            data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:300;e:Power3.easeInOut;" data-transform_out="auto:auto;s:600;" 
+                            data-splitin="none"
+                            data-start="1500"
+                            data-type="image"
+                            data-responsive_offset="on"
+                            data-width="none"
+                            data-height="none" data-no-retina>
+                                <img src="assets/images/dummy.png" alt="" data-lazyload="{% static '/images/car/toyota-vios-e.png'%}" data-ww="['805','805','500','350']" data-hh="['auto']" >
+                        </div>
+                    </li><!-- /.slide 1 -->
+                    <!-- slide 2 --> 
+                    <li data-transition="fade" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="materialize Material" data-description="">
+
+                        <!-- main image -->
+                        <img src="{% static 'images/slider-bg.jpg'%}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+
+                        <!-- layer no 1 -->
+                        <div class="tp-caption tp-resizeme rev-subheading"
+                            data-type="text" 
+                            data-x="['left','left','left','center']" data-hoffset="['105','105','75','-85']" 
+                            data-y="['middle']" data-voffset="['-163','-163','-130','-130']"
+                            data-fontsize="['22','22','22','22']"
+                            data-lineheight="['30','30','30','30']"
+                            data-width="none"
+                            data-height="none"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="800" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">Xe du lịch 7 chỗ
+                        </div>
+
+                        <!-- layer no 2 -->
+                        <div class="tp-caption tp-resizeme rev-subheading"
+                            data-type="text" 
+                            data-x="['left','left','left','center']" data-hoffset="['102','102','75','-75']" 
+                            data-y="['middle']" data-voffset="['-110','-110','-90','-90']"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-fontsize="['60','60','45','45']"
+                            data-lineheight="['60','60','60','60']"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="1000" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 6; color: #e91e22; font-family: 'Exo', sans-serif; font-weight: 800;">FORTUNER
+                        </div>
+
+                        <!-- layer no 3 -->
+                        <div class="tp-caption tp-resizeme NotGeneric-Title"
+                            data-type="text" 
+                            data-x="['left','left','left','center']" data-hoffset="['103','103','75','0']" 
+                            data-y="['middle']" data-voffset="['0']"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-fontsize="['30','30','30','30']"
+                            data-lineheight="['40','40','35','35']"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="800" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 7; color: #000000; font-family: 'Exo', sans-serif; font-weight: 600; text-transform: capitalize;">
+                            Chất lượng xe đời mới<br> 
+                            Hệ thống an toàn<br> 
+                            Nội thất xe sang trọng <br>
+                        </div>
+
+                        <!-- layer no 4 -->
+                        <div class="tp-caption rev-subheading tp-resizeme"
+                            data-type="text" 
+                            data-x="['left','left','left','center']" data-hoffset="['105','105','75','-28']" 
+                            data-y="['middle']" data-voffset="['95','95','75','75']"
+                            data-fontsize="['24']"
+                            data-lineheight="['20']"
+                            data-width="none"
+                            data-height="none"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="800" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">Thuê xe tốt nhất!!!!
+                        </div>
+
+                        <!-- layer no 5 -->
+                        <div class="tp-caption tp-resizeme"
+                            data-x="['left','left','left','center']" data-hoffset="['105','105','75','-105']" 
+                            data-y="['middle']" data-voffset="['150','150','135','120']"
+                            data-fontsize="['22']"
+                            data-lineheight="['45']"
+                            data-width="none"
+                            data-height="none"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-style_hover="cursor:default;"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:600;e:Power2.easeInOut;s:600;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="1200" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 7; font-weight: bold; font-family: 'Exo', sans-serif;">
+                            <a href="{% url 'frontend:contact'%}" class="button black-button slider-button" data-fontsize="['22','22','22','22']">Liên hệ ngay</a>
+                        </div>
+
+                        <!-- layer no 6 -->
+                        <div class="tp-caption tp-resizeme"
+                            data-x="['right','right','right','center']" data-hoffset="['0','-15','30','-10']"
+                            data-y="['middle','middle','middle','bottom']" data-voffset="['15','15','0','0']"
+                            data-transform_idle="o:1;" 
+                            data-visibility="['on','on','on','off']"
+                            data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:300;e:Power3.easeInOut;" data-transform_out="auto:auto;s:600;" 
+                            data-splitin="none"
+                            data-start="1500"
+                            data-type="image"
+                            data-responsive_offset="on"
+                            data-width="none"
+                            data-height="none" data-no-retina>
+                                <img src="assets/images/dummy.png" alt="" data-lazyload="{% static '/images/car/fortuner.png'%}" data-ww="['805','805','500','350']" data-hh="['auto']" >
+                        </div>
+                    </li><!-- /.slide 2 -->
+
+                    <!-- slide 3 --> 
+                    <li data-transition="fade" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="materialize Material" data-description="">
+
+                        <!-- main image -->
+                        <img src="{% static 'images/slider-bg.jpg'%}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+
+                        <!-- layer no 1 -->
+                        <div class="tp-caption tp-resizeme rev-subheading"
+                            data-type="text" 
+                            data-x="['left','left','left','center']" data-hoffset="['105','105','75','-85']" 
+                            data-y="['middle']" data-voffset="['-163','-163','-130','-130']"
+                            data-fontsize="['22','22','22','22']"
+                            data-lineheight="['30','30','30','30']"
+                            data-width="none"
+                            data-height="none"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="800" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">Xe du lịch 16 chỗ 
+                        </div>
+
+                        <!-- layer no 2 -->
+                        <div class="tp-caption tp-resizeme rev-subheading"
+                            data-type="text" 
+                            data-x="['left','left','left','center']" data-hoffset="['102','102','75','-75']" 
+                            data-y="['middle']" data-voffset="['-110','-110','-90','-90']"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-fontsize="['60','60','45','45']"
+                            data-lineheight="['60','60','60','60']"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="1000" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 6; color: #e91e22; font-family: 'Exo', sans-serif; font-weight: 800;">FORD TRANSIT
+                        </div>
+
+                        <!-- layer no 3 -->
+                        <div class="tp-caption tp-resizeme NotGeneric-Title"
+                            data-type="text" 
+                            data-x="['left','left','left','center']" data-hoffset="['103','103','75','0']" 
+                            data-y="['middle']" data-voffset="['0']"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-fontsize="['30','30','30','30']"
+                            data-lineheight="['40','40','35','35']"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="800" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 7; color: #000000; font-family: 'Exo', sans-serif; font-weight: 600; text-transform: capitalize;">
+                            Chất lượng an toàn<br> 
+                            Hệ thống an toàn<br> 
+                            Nội thất xe sang trọng <br>
+                        </div>
+                        <!-- layer no 4 -->
+                        <div class="tp-caption rev-subheading tp-resizeme"
+                            data-type="text" 
+                            data-x="['left','left','left','center']" data-hoffset="['105','105','75','-28']" 
+                            data-y="['middle']" data-voffset="['95','95','75','75']"
+                            data-fontsize="['24']"
+                            data-lineheight="['20']"
+                            data-width="none"
+                            data-height="none"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="800" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">Thuê xe tốt nhất!!!!!
+                        </div>
+
+                        <!-- layer no 5 -->
+                        <div class="tp-caption tp-resizeme"
+                            data-x="['left','left','left','center']" data-hoffset="['105','105','75','-105']" 
+                            data-y="['middle']" data-voffset="['150','150','135','120']"
+                            data-fontsize="['22']"
+                            data-lineheight="['45']"
+                            data-width="none"
+                            data-height="none"
+                            data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-style_hover="cursor:default;"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+                            data-transform_out="y:[100%];s:600;e:Power2.easeInOut;s:600;e:Power2.easeInOut;" 
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+                            data-start="1200" 
+                            data-splitin="none" 
+                            data-splitout="none" 
+                            data-responsive_offset="on"
+                            style="z-index: 7; font-weight: bold; font-family: 'Exo', sans-serif;">
+                            <a href="{% url 'frontend:contact'%}" class="button black-button slider-button" data-fontsize="['22','22','22','22']">Liên hệ ngay</a>
+                        </div>
+
+                        <!-- layer no 6 -->
+                        <div class="tp-caption tp-resizeme"
+                            data-x="['right','right','right','center']" data-hoffset="['0','-15','30','-10']"
+                            data-y="['middle','middle','middle','bottom']" data-voffset="['15','15','0','0']"
+                            data-transform_idle="o:1;" 
+                            data-visibility="['on','on','on','off']"
+                            data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:300;e:Power3.easeInOut;" data-transform_out="auto:auto;s:600;" 
+                            data-splitin="none"
+                            data-start="1500"
+                            data-type="image"
+                            data-responsive_offset="on"
+                            data-width="none"
+                            data-height="none" data-no-retina>
+                                <img src="assets/images/dummy.png" alt="" data-lazyload="{% static '/images/car/ford_transit.png'%}" data-ww="['805','805','500','350']" data-hh="['auto']" >
+                        </div>
+                    </li><!-- /.slide 3 -->
+                </ul>             
+            </div><!-- /.revolution slider -->
+        </div><!-- /.slider wrapper -->
+    </div><!-- /.slider-block -->
+
 
 
     <div class="vehicle-section-divider night-rider">
@@ -37,7 +433,7 @@
                 <div class="col-md-4">
                     <div class="check-content">
                         <h4 class="top-subtitle"> Tìm xe nhanh chóng</h4>
-                        <h2 class="title yellow-color"> Tiện lợi và hiệu quả</h2>
+                        <h2 class="title yellow-color">Tiện lợi hiệu quả</h2>
                         <h3 class="subtitle"> Thuê xe tốt nhất</h3>
                     </div><!-- /.check-content -->
                 </div><!-- col-md-4 -->
@@ -47,10 +443,17 @@
                         <div class="regular-search">                        
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label>Loại xe</label>
+                                    <label>Xe</label>
                                     <div class="input">
-                                        <i class="fa fa-map-marker"></i>
-                                        <input placeholder="16 chỗ" class="pick-location form-controller" type="text">
+                                        <i class="fa fa-car"></i>
+                                        <select  class="form-controller" name="car">
+                                            <option>--- Chọn Xe ---</option>
+                                            {% if cars %}
+                                                {% for car in cars %}
+                                                    <option value="{{car.id}}">{{car.name}}</option>
+                                                {% endfor%}}
+                                            {% endif%}
+                                        </select>
                                     </div><!--/.input-->
                                 </div><!--/.col-md-4-->
 
@@ -62,82 +465,20 @@
                                     </div><!--/.input-->
                                 </div><!--/.col-md-4-->
 
-                                <div class="col-md-4">
-                                    <label>Picking up Time</label>
-                                    <div class="input">
-                                        <i class="fa fa-clock-o"></i>
-                                        <input class="time-selector form-controller" placeholder="15:00 am" type="text">
-                                      </div><!--/.input-->
-                                </div><!--/.col-md-4-->
-                                
-                                <div class="clearfix"></div><!-- /.clearfix -->
 
                                 <div class="col-md-4">
-                                    <label>Hãng xe</label>
-                                    <div class="input">
-                                        <i class="fa fa-map-marker"></i>
-                                        <input placeholder="Off your location" class="drop-location form-controller" type="text">
-                                    </div><!--/.input-->
-                                </div><!--/.col-md-4-->
-
-                                <div class="col-md-4">
-                                    <label>Dropping off date</label>
+                                    <label>Ngày về</label>
                                     <div class="input">
                                         <i class="fa fa-calendar"></i>
                                         <input class="date-end date-selector form-controller" placeholder="dd/mm/yy" type="text">
                                     </div><!--/.input-->
                                 </div><!--/.col-md-4-->
 
-                                <div class="col-md-4">
-                                    <label>Dropping off date</label>
-                                    <div class="input">
-                                        <i class="fa fa-clock-o"></i>
-                                        <input class="time-selector form-controller" placeholder="12:00 am" type="text">
-                                    </div><!--/.input-->
-                                </div><!--/.col-md-4-->
                             </div><!-- /.row -->
                         </div><!-- /.regular-search -->
 
-                        <div class="advance-search">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label>Your Budget</label>
-                                    <div class="input">
-                                        <i class="fa fa-money"></i>
-                                        <input class="budget-fields form-controller" placeholder="Start form $20" type="text">
-                                    </div><!--/.input-->
-                                </div><!--/.col-md-4-->
-                                <div class="col-md-4">
-                                    <label>Class</label>
-                                    <div class="input">
-                                        <select>
-                                            <option value="0" selected="selected">Intermediate</option>
-                                            <option value="1">Intermediate</option>
-                                            <option value="2">Compact</option>
-                                            <option value="3">Station Wagon</option>
-                                            <option value="4">SUV</option>
-                                            <option value="5">Minibus</option>
-                                        </select>
-                                    </div><!--/.input-->
-                                </div><!--/.col-md-4-->
-                                <div class="col-md-4">
-                                    <label>Fuel</label>
-                                    <div class="input">
-                                        <select>
-                                            <option value="0" selected="selected">Petrol</option>
-                                            <option value="1">Diesel</option>
-                                            <option value="2">Octen</option>
-                                        </select>
-                                    </div><!--/.input-->
-                                </div><!--/.col-md-4-->
-                            </div><!-- /.row -->
-                        </div><!-- /.advance-search -->
-
                         <div class="check-vehicle-footer">
                             <div class="row">                            
-                                <!-- <div class="advanced-search">
-                                    <a href="#" class="advanced-search-btn"><i class="fa fa-search"></i>Advanced search</a>
-                                </div> -->
                                 <button type="submit" class="button">Tìm xe</button>
                             </div><!-- /.row -->
                         </div><!-- /.check-vehicle-footer -->
@@ -150,4 +491,68 @@
 
     <div class="vehicle-multi-border yellow-black"></div>
     
+{% endblock %}
+
+{% block script %}
+    <!-- RS5.4 Core JS Files -->
+    <script src="{% static 'js/frontend/revolution/jquery.themepunch.tools.min.js'%}"></script>
+    <script src="{% static 'js/frontend/revolution/jquery.themepunch.revolution.min.js'%}"></script>
+  
+    <script>
+        jQuery(document).ready(function() {
+            var $sliderSelector = jQuery(".carrent-slider");
+            $sliderSelector.revolution({
+                sliderType: "standard",
+                sliderLayout: "fullwidth",
+                delay: 9000,
+                navigation: {
+                    keyboardNavigation: "on",
+                    keyboard_direction: "horizontal",
+                    mouseScrollNavigation: "off",
+                    onHoverStop: "on",
+                    touch: {
+                        touchenabled: "on",
+                        swipe_threshold: 75,
+                        swipe_min_touches: 1,
+                        swipe_direction: "horizontal",
+                        drag_block_vertical: false
+                    },
+                    arrows: {
+                        style: "gyges",
+                        enable: true,
+                        hide_onmobile: false,
+                        hide_onleave: true,
+                        tmp: '',
+                        left: {
+                            h_align: "left",
+                            v_align: "center",
+                            h_offset: 10,
+                            v_offset: 0
+                        },
+                        right: {
+                            h_align: "right",
+                            v_align: "center",
+                            h_offset: 10,
+                            v_offset: 0
+                        }
+                    }
+                },
+                responsiveLevels:[1400,1368,992,480],
+                visibilityLevels:[1400,1368,992,480],
+                gridwidth:[1400,1368,992,480],
+                gridheight:[600,600,500,380],
+                disableProgressBar:"on"
+            });
+        });
+    </script>
+
+    <!-- SLIDER REVOLUTION 5.4 EXTENSIONS  (Load Extensions only on Local File Systems! The following part can be removed on Server for On Demand Loading) -->
+    <script src="{% static 'js/frontend/revolution/extensions/revolution.extension.video.min.js'%}"></script>
+    <script src="{% static 'js/frontend/revolution/extensions/revolution.extension.slideanims.min.js'%}"></script>
+    <script src="{% static 'js/frontend/revolution/extensions/revolution.extension.actions.min.js'%}"></script>
+    <script src="{% static 'js/frontend/revolution/extensions/revolution.extension.layeranimation.min.js'%}"></script>
+    <script src="{% static 'js/frontend/revolution/extensions/revolution.extension.kenburn.min.js'%}"></script>
+    <script src="{% static 'js/frontend/revolution/extensions/revolution.extension.navigation.min.js'%}"></script>
+    <script src="{% static 'js/frontend/revolution/extensions/revolution.extension.migration.min.js'%}"></script>
+    <script src="{% static 'js/frontend/revolution/extensions/revolution.extension.parallax.min.js'%}"></script>    
 {% endblock %}

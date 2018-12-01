@@ -54,11 +54,11 @@
                                             {% for blog in blog_list%}
                                                 <div class="col-md-4 col-sm-4 col-xs-4">
                                                     <article class="post">
-                                                        <figure class="post-thumb">
-                                                            <a href="{% url 'frontend:detail_news' blog.id %}">
+                                                        <a href="{% url 'frontend:detail_news' blog.id %}">
+                                                            <figure class="post-thumb">
                                                                 <img src="{{blog.avatar.url}}" alt="blog">
-                                                            </a>
-                                                        </figure><!-- /.post-thumb -->
+                                                            </figure><!-- /.post-thumb -->
+                                                        </a>
                                                         <div class="post-content">  
                                                             <div class="entry-meta">
                                                                 <span class="entry-date nevy-bg">
@@ -66,7 +66,7 @@
                                                                 </span>
                                                                 <span class="entry-author red-bg">
                                                                     <i class="fa fa-user"></i>
-                                                                    Dr. Sibbir.
+                                                                    {{blog.author.username}}
                                                                 </span>
                                                             </div><!-- /.entry-meta -->
                                                             <h2 class="entry-title">
@@ -77,8 +77,8 @@
                                                             <div class="entry-footer">
                                                                 <div class="entry-footer-meta">
                                                                     <span class="entry-view"><i class="fa fa-eye"></i>{{blog.view}}</span>
-                                                                    <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>09</a></span>
-                                                                    <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>05</a></span>
+                                                                    <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>100</a></span>
+                                                                    <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>100</a></span>
                                                                 </div><!-- /.entry-footer-meta -->
                                                             </div><!-- /.entry-footer -->
                                                         </div><!-- /.post-content -->
@@ -92,27 +92,36 @@
                                             </div>
                                         {% endif %}
                                     </div><!-- /.row -->
-                                    
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="pagination-link">
-                                                <ul class="pagination">
-                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                    <li class="active"><a href="#">01</a></li>
-                                                    <li><a href="#">02</a></li>
-                                                    <li><a href="#">03</a></li>
-                                                    <li><a href="#">04</a></li>
-                                                    <li><a href="#">05</a></li>
-                                                    <li><span class="pages-number-dots">...</span></li>
-                                                    <li><a href="#">12</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                                </ul>
-                                            </div><!-- /.pagination -->
-                                        </div><!-- /.col-md-12 -->
-                                    </div><!-- /.row -->
+                                    {% if is_paginated %}
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="pagination-link">
+                                                    <ul class="pagination">
+                                                        {% if page_obj.has_previous %}
+                                                            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                                                        {% else %}
+                                                            <li class="disabled"><span>&laquo;</span></li>
+                                                        {% endif %}
+                                                        {% for i in paginator.page_range %}
+                                                            {% if page_obj.number == i %}
+                                                                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                                            {% else %}
+                                                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        {% if page_obj.has_next %}
+                                                            <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                                                        {% else %}
+                                                            <li class="disabled"><span>&raquo;</span></li>
+                                                        {% endif %}
+                                                    </ul>
+                                                </div>
+                                            </div><!-- /.col-md-12 -->
+                                        </div><!-- /.row -->
+                                    {% endif %}
                                 </div> <!-- /.home -->
                                 {% for category in categories%}
-                                    <div role="tabpanel" class="tab-pane fade" id="#category_{{category.id}}">
+                                    <div role="tabpanel" class="tab-pane fade" id="category_{{category.id}}">
                                         <div class="row">
                                             {% if blog_list %}
                                                 {% for blog in blog_list%}
@@ -131,7 +140,7 @@
                                                                         </span>
                                                                         <span class="entry-author red-bg">
                                                                             <i class="fa fa-user"></i>
-                                                                            Dr. Sibbir.
+                                                                            {{blog.author.username}}
                                                                         </span>
                                                                     </div><!-- /.entry-meta -->
                                                                     <h2 class="entry-title">
@@ -158,23 +167,6 @@
                                             {% endif %}
                                         </div><!-- /.row -->
 
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="pagination-link">
-                                                    <ul class="pagination">
-                                                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                        <li class="active"><a href="#">01</a></li>
-                                                        <li><a href="#">02</a></li>
-                                                        <li><a href="#">03</a></li>
-                                                        <li><a href="#">04</a></li>
-                                                        <li><a href="#">05</a></li>
-                                                        <li><span class="pages-number-dots">...</span></li>
-                                                        <li><a href="#">12</a></li>
-                                                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                                    </ul>
-                                                </div><!-- /.pagination -->
-                                            </div><!-- /.col-md-12 -->
-                                        </div><!-- /.row -->
                                     </div> <!-- /.profile -->
                                 {% endfor %}
                             {% endif %}

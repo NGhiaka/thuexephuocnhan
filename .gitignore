@@ -1,4 +1,6 @@
 README.md
 readme.txt
 media/
-.git.bk
+frontend/__pycache__
+CMS/__pycache__
+carservice/__pycache__
