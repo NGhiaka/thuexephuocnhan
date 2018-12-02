@@ -4,3 +4,4 @@ media/
 frontend/__pycache__
 CMS/__pycache__
 carservice/__pycache__
+**/*.pyc
