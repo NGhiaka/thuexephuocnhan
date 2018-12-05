@@ -3,7 +3,7 @@
 # # from .forms import RegisterForm
 # from carservice.forms import *
 # from carservice.models import *
-# from django.contrib import messages
+from django.contrib import messages
 # from django.shortcuts import render, redirect
 
 # from .forms import RegisterForm
@@ -53,6 +53,7 @@ class CategoryUpdate(UpdateView):
 
 class CategoryDelete(DeleteView):
     model = Category
-    success_url = '/admin/the-loai-tin-tuc'
+    success_url = reverse_lazy('carservice:blog')
+    template_name = 'carservice/blog/delete.html'
     
         

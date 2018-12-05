@@ -1,0 +1,96 @@
+{% extends 'carservice/expense/template.html' %}
+
+{% block title %}Quản lý Chi Tiêu{% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Quản Lý Chi Tiêu</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Hiển thị
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">Danh sách các xe của dịch vụ du lịch <strong>Phước Nhân</strong></div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr class="bg-primary">
+                        <th>STT</th>
+                        <th>Lý Do</th>
+                        <th>Loại</th>
+                        <th>Số tiền (x1000 đồng)</th>
+                        <th>Ngày Thu/Chi</th>
+                        <th>Người Thu/Chi</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    {%  if object_list %}
+                        {%  for expense in object_list %}
+                            <tr>
+                                    <th>
+                                        {{ expense.id }}
+                                    </th>
+                                    <th>
+                                        <span title="{{ expense.name}}">{{ expense.name|truncatewords_html:5}}</span>
+                                    </th>
+                                    <th>
+                                        {{ expense.type_cost|yesno:"Thu Vào,Chi Ra" }}
+                                    </th>
+                                    <th>
+                                        {{ expense.cost }}
+                                    </th>
+                                    <th>
+                                        {{ expense.date_enxpense|date:"d-m-Y"}}
+                                    </th>
+                                    <th>
+                                        {{ expense.author.get_full_name}}
+                                    </th>
+                                    <th style="text-align: center;">
+                                        <a href="{% url 'carservice:expense_edit' expense.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Sửa</a>
+
+                                        <a href="{% url 'carservice:expense_delete' expense.id%}" alt="Xóa" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>
+                            
+                                    </th>
+                                
+                            </tr>
+                          
+                        {%  endfor %}
+                        
+                    {%  endif%}
+                   
+                </tbody>
+            </table>    
+            {% if is_paginated %}
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+            
+        </div>
+    </div>
+    <div class="alert alert-success" role="alert">{{messages}}</div>
+    <a href="{% url 'carservice:expense_new'%}"> Thêm mới +</a>
+{% endblock %}
+

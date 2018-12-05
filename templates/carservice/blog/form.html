@@ -19,19 +19,19 @@
             <div class="panel-body">
                 {%  if categories %}
                     <div class="form-group">
-                        <select class="form-control"  name="category" id="choose-category">
-                            <option value=""> Thêm thể loại mới +</option>
+                        <select class="form-control choose-element"  name="category" id="category">
                             {%  for cat in categories %}
                                 <option value="{{ cat.id}}"> {{cat}}</option>
                             {% endfor%}
+                            <option value=""> ---Thêm thể loại mới---</option>
                         </select>
                     </div>
-                    <div class="form-group new-category">
+                    <div class="form-group" id="new-category" style="display:none">
                             {{ categoryform.as_p }}
                     </div>
                 {% elif category %}
                     <select class="form-control"  name="category" id="choose-category">
-                        <option value="{{ category.0.id}}"> {{category.0}}</option>
+                        <option value="{{ category.id}}"> {{category}}</option>
                     </select>
                 {% else %}
                     <div class="form-group">

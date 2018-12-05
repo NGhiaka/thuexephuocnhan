@@ -1,0 +1,145 @@
+{% extends 'carservice/schedule/template.html' %}
+
+{% load staticfiles%}
+
+{% block title %} Chọn xe | Dịch vụ xe du lịch Phước Nhân {% endblock %}
+
+{% block scripts %}
+    <link href="{% static 'css/jquery_datetimepicker.css' %}" rel="stylesheet">
+    <script src="{% static 'js/build/jquery.datetimepicker.full.js' %}"></script>
+    <script>
+        $('#datepicker1').datetimepicker({
+            theme:'dark',
+            yearOffset:0,
+            language:'vn',
+            timepicker:false,
+            format:'Y-m-d',
+            formatDate:'Y-m-d',
+            startdate: new Date(),
+            // defaultDate: new Date(),
+            minDate:'0', // yesterday is minimum date
+            onSelect: function(dateStr) 
+            {      
+                $("#datepicker2").val(dateStr);
+                $("#datepicker2").datepicker("option",{ minDate: new Date(dateStr)});
+            },
+            // maxDate:'+1970/01/02' // and tommorow is maximum date calendar
+        });
+        $('#datepicker2').datetimepicker({
+            theme:'dark',
+            yearOffset:0,
+            lang:'vn',
+            timepicker:false,
+            format:'Y-m-d',
+            formatDate:'Y-m-d',
+            
+            // defaultDate: new Date(),
+            // minDate:'0', // yesterday is minimum date
+            // maxDate:'+1970/01/02' // and tommorow is maximum date calendar
+        });
+        $('#timepicker1').datetimepicker({
+            theme:'dark',
+            datepicker:false,
+            format:'H:i',
+            step:5
+        });
+        // $("#submit_customer").on('change', function(){
+        //     var value = this.value;
+        //     if(!value){
+        //         $("#add_customer").show();
+        //     }
+        //     else{
+        //         $("#add_customer").hide();
+        //     }
+        // });
+        // $("#submit_car").on('change', function(){
+        //     var value = this.value;
+        //     // var e = document.getElementById("submit_customer");
+        //     // var strUser = e.options[e.selectedIndex].value;
+        //     if(!value){
+        //         $("#add_car").show();
+        //     }
+        //     else{
+        //         $("#add_car").hide();
+        //     }
+        // });
+        // $("#submit_customer", "#submit_car").on('change', function(){
+        //     console.log(this.value);
+        //     // var e = document.getElementById("submit_customer");
+        //     // var strUser = e.options[e.selectedIndex].value;
+        //     // if(strUser){
+        //     //     $("#add_customer").show();
+        //     // }
+        // });
+    </script>
+
+{% endblock%}
+
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Thêm</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Lịch trình
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+                        <select class="form-control choose-element"  name="car" id="car">
+                            {%  for car in cars %}
+                                <option value="{{ car.id}}"> {{car}}</option>
+                            {% endfor%}
+                            <option value=""> ---Thêm Xe Mới---</option>
+                        </select>
+                        <div class="form-groupy" id="new-car" style="display:none">
+                            <div class="form-group">
+                                {{ carform.as_p }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+                        <select class="form-control choose-element"  name="customer" id="customer">
+                            {%  for customer in customers %}
+                                <option value="{{ customer.id}}"> {{customer}}</option>
+                            {% endfor%}
+                            <option value=""> ---Thêm Xe Mới---</option>
+                        </select>
+                        <div class="form-group" id="new-customer" style="display:none">
+                            <div class="form-group">
+                                {{ customerform.as_p }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <div class="box-body pad">
+                        <div class="form-group">
+                            {{ form.as_p }}
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-primary btn-block" type="submit" value="Thêm" />
+                        </div>  
+                </div>
+                
+            </div>
+        </div>
+    </form>
+    <a href="{% url 'carservice:schedule'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+    
+    
+{% endblock %}
+

@@ -41,7 +41,7 @@ def index(request):
 	# model  = Content
 
 def home(request):
-	cars = Car.objects.all()
+	cars = Car.objects.order_by('-yearofmanu').all()[:8]
 	context = {
 		'cars': cars,
 	}
@@ -73,6 +73,17 @@ class CarList(ListView):
 	model  = Car
 	ordering = ['id']
 	paginate_by = 15
+	def get(self, request, *args, **kwargs):
+		typeCar = request.GET.get("typecar", None)
+		startDate = request.GET.get('startDate', None)
+		endDate = request.GET.get('endDate', None)
+		if not typeCar and not startDate and not endDate:
+			car = Car.objects.all()
+		else:	
+			car = Car.objects.filter(typecar = typeCar)
+
+		return render(request, self.template_name, {'object_list':car})
+		
 
 
 class CarDetail(DetailView):
@@ -92,9 +103,6 @@ class BlogList(ListView):
 	def get_context_data(self, **kwargs):
 		context = super(BlogList, self).get_context_data(**kwargs)
 		categories = Category.objects.all()
-		# p = Paginator(Blog.objects.select_related().all(), self.paginate_by)  #laays tat ca blog trong cung 1 category
-		# context['blog_list'] = p.page(context['page_obj'].number)
-		# context['blog_list'] = Blog.objects.all()
 		context['categories'] = categories
 		return context
 

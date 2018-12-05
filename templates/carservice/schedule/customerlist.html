@@ -11,10 +11,11 @@
         $("#add_button").click(function() {
             // var link = 'lichtrinh/them/' + $("#submit_car").val();
             var url = window.location.pathname;
-            var carid = url.substring(url.lastIndexOf('/') + 1);
-            var link = "{% url 'carservice:schedule_new' 1 2 %}";
-            link = link.replace('1', carid);
-            link = link.replace('2', $("#submit_customer").val());
+            var link = url + "/" + $("#submit_customer").val();
+            // var carid = url.substring(url.lastIndexOf('/') + 1);
+            // var link = "{% url 'carservice:schedule_new' 1 2 %}";
+            // link = link.replace('1', carid);
+            // link = link.replace('2', $("#submit_customer").val());
             window.location.href = link;
             // alert(link);
         });
@@ -37,11 +38,11 @@
     
     <div class="panel panel-primary">
         <div class="panel-body">
-        {%  if object_list %}
+        {%  if customers %}
             <div class="form-group">
                 <div class="input-group">
-                    <select class="form-control"  name="submit_customer" id="submit_customer">
-                        {%  for customer in object_list %}
+                    <select class="form-control"  name="customer" id="submit_customer">
+                        {%  for customer in customers %}
                             <option value="{{ customer.id}}"> {{customer}}</option>
         
                         {% endfor%}
@@ -52,11 +53,23 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <a href="{% url 'carservice:customer_new'%}" class="btn btn-primary">Thêm khách hàng</a>
-            </div>
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-groupy" id="new-customer" style="display:none">
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+                </div>
+            </form>
         {% else %}
-            <a href="{% url 'carservice:customer_new'%}" class="btn btn-primary">Thêm khách hàng</i></a>
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-groupy" id="new-car" style="display:none">
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+                </div>
+            </form>
         {% endif %}
 
         </div>

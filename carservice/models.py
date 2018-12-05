@@ -204,3 +204,16 @@ class Comment(models.Model):
 	comment = models.ForeignKey(Blog, on_delete=models.CASCADE)
 	uploaded_at = models.DateTimeField(auto_now_add=True)
 
+# Quanr ly chi tieu
+class Expense(models.Model):
+	name = models.CharField(max_length= 200) #loai chi phi
+	author = models.ForeignKey(User, on_delete=models.CASCADE)
+	cost = models.IntegerField() #So tien x1000
+	date_enxpense = models.DateField('date published', default=datetime.date.today) #ngày thu chi
+	decription = models.CharField(max_length= 2000, null=True) #loai chi phi
+	type_cost = models.IntegerField() #loại chi phí: thu vào hay chi ra
+	uploaded_at = models.DateTimeField(auto_now_add=True)
+
+
+
+

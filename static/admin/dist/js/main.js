@@ -273,13 +273,16 @@ $(document).on('click', '.remove-form-row', function(e){
     return false;
 });
 
-$(document).on('change', '#choose-category', function(e){
+$(document).on('change', '.choose-element', function(e){
     var value = $(this).val();
-    console.log(value);
-    if (value){
-        $(".new-category").hide();
+    var id = this.id;
+    if(value){
+        console.log(id);
+        console.log(value);
+        $("#new-" + id).hide();
     }else{
-        $(".new-category").show();
+        console.log("sdasd");
+        $("#new-" + id).show();
     }
 });
 

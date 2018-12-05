@@ -1,25 +1,12 @@
+{% extends 'carservice/expense/template.html' %}
 
-{% extends 'carservice/schedule/template.html' %}
-
-{% block title %}Thêm lịch trình mới{% endblock %}
-
-
-{% block navibase %}
-    <li>
-        <i class="fa fa-dashboard"></i> Lịch trình</a>
-    </li>
-    <li class="active">
-        <i class="fa fa-table"></i> Thêm lịch trình
-    </li>
-{% endblock %}
-
+{% block title %}Thêm {% endblock %}
 {% load staticfiles%}
 {% block scripts %}
-    
     <link href="{% static 'css/jquery_datetimepicker.css' %}" rel="stylesheet">
     <script src="{% static 'js/build/jquery.datetimepicker.full.js' %}"></script>
     <script>
-        $('#datepicker1').datetimepicker({
+        $('#datepicker').datetimepicker({
             theme:'dark',
             yearOffset:0,
             language:'vn',
@@ -36,34 +23,25 @@
             },
             // maxDate:'+1970/01/02' // and tommorow is maximum date calendar
         });
-        $('#datepicker2').datetimepicker({
-            theme:'dark',
-            yearOffset:0,
-            lang:'vn',
-            timepicker:false,
-            format:'Y-m-d',
-            formatDate:'Y-m-d',
-            
-            // defaultDate: new Date(),
-            // minDate:'0', // yesterday is minimum date
-            // maxDate:'+1970/01/02' // and tommorow is maximum date calendar
-        });
-        $('#timepicker1').datetimepicker({
-            theme:'dark',
-            datepicker:false,
-            format:'H:i',
-            step:5
-        });
+        
     </script>
 
 {% endblock %}
-
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Quản lý chi tiêu</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Thêm 
+    </li>
+{% endblock %}
+                
 {% block contain %}
     <div class="panel panel-primary">
-        <div class="panel-heading">Thêm lịch trình mới</div>
+        <div class="panel-heading">Thêm mới</div>
         <div class="panel-body">
-            <form method="post" action="">
-            {% csrf_token %}
+            <form method="post">
+                {% csrf_token %}
                 <div class="form-group">
                     {{ form }}
                 </div>
@@ -74,5 +52,7 @@
             
         </div>
     </div>
-    <a href="{% url 'carservice:schedule'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+    <a href="{% url 'carservice:expense'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
 {% endblock %}
+
+

@@ -311,35 +311,34 @@
                 <span>Thống kê</span>
             </a>
         </li>
+        <li  class="{% if 'content' in request.resolver_match.url_name %} active{% endif %} ">
+            <a href="{% url 'carservice:content' %}"><i class="fa fa-th-list" aria-hidden="true"></i> <span>Nội dung web</span></a>
+        </li>
         <li class="{% if 'car' in request.resolver_match.url_name %} active{% endif %}">
             <a href="{% url 'carservice:car' %}"><i class="fa fa-car" aria-hidden="true"></i> <span>Quản lý xe</span></a>
         </li>
+        <li class="{% if 'driver' in request.resolver_match.url_name %} active{% endif %} ">
+            <a href="{% url 'carservice:driver' %}"><i class="fa fa-male fa-lg" aria-hidden="true"></i> <span>Quản lý tài xế</span></a>
+        </li>
+        <li  class="{% if 'customer' in request.resolver_match.url_name %} active{% endif %} ">
+            <a href="{% url 'carservice:customer' %}"><i class="fa fa-user-md" aria-hidden="true"></i> <span>Khách hàng</span></a>
+        </li>
         <li class="{% if 'schedule' in request.resolver_match.url_name %} active{% endif %}">
             <a href="{% url 'carservice:schedule' %}"><i class="fa fa-calendar"></i> <span>Lịch trình</span></a>
-        </li>
-        <li class="{% if 'service' in request.resolver_match.url_name %} active{% endif %}">
-            <a href="{% url 'carservice:service' %}"> <i class="fa fa-area-chart" aria-hidden="true"></i>
-            <span>Dịch vụ xe</span></a>
         </li>
         <li class="{% if 'cost' in request.resolver_match.url_name  %} active{% endif %}">
             <a href="{% url 'carservice:statistical_income' %}"><i class="fa fa-bar-chart" aria-hidden="true"></i>
             <span>Chi phí</span></a>
         </li>
-        <li class="{% if 'driver' in request.resolver_match.url_name %} active{% endif %} ">
-            <a href="{% url 'carservice:driver' %}"><i class="fa fa-male fa-lg" aria-hidden="true"></i> <span>Quản lý tài xế</span></a>
+        <li class="{% if 'expense' in request.resolver_match.url_name %} active{% endif %}">
+            <a href="{% url 'carservice:expense' %}"> <i class="fa fa-area-chart" aria-hidden="true"></i>
+            <span>Quản lý chi tiêu</span></a>
         </li>
         
         <li class="{% if 'album' in request.resolver_match.url_name %} active{% endif %} ">
             <a href="{% url 'carservice:album' %}"><i class="fa fa-camera" aria-hidden="true"></i> <span>Quản lý ảnh</span></a>
         </li>
 
-        <li  class="{% if 'content' in request.resolver_match.url_name %} active{% endif %} ">
-            <a href="{% url 'carservice:content' %}"><i class="fa fa-th-list" aria-hidden="true"></i> <span>Nội dung web</span></a>
-        </li>
-
-        <li  class="{% if 'customer' in request.resolver_match.url_name %} active{% endif %} ">
-            <a href="{% url 'carservice:customer' %}"><i class="fa fa-user-md" aria-hidden="true"></i> <span>Khách hàng</span></a>
-        </li>
 
         <li  class="{% if 'blog' in request.resolver_match.url_name %} active{% endif %} ">
             <a href="{% url 'carservice:blog' %}"><i class="fa fa-file-text" aria-hidden="true"></i> <span>Bài blog</span></a>

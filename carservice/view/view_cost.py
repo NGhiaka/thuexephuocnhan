@@ -37,7 +37,7 @@ class CostUpdate(UpdateView):
 class CostDelete(DeleteView):
     model = Cost
     template_name = 'carservice/cost/delete.html'
-    success_url = reverse_lazy('carservice:driver')
+    success_url = reverse_lazy('carservice:cost')
     # def post(self, request, *args, **kwargs):
     #     if "cancel" in request.POST:
     #         url = self.get_success_url()

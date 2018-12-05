@@ -8,6 +8,8 @@ from django.views.generic import TemplateView,ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+
 
 # lich trinh
 
@@ -15,18 +17,105 @@ from django.urls import reverse_lazy
 
 class CarList(ListView):
     template_name = 'carservice/schedule/carlist.html'
-    model  = Car
+    model = Car
+    form_class = CarForm
     paginate_by = 20
     ordering = ['id']
+    # def get(self, request, *args, **kwargs):
+    #     form = self.form_class()
+    #     return render(request, self.template_name, {'form': form})
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse_lazy('carservice:schedule_new', kwargs={'car_id': self.kwargs['car_id']}))
+        return render(request, self.template_name, {'form': form})
+
 
 class CustomerList(ListView):
     template_name = 'carservice/schedule/customerlist.html'
     model  = Customer
+    form_class = CustomerForm
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form, 'customers': self.model})
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse_lazy('carservice:schedule_new', kwargs={
+                'car_id': self.kwargs['car_id'],
+                'customer_id': self.kwargs['customer_id']
+                }))
+        return render(request, self.template_name, {'form': form, 'customers': self.model})
 
 class ScheduleList(ListView):
     template_name = 'carservice/schedule/index.html'
     model  = Schedule
 
+def ScheduleCreate(request, car_id=None, customer_id=None):
+    template_name = 'carservice/schedule/form.html'
+    if request.method == 'POST': 
+        carid = request.POST.get('car', '') #lấy thông tin select value hoặc ''
+        customerid = request.POST.get('customer', '') #lấy thông tin select value hoặc ''
+        if carid != '': #nếu có id
+            if customerid != '': #nếu có id
+                form = ScheduleForm(request.POST)
+                if form.is_valid():
+                    schedule = form.save(commit=False)
+                    schedule.car_id = carid
+                    schedule.customer_id = customerid
+                    schedule.save()
+                    messages.success(request, 'Thêm blog thành công!')
+                    return HttpResponseRedirect(reverse_lazy('carservice:expense'))
+            else:
+                customerform = CustomerForm(request.POST, request.FILES)
+                form = ScheduleForm(request.POST)
+                if customerform.is_valid() and form.is_valid():
+                    customer = customerform.save()
+                    schedule = form.save(commit=False)
+                    schedule.car_id = carid
+                    schedule.customer = customer
+                    schedule.save()
+                    messages.success(request, 'Thêm blog thành công!')
+                    return HttpResponseRedirect(reverse_lazy('carservice:expense'))
+        else: # Thêm mới thể loại
+            carform = CarForm(request.POST, request.FILES)
+            form = ScheduleForm(request.POST)
+            if customerid != '': #nếu có id
+                if carform.is_valid() and form.is_valid():
+                    car = carform.save()
+                    schedule = form.save(commit=False)
+                    schedule.car = car
+                    schedule.customer_id = customerid
+                    schedule.save()
+                    messages.success(request, 'Thêm blog thành công!')
+                    return HttpResponseRedirect(reverse_lazy('carservice:expense'))
+            else:
+                carform = CarForm(request.POST, request.FILES)
+                customerform = CustomerForm(request.POST, request.FILES)
+                if carform.is_valid() and customerform.is_valid() and form.is_valid():
+                    customer = customerform.save()
+                    if form:
+                        schedule = form.save(commit=False)
+                        schedule.car = car
+                        schedule.customer = customer
+                        schedule.save()
+                        messages.success(request, 'Thêm blog thành công!')
+                        return HttpResponseRedirect(reverse_lazy('carservice:expense'))
+        # return redirect('carservice:blog')
+    carform = CarForm()
+    customerform = CustomerForm()
+    form = ScheduleForm()
+    cars = Car.objects.all()
+    customers = Customer.objects.all()
+    return render(request, template_name, {
+            'cars': cars,
+            'customers': customers,
+            'carform': carform,
+            'customerform': customerform,
+            'form': form,
+        })
 
 # def schedule(request):
 #     schedule_list = Schedule.objects.all().values('id','name','company__name').order_by('-departure_day')
@@ -37,23 +126,15 @@ class ScheduleList(ListView):
 
 def schedule_new(request, car_id, customer_id):
     if request.method == 'POST': 
+        # car = Car.objects.get(id=car_id)
         f = ScheduleForm(request.POST)
         if f.is_valid(): 
             car = Car(id = car_id)
             customer = Customer(id=customer_id)
-            sch = Schedule(
-                car = car,
-                customer = customer,
-                departure_day = f.cleaned_data['departure_day'],
-                destination_day = f.cleaned_data['destination_day'],
-                departure = f.cleaned_data['departure'],
-                destination = f.cleaned_data['destination'],
-                departure_time = f.cleaned_data['departure_time'],
-                price = f.cleaned_data['price'],
-                deposit = f.cleaned_data['deposit'],
-                status = f.cleaned_data['status'] 
-                )
-            od = sch.save()
+            sch = f.save(commit=False)
+            sch.car = car
+            sch.customer = customer
+            sch.save()
         messages.success(request, "Thêm thành công!!!")
         return redirect('/admin/lich-trinh/chi-tiet/'+  str(car_id).strip())
     cF =  ScheduleForm()
@@ -70,42 +151,16 @@ def schedule_detail(request, car_id):
 def schedule_edit(request, car_id):
     try:
         if request.method == 'POST': 
-            f = ScheduleForm(request.POST)
+            car = Schedule.objects.get(id=car_id)
+            f = ScheduleForm(request.POST, instance=car)
             if f.is_valid(): 
-                car = Schedule.objects.get(id=car_id)
-                # car.car = f.cleaned_data['car']
-                # car.guess_name = f.cleaned_data['guess_name']
-                # car.email = f.cleaned_data['email']
-                # car.phone_number = f.cleaned_data['phone_number']
-                car.departure_day = f.cleaned_data['departure_day']
-                car.destination_day = f.cleaned_data['destination_day']
-                car.departure = f.cleaned_data['departure']
-                car.destination = f.cleaned_data['destination']
-                car.departure_time = f.cleaned_data['departure_time']
-                car.price = f.cleaned_data['price']
-                car.deposit = f.cleaned_data['deposit']
-                car.status = f.cleaned_data['status']
                 car.save()
             # to_update = car.update(carid=f.fields['carid'])
-            #messages.success(request, "Cập nhật thành công!!!")
+            messages.success(request, "Cập nhật thành công!!!")
             # url = reverse('car_detail', args=(), kwargs={'url_id':car.id})
             return redirect('/admin/lich-trinh/chi-tiet/'+car_id)
         car = Schedule.objects.get(id = car_id)
-        cF =  ScheduleForm() 
-        # cF.fields['car'].initial = car.car
-        # cF.fields['car'].label_from_instance = lambda obj: "%s (%s)" % (c.nameofcar, c.carid)
-        # cF.fields['guess_name'].initial = car.guess_name
-        # cF.fields['email'].initial = car.email
-        # cF.fields['phone_number'].initial = car.phone_number
-        cF.fields['departure_day'].initial = car.departure_day
-        cF.fields['destination_day'].initial = car.destination_day
-        cF.fields['departure'].initial = car.departure
-        cF.fields['destination'].initial = car.destination
-
-        cF.fields['departure_time'].initial = car.departure_time
-        cF.fields['price'].initial = car.price
-        cF.fields['deposit'].initial = car.deposit
-        cF.fields['status'].initial = car.status
+        cF =  ScheduleForm(instance=car) 
         return render(request, 'carservice/schedule/edit.html', {'form':cF})
     except Schedule.DoesNotExist:
         raise Http404("Khong tim thay xe")
