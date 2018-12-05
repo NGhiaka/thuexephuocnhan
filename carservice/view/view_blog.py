@@ -7,7 +7,7 @@
 from django.shortcuts import render, redirect
 
 # from .forms import RegisterForm
-from carservice.forms import BlogFormset, CategoryForm
+from carservice.forms import BlogFormset, CategoryForm, BlogForm
 from carservice.models import Blog, Category
 from django.contrib import messages
 
@@ -19,6 +19,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 
 
@@ -28,12 +29,12 @@ class BlogIndex(ListView):
     model  = Blog
     ordering = ['id']
     paginate_by = 1
-    def get_context_data(self, **kwargs):
+    def get_context_data(self,**kwargs):
         context = super(BlogIndex, self).get_context_data(**kwargs)
         context['Category_list'] = Category.objects.all()
         context['Blog_list'] = Blog.objects.all()
         return context
-
+    
 class BlogList(DetailView):
     template_name = 'carservice/blog/blog.html'
     model  = Category
@@ -81,6 +82,7 @@ def BlogCreate(request, pk = None):
                     blog.category_id = categoryID
                     blog.author = request.user
                     blog.save()
+                    messages.success(request, 'Thêm blog thành công!')
         else: # Thêm mới thể loại
             categoryform = CategoryForm(request.POST, request.FILES)
             formset = BlogFormset(request.POST, request.FILES)
@@ -92,6 +94,7 @@ def BlogCreate(request, pk = None):
                         blog.category = cate
                         blog.author = request.user
                         blog.save() 
+                        messages.success(request, 'Thêm blog thành công!')
         # if formset.is_valid():
         #     if formset:
         #         for cate in formset:
@@ -102,7 +105,7 @@ def BlogCreate(request, pk = None):
     categoryform = CategoryForm()
     formset = BlogFormset(queryset=Blog.objects.none())
     if pk:
-        category = Category.objects.filter(id = pk)
+        category = Category.objects.get(id = pk)
         return render(request, template_name, {
             'category': category,
             'categoryform': categoryform,
@@ -115,17 +118,35 @@ def BlogCreate(request, pk = None):
             'formset': formset,
         })
 
-class BlogUpdate(UpdateView):
+def BlogUpdate(request, pk):
     template_name = 'carservice/blog/form.html'
-    form_class = BlogFormset
-    model = Blog
-    success_url = reverse_lazy('carservice:blog')
+    blog = Blog.objects.get(id = pk)
+    if request.method == 'POST': 
+        form = BlogForm(request.POST, request.FILES, instance=blog)
+        if form.is_valid():
+            blog = form.save(commit=False)
+            blog.author = request.user
+            blog.save()
+            messages.success(request, 'Cập nhật thành công!')
+        return redirect('carservice:blog')
+
+    
+    formset = BlogForm(instance=blog)
+    return render(request, template_name, {
+        'category': blog.category,
+        'formset': formset
+    })
+    #  
     # fields = ['avatar', 'title', 'phone', 'address', 'email', 'link', 'summary']
 
 class BlogDelete(DeleteView):
     model = Blog
     template_name = 'carservice/blog/delete.html'
     success_url = reverse_lazy('carservice:blog')
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('/admin/login')
+        return HttpResponse('Hello, World!')
     # def post(self, request, *args, **kwargs):
     #     if "cancel" in request.POST:
     #         url = self.get_success_url()

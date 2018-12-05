@@ -1,0 +1,22 @@
+{% extends 'carservice/expense/template.html' %}
+
+{% block title %} Xóa | Thuê xe du lịch giá rẻ{% endblock %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Quản Lý Chi Tiêu</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Xóa
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    <form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" value="Confirm">
+</form>
+{% endblock %}
+
+

@@ -25,8 +25,6 @@ from django.contrib.auth.models import User
 
 
 def index(request):
-    if not request.user.is_authenticated:
-        return redirect('/admin/login')
     today = datetime.today()
     schs = Schedule.objects.all()
     forms = []
@@ -74,7 +72,6 @@ def statistical_income(request):
 
     # return data_list
     # return JsonResponse(data_list, safe=False)  #
-
 
 def login(request):
     if request.user.is_authenticated:

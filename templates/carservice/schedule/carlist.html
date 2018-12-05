@@ -10,8 +10,8 @@
     <script>
         $("#add_button").click(function() {
             // var link = 'lichtrinh/them/' + $("#submit_car").val();
-            var link = "{% url 'carservice:schedule_choose' 123%}";
-            link = link.replace('123', $("#submit_car").val());
+            var link = "{% url 'carservice:schedule_new' 123%}";
+            link = link.replace('123', $("#car").val());
             window.location.href = link;
             // alert(link);
         });
@@ -38,23 +38,35 @@
         {%  if object_list %}
             <div class="form-group">
                 <div class="input-group">
-                    <select class="form-control"  name="submit_car" id="submit_car">
+                    <select class="form-control choose-element"  name="car" id="car">
                         {%  for car in object_list %}
                             <option value="{{ car.id}}"> {{car}}</option>
-        
                         {% endfor%}
-                    </select>
+                            <option value=""> ---Thêm Xe Mới---</option>
+                        </select>
                     <div class="input-group-btn">
                         <button type="submit_type" class="btn btn-primary" id="add_button">Tiếp</button>
                     <!-- Buttons -->
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <a href="{% url 'carservice:car_new'%}" class="btn btn-primary">Thêm xe mới</a>
-            </div>
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-groupy" id="new-car" style="display:none">
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+                </div>
+            </form>
         {% else %}
-            <a href="{% url 'carservice:car_new'%}" class="btn btn-primary">Thêm xe mới</i></a>
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-groupy" id="new-car">
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+                </div>
+            </form>
         {% endif %}
 
         </div>

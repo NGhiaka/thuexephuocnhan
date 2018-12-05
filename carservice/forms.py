@@ -11,7 +11,8 @@ from django.forms import formset_factory, inlineformset_factory, modelformset_fa
 
 MANU_CHOOSE = (('AUDI','AUDI'), ('BMW','BMW'), ('CHEVROLET','CHEVROLET'),('FORD','FORD'),('TOYOTA','TOYOTA'),( 'HONDA', 'HONDA'),('HYUNDAI','HYUNDAI') , ('ISUZU','ISUZU'),('KIA','KIA') , ('LAND ROVER','LAND ROVER'),('LEXUS','LEXUS') ,('MAZDA','MAZDA') , ('MERCEDES-BENZ','MERCEDES-BENZ'),('MITSUBISHI','MITSUBISHI') ,('NISSAN','NISSAN') , ('PEUGEOT','PEUGEOT'),('PORSCHE','PORSCHE') ,('RENAULT','RENAULT') , ('SUZUKI','SUZUKI'), ('VOLKSWAGEN','VOLKSWAGEN'), ('FUSO','FUSO'), ('HINO','HINO'), ('INFINITI','INFINITI'), ('JAGUAR','JAGUAR'), ('LAMBORGINI','LAMBORGINI'), ('LUXGEN','LUXGEN'), ('MASERATI','MASERATI'), ('MINI','MINI'), ('ROLLS ROYCE','ROLLS ROYCE'), ('SAMSUNG','SAMSUNG'), ('SUBARU','SUBARU'), ('SYM','SYM'), ('THACO','THACO'), ('VINAXUKI','VINAXUKI'), ('VOLVO','VOLVO'))
 permision_choose = ((1, 'Chỉ được thêm mới dữ liệu'), (2, 'Được thêm, xóa, sửa dữ liệu'))
-TYPE_CAR = (("4 Chỗ", "4 Chỗ"), ("7 Chỗ", "7 Chỗ"), ("9 Chỗ", "9 Chỗ"), ("16 Chỗ", "16 Chỗ"),("29 Chỗ", "29 Chỗ"), ("45 Chỗ", "45 Chỗ"),  ("Xe giường nằm", "Xe giường nằm"))
+TYPE_CAR = (("4", "4 Chỗ"), ("7", "7 Chỗ"), ("9", "9 Chỗ"), ("16", "16 Chỗ"),("29", "29 Chỗ"), ("45", "45 Chỗ"),  ("56", "Xe giường nằm"))
+TYPE_COST = ((1,"Thu vào"), (-1, "Chi ra"))
 class CarForm(ModelForm):
 	"""docstring for Contacts"""
 	class Meta:
@@ -342,4 +343,24 @@ class CustomerForm(ModelForm):
 			'cardid': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Số chứng minh nhân dân', 'name': 'cardid'}),
 			
 			
+		}
+
+# Quản lý thu chi
+class ExpenseForm(ModelForm):
+	class Meta:
+		model = Expense
+		fields = ['name', 'type_cost', 'cost', 'date_enxpense', 'decription']
+		labels = {
+			'name' : "Chi tiêu/Thu Cho",
+			'type_cost' : "Chi ra/Thu vào",
+			'cost' : 'Số tiền (Đơn vị x1000 đồng)',
+			'date_enxpense' : 'Ngày chi tiêu',
+			'decription' : 'Mô tả chi tiết'
+		}
+		widgets = {
+			'name': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Chi tiêu/ thu cho việc gì', 'name': 'name'}),
+			'type_cost': forms.Select(choices = TYPE_COST, attrs={'class': 'form-control', 'name': 'type_cost'}),			
+			'cost': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Số tiền thu chi', 'name': 'cost'}),
+			'date_enxpense': forms.DateInput(attrs={'id':'datepicker', 'class': 'form-control','autocomplete':"off", 'name': 'date_enxpense'}),
+			'decription': forms.Textarea(attrs={'id': 'content-blog', 'class': 'form-control', 'name': 'decription'}),
 		}

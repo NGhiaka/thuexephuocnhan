@@ -5,6 +5,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from carservice.forms import ContentForm
 from carservice.models import Content
 from django.urls import reverse_lazy
+from django.contrib import messages
+
 
 
 

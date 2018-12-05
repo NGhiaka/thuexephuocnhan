@@ -439,20 +439,19 @@
                 </div><!-- col-md-4 -->
 
                 <div class="col-md-8">
-                    <form action="#" method="get" class="advance-search-query input-night-rider yellow-theme">
+                    <form action="{% url 'frontend:car'%}" method="get" class="advance-search-query input-night-rider yellow-theme">
+                        {% csrf_token %}
                         <div class="regular-search">                        
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label>Xe</label>
+                                    <label>Loại Xe</label>
                                     <div class="input">
                                         <i class="fa fa-car"></i>
-                                        <select  class="form-controller" name="car">
-                                            <option>--- Chọn Xe ---</option>
-                                            {% if cars %}
-                                                {% for car in cars %}
-                                                    <option value="{{car.id}}">{{car.name}}</option>
-                                                {% endfor%}}
-                                            {% endif%}
+                                        <select  class="form-controller" name="typecar">
+                                            <option value>--- Loại Xe ---</option>
+                                            <option value="4">Xe 4 chỗ</option>
+                                            <option value="7">Xe 7 chỗ</option>
+                                            <option value="16">Xe 16 chỗ</option>
                                         </select>
                                     </div><!--/.input-->
                                 </div><!--/.col-md-4-->
@@ -461,7 +460,7 @@
                                     <label>Ngày đi</label>
                                     <div class="input">
                                         <i class="fa fa-calendar"></i>
-                                        <input class="date-start date-selector form-controller" placeholder="dd/mm/yy" type="text">
+                                        <input class="date-start date-selector form-controller" placeholder="dd/mm/yy" type="text" name="startDate">
                                     </div><!--/.input-->
                                 </div><!--/.col-md-4-->
 
@@ -470,7 +469,7 @@
                                     <label>Ngày về</label>
                                     <div class="input">
                                         <i class="fa fa-calendar"></i>
-                                        <input class="date-end date-selector form-controller" placeholder="dd/mm/yy" type="text">
+                                        <input class="date-end date-selector form-controller" placeholder="dd/mm/yy" type="text" name="endDate">
                                     </div><!--/.input-->
                                 </div><!--/.col-md-4-->
 
@@ -487,9 +486,74 @@
             </div><!-- /.row -->
         </div><!--/.container -->
     </div>
-
-
     <div class="vehicle-multi-border yellow-black"></div>
+    <!-- ====== Popular Vehicle Block ====== --> 
+    <div class="popular-vehicle-block pd-90 ex-pdt-102 ex-pdtm-72">
+        <div class="container">
+            <div class="row tb default-margin-bottom yellow-theme">
+                <!-- block-title-area -->
+                <div class="col-md-9 col-sm-8 block-title-area tb-cell">
+                    <div class="heading-content style-one border">
+                        <h3 class="subtitle">Các loại xe khách mới nhất</h3>
+                        <h2 class="title">Top xe mới</h2>
+                    </div><!-- /.heading-content-one -->
+                </div><!-- /.col-md-9 -->
+
+                <!-- block-navigation-area -->
+                <div class="col-md-3 col-sm-4 hidden-xs block-navigation-area tb-cell">
+                    <div class="pull-right">                    
+                        <div class="item-navigation hidden-xs">
+                            <a href="#" class="previous-item">
+                                <i class="fa fa-angle-left"></i> 
+                            </a>
+                            <a href="#" class="next-item">
+                                <i class="fa fa-angle-right"></i> 
+                            </a>
+                        </div><!-- /.item-navigation -->
+
+                        <div class="view-all-item">
+                            <a href="{% url 'frontend:car'%}" class="view-all-btn">Tất cả</a>
+                        </div><!-- /.view-all-item -->
+                    </div><!-- /.pull-right -->
+                </div><!-- /.col-md-3 -->
+            </div><!-- /.row --> 
+
+            <!-- vehicle-slider -->
+            <div class="vehicle-slider slider-style-two owl-carousel" data-item="[5,2,1,1]">
+                {% if cars%}
+                    {%for c in cars%}
+                        <div class="item">
+                            <div class="vehicle-content theme-yellow">
+                                <a href="{% url 'frontend:detail_car' c.id %}">
+                                    <div class="vehicle-thumbnail">
+                                        <img src="{{c.avatar.url}}" alt="car-item" />
+                                    </div><!-- /.vehicle-thumbnail -->
+                                </a>
+                                <div class="vehicle-bottom-content">
+                                    <h2 class="vehicle-title"><a href="{% url 'frontend:detail_car' c.id %}">{{c.nameofcar}}</a></h2>
+                                    <div class="vehicle-meta">
+                                        <div class="meta-item">
+                                            <span>Xe {{c.typecar}} chỗ - [{{c.carid}}]</span>
+                                        </div>
+                                    </div><!-- /.meta-left -->
+                                </div><!-- /.vehicle-bottom-content -->
+                            </div><!-- /.car-content -->
+                        </div><!-- /.item -->
+                    {%endfor%}
+                {% endif%}
+            </div><!-- /.vehicle-slider -->
+
+            <!-- block-navigation-area -->
+            <div class="block-navigation-area visible-xs-block">
+                <div class="view-all-item clearfix">
+                    <a href="#" class="view-all-btn">View all</a>
+                </div><!-- /.view-all-item -->
+            </div><!-- /.block-navigation-area -->
+        </div><!-- /.container  -->
+    </div><!-- /.Popular Vehicle Block --> 
+
+
+    
     
 {% endblock %}
 
