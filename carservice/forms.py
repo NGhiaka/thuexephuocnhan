@@ -263,15 +263,15 @@ class CategoryForm(ModelForm):
 class BlogForm(ModelForm):
 	class Meta:
 		model = Blog
-		fields = ['category','title','avatar', 'content']
+		fields = ['title','avatar', 'content']
 		labels = {
-			'category' : "Thể loại",
+			# 'category' : "Thể loại",
 			'title' : "Tiêu đề bài viết",
 			'avatar': "Ảnh đại diện",
 			'content' : "Nội dung",
 		}
 		widgets = {
-			'category': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Thể loại tin', 'name': 'category'}),
+			# 'category': forms.Select(attrs={'class': 'form-control', 'name': 'category'}),
 			'avatar': forms.ClearableFileInput(attrs={'class': 'form-control','placeholder': 'Tên album', 'name': 'avatar'}),	
 			'title': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Tên dịch vụ', 'name': 'title'}),
 			'content': forms.Textarea(attrs={'id': 'content-blog', 'name': 'content'}),
@@ -363,4 +363,15 @@ class ExpenseForm(ModelForm):
 			'cost': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Số tiền thu chi', 'name': 'cost'}),
 			'date_enxpense': forms.DateInput(attrs={'id':'datepicker', 'class': 'form-control','autocomplete':"off", 'name': 'date_enxpense'}),
 			'decription': forms.Textarea(attrs={'id': 'content-blog', 'class': 'form-control', 'name': 'decription'}),
+		}
+
+class PhotoCarForm(ModelForm):
+	class Meta:
+		model = PhotoCar
+		fields = ['path_img',]
+		labels = {
+			'path_img' : "Đường dẫn",
+		}
+		widgets = {
+			'path_img': forms.ClearableFileInput(attrs={'multiple':True, 'class': 'form-control','placeholder': 'Thêm ảnh cho xe', 'name': 'path_img'}),		
 		}

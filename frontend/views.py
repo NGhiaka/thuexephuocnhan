@@ -42,8 +42,10 @@ def index(request):
 
 def home(request):
 	cars = Car.objects.order_by('-yearofmanu').all()[:8]
+	blogs = Blog.objects.order_by('-dateSubmit').all()[:5]
 	context = {
 		'cars': cars,
+		'blogs': blogs,
 	}
 	return render(request, 'frontend/home.html', context)
 #Hien thi thong tin trang web
@@ -89,10 +91,10 @@ class CarList(ListView):
 class CarDetail(DetailView):
 	template_name = 'frontend/car_detail.html'
 	model  = Car
-	def get_context_data(self, **kwargs):
-		context = super(CarDetail, self).get_context_data(**kwargs)		
-		context['cars'] = Car.objects.all()
-		return context
+	# def get_context_data(self, **kwargs):
+	# 	context = super(CarDetail, self).get_context_data(**kwargs)		
+	# 	context['cars'] = Car.objects.all()
+	# 	return context
 
 class BlogList(ListView):
 	template_name = 'frontend/news.html'

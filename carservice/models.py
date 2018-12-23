@@ -213,7 +213,12 @@ class Expense(models.Model):
 	decription = models.CharField(max_length= 2000, null=True) #loai chi phi
 	type_cost = models.IntegerField() #loại chi phí: thu vào hay chi ra
 	uploaded_at = models.DateTimeField(auto_now_add=True)
+	is_deleted = models.BooleanField(default=0)
 
-
-
+class PhotoCar(models.Model):
+	"""docstring for ImageCar"""
+	car = models.ForeignKey(Car, on_delete=models.CASCADE)
+	path_img = models.ImageField(blank = True, upload_to = 'car/%Y/%m/%d')	
+	uploaded_at = models.DateTimeField(auto_now_add=True)
+	is_deleted = models.BooleanField(default=0)
 

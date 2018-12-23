@@ -110,14 +110,11 @@
                                                     <span class="entry-date nevy-bg">
                                                         {{b.uploaded_at|date:"d-m-Y"}}
                                                     </span>
-                                                    <span class="entry-author red-bg">
-                                                        <i class="fa fa-user"></i>
-                                                        {{blog.author.username}}
-                                                    </span>
+                                                    
                                                 </div><!-- /.entry-meta -->
                                                 <h2 class="entry-title">
-                                                    <a href="{% url 'frontend:detail_news' b.id %}">
-                                                        {{b.title}}
+                                                    <a href="{% url 'frontend:detail_news' b.id %}" title="{{b.title}}">
+                                                        {{b.title|truncatewords:8}}
                                                     </a>
                                                 </h2><!-- /.entry-title -->
                                                 <div class="entry-footer">
@@ -154,7 +151,7 @@
                                                  </a>
                                              </div><!-- /.image-content -->
                                              <div class="post-info">
-                                                 <h5 class="widget-post-title"><a href="#">{{b.title}}</a></h5>
+                                                 <h5 class="widget-post-title"><a href="#" title="{{b.title}}">{{b.title|truncatewords:8}}</a></h5>
                                                  <span class="post-date"> {{b.uploaded_at|date:"d-m-Y"}}</span>
                                              </div><!-- /.post-info -->
                                          </div><!-- /.post-content -->

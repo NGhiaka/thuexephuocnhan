@@ -18,6 +18,8 @@ urlpatterns = [
 	url(r'^quan-ly-xe/chi-tiet/(?P<pk>\d+)$', login_required(view_car.CarDetail.as_view()), name='car_detail'),
 	url(r'^quan-ly-xe/cap-nhat/(?P<pk>\d+)$', login_required(view_car.CarUpdate.as_view()), name='car_edit'),
 	url(r'^quan-ly-xe/xoa/(?P<pk>\d+)$', login_required(view_car.CarDelete.as_view()), name='car_delete'),
+	url(r'^quan-ly-xe/them-anh/(?P<pk>\d+)$', login_required(view_car.PhotoCreate.as_view()), name='car_add_photo'),
+
 
 
 	url(r'^tai-xe/$', login_required(view_driver.DriverList.as_view()), name='driver'),
@@ -44,7 +46,7 @@ urlpatterns = [
 
 	url(r'^lich-trinh/them/$', login_required(view_schedule.CarList.as_view()), name='schedule_new'),
 	url(r'^lich-trinh/them/(?P<car_id>[0-9]+)$', login_required(view_schedule.CustomerList.as_view()), name='schedule_new'),
-	url(r'^lich-trinh/them/(?P<car_id>[0-9]+)/(?P<customer_id>[0-9]+)$', login_required(view_schedule.schedule_new), name='schedule_new'),
+	url(r'^lich-trinh/them/(?P<car_id>[0-9]+)/(?P<customer_id>[0-9]+)$', login_required(view_schedule.ScheduleCreate), name='schedule_new'),
 	url(r'^lich-trinh/chi-tiet/(?P<car_id>[0-9]+)/$', login_required(view_schedule.schedule_detail), name='schedule_detail'),
 	url(r'^lich-trinh/cap-nhat/(?P<car_id>[0-9]+)/$', login_required(view_schedule.schedule_edit), name='schedule_edit'),
 	url(r'^lich-trinh/xoa/(?P<car_id>[0-9]+)/$', login_required(view_schedule.schedule_delete), name='schedule_delete'),

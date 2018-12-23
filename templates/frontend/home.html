@@ -76,9 +76,9 @@
                             data-splitout="none" 
                             data-responsive_offset="on"
                             style="z-index: 7; color: #000000; font-family: 'Exo', sans-serif; font-weight: 600; text-transform: capitalize;">
-                            Chất lượng xe đời mới<br> 
-                            Hệ thống an toàn<br> 
-                            Nội thất xe sang trọng <br>
+                            Hệ thống xe đời mới<br> 
+                            Chất lượng an toàn<br> 
+                            Nội thất sang trọng <br>
                         </div>
 
                         <!-- layer no 4 -->
@@ -208,9 +208,11 @@
                             data-splitout="none" 
                             data-responsive_offset="on"
                             style="z-index: 7; color: #000000; font-family: 'Exo', sans-serif; font-weight: 600; text-transform: capitalize;">
-                            Chất lượng xe đời mới<br> 
-                            Hệ thống an toàn<br> 
-                            Nội thất xe sang trọng <br>
+                            Tài xế kinh nghiệm<br> 
+                            Chuyên nghiệp - Ân cần <br>
+                            Thân thiện - Nhiệt huyết<br> 
+                             
+                            
                         </div>
 
                         <!-- layer no 4 -->
@@ -341,9 +343,9 @@
                             data-splitout="none" 
                             data-responsive_offset="on"
                             style="z-index: 7; color: #000000; font-family: 'Exo', sans-serif; font-weight: 600; text-transform: capitalize;">
-                            Chất lượng an toàn<br> 
-                            Hệ thống an toàn<br> 
-                            Nội thất xe sang trọng <br>
+                            Dịch vụ tốt nhất<br> 
+                            Giá cả tốt nhất<br> 
+                            Chất lượng tốt nhất<br>
                         </div>
                         <!-- layer no 4 -->
                         <div class="tp-caption rev-subheading tp-resizeme"
@@ -494,7 +496,7 @@
                 <!-- block-title-area -->
                 <div class="col-md-9 col-sm-8 block-title-area tb-cell">
                     <div class="heading-content style-one border">
-                        <h3 class="subtitle">Các loại xe khách mới nhất</h3>
+                        <h3 class="subtitle">Các loại xe</h3>
                         <h2 class="title">Top xe mới</h2>
                     </div><!-- /.heading-content-one -->
                 </div><!-- /.col-md-9 -->
@@ -519,7 +521,7 @@
             </div><!-- /.row --> 
 
             <!-- vehicle-slider -->
-            <div class="vehicle-slider slider-style-two owl-carousel" data-item="[5,2,1,1]">
+            <div class="vehicle-slider slider-style-two owl-carousel" data-item="[3,1 ,1,1]">
                 {% if cars%}
                     {%for c in cars%}
                         <div class="item">
@@ -546,14 +548,95 @@
             <!-- block-navigation-area -->
             <div class="block-navigation-area visible-xs-block">
                 <div class="view-all-item clearfix">
-                    <a href="#" class="view-all-btn">View all</a>
+                    <a href="{% url 'frontend:car'%}" class="view-all-btn">Tất cả</a>
                 </div><!-- /.view-all-item -->
             </div><!-- /.block-navigation-area -->
         </div><!-- /.container  -->
     </div><!-- /.Popular Vehicle Block --> 
 
 
-    
+    <!-- ======blog area======= -->
+    {% if blogs %}
+        <div class="blog-content-block pd-90 bg-gray-color">
+            <div class="container">
+                <div class="row tb default-margin-bottom theme-red">
+                    <!-- block-title-area -->
+                    <div class="col-md-10 block-title-area tb-cell">
+                        <div class="heading-content style-one border">
+                            <h3 class="subtitle">Tin mới nhất</h3>
+                            <h2 class="title">Blog - <span>Read our article</span></h2>
+                        </div><!-- /.heading-content-one -->
+                    </div><!-- /.col-md-10 -->
+
+                    <!-- block-navigation-area -->
+                    <div class="col-md-3 col-sm-4 hidden-xs block-navigation-area tb-cell">
+                        <div class="pull-right">                    
+                            <div class="item-navigation hidden-xs">
+                                <a href="#" class="previous-item">
+                                    <i class="fa fa-angle-left"></i> 
+                                </a>
+                                <a href="#" class="next-item">
+                                    <i class="fa fa-angle-right"></i> 
+                                </a>
+                            </div><!-- /.item-navigation -->
+
+                            <div class="view-all-item">
+                                <a href="{% url 'frontend:news'%}" class="view-all-btn">Tất cả</a>
+                            </div><!-- /.view-all-item -->
+                        </div><!-- /.pull-right -->
+                    </div><!-- /.col-md-3 -->
+                </div><!-- /.row --> 
+
+                <!-- vehicle-slider -->
+                <div class="vehicle-slider slider-style-two owl-carousel" >
+                    
+                        {%for blog in blogs%}
+                            <div class="item">
+                                <div class="vehicle-content theme-yellow">
+                                    <article class="post">
+                                        <a href="{% url 'frontend:detail_news' blog.id %}">
+                                            <figure class="post-thumb">
+                                                <img src="{{blog.avatar.url}}" alt="blog">
+                                            </figure><!-- /.post-thumb -->
+                                        </a>
+                                        <div class="post-content">  
+                                            <div class="entry-meta">
+                                                <span class="entry-date nevy-bg">
+                                                    {{blog.uploaded_at|date:"d-m-Y"}}
+                                                </span>
+                                                <span class="entry-author red-bg">
+                                                    <i class="fa fa-user"></i>
+                                                    {{blog.author.username}}
+                                                </span>
+                                            </div><!-- /.entry-meta -->
+                                            <h2 class="entry-title">
+                                                <a href="{% url 'frontend:detail_news' blog.id %}">
+                                                    {{blog.title}}
+                                                </a>
+                                            </h2><!-- /.entry-title -->
+                                            <div class="entry-footer">
+                                                <div class="entry-footer-meta">
+                                                    <span class="entry-view"><i class="fa fa-eye"></i>{{blog.view}}</span>
+                                                    <span class="entry-like"><a href="#"><i class="fa fa-heart-o"></i>100</a></span>
+                                                    <span class="entry-comments"><a href="#"><i class="fa fa-comments"></i>100</a></span>
+                                                </div><!-- /.entry-footer-meta -->
+                                            </div><!-- /.entry-footer -->
+                                        </div><!-- /.post-content -->
+                                    </article><!-- /.post -->
+                                </div><!-- /.car-content -->
+                            </div><!-- /.item -->
+                        {%endfor%}
+                    
+                </div><!-- /.vehicle-slider -->
+                
+                <div class="block-navigation-area visible-xs-block">
+                    <div class="view-all-item clearfix">
+                        <a href="{% url 'frontend:news'%}" class="view-all-btn">View all</a>
+                    </div><!-- /.view-all-item -->
+                </div><!-- /.block-navigation-area -->
+            </div><!-- /.container -->
+        </div>
+    {% endif%}
     
 {% endblock %}
 

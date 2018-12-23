@@ -16,68 +16,42 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Danh sách các xe của dịch vụ du lịch <strong>Phước Nhân</strong></div>
         <div class="panel-body">
-            <table class="table table-bordered table-hover table-striped">
-                <thead>
-                    <tr class="bg-primary">
-                        <th>STT</th>
-                        <th>Biển số xe</th>
-                        <th>Tên xe</th>
-                        <th>Chủ sở hữu</th>
-                        <th></th>
-                    </tr>
-                </thead>
+
+            <table class="table table-hover customer-table-info order-column" id="mydatatable">
+               
                 <tbody id="myTable">
                     {%  if object_list %}
                         {%  for car in object_list %}
                             <tr class='clickable-row' data-href="chi-tiet/{{car.id}}">
-                                    <th>
-                                        {{ car.id }}
-                                    </th>
-                                    <th>
-                                        {{ car.carid}}
-                                    </th>
-                                    <th>
-                                        {{ car.nameofcar}}
-                                    </th>
-                                    <th>
-                                        {{ car.owner}}
-                                    </th>
-                                    <th style="text-align: center;">
-                                        <a href="{% url 'carservice:car_edit' car.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Sửa</a>
+                                <td>{{ car.id }}</td>
+                                <td class="col-img">
+                                    <div class="customer-img">
+                                        <img src="{{ car.avatar.url}}"> 
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="customer-name">{{ car.nameofcar}}</div>
+                                    <div class="col-2-group">
+                                        <div class="customer-cardid">Biển Số: <span>{{ car.carid}}</span></div>
+                                        <div class="customer-cardid">Hãng: <span>{{ car.manufacturer}}</span></div>
+                                        <div class="customer-phone">loại xe: <span>{{ car.typecar}} Chỗ</span></div>
+                                    </div>                                    
+                                    <div class="customer-address">Sở hữu: <span>{{ car.owner}}</span></div>
+                                </td>
+                                <td style="text-align: right;">
 
-                                        <a href="{% url 'carservice:car_delete' car.id%}" alt="Xóa" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>
-                            
-                                    </th>
-                                
+                                    <a href="{% url 'carservice:car_edit' car.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Sửa</a>
+
+                                    <a href="{% url 'carservice:car_delete' car.id%}" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>
+                                </td>
                             </tr>
-                          
                         {%  endfor %}
                         
                     {%  endif%}
                    
                 </tbody>
             </table>    
-            {% if is_paginated %}
-                <ul class="pagination">
-                    {% if page_obj.has_previous %}
-                        <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
-                    {% else %}
-                        <li class="disabled"><span>&laquo;</span></li>
-                    {% endif %}
-                    {% for i in paginator.page_range %}
-                        {% if page_obj.number == i %}
-                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-                        {% else %}
-                            <li><a href="?page={{ i }}">{{ i }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                    {% if page_obj.has_next %}
-                        <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
-                    {% else %}
-                        <li class="disabled"><span>&raquo;</span></li>
-                    {% endif %}
-                </ul>
-            {% endif %}
+
             
         </div>
     </div>

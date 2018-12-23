@@ -1,0 +1,77 @@
+{% extends 'carservice/car/template.html' %}
+
+{% block title %}Thêm ảnh mới{% endblock %}
+{% load staticfiles %}
+
+
+{% block navibase %}
+    <li>
+        <i class="fa fa-dashboard"></i> Xe</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Thêm thêm ảnh {{ request.resolver_match.url_name }}
+    </li>
+{% endblock %}
+                
+{% block contain %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">Thêm ảnh mới</div>
+        <div class="panel-body">
+           <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form }}
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary btn-block" type="submit" value="Thêm" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <a href="{% url 'carservice:car'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'admin/dist/js/query.ui.widget.js' %}"></script>
+    <script src="{% static 'admin/dist/js/jquery.iframe-transport.js' %}"></script>
+    <script src="{% static 'admin/dist/js/jquery.fileupload.js' %}"></script>
+    <script type="text/javascript">
+        $(function () {
+          /* 1. OPEN THE FILE EXPLORER WINDOW */
+          $(".js-upload-photos").click(function () {
+            console.log("click");
+            $("#fileupload").click();
+
+          });
+
+          /* 2. INITIALIZE THE FILE UPLOAD COMPONENT */
+          $("#fileupload").fileupload({
+            dataType: 'json',
+              sequentialUploads: true,  /* 1. SEND THE FILES ONE BY ONE */
+              start: function (e) {  /* 2. WHEN THE UPLOADING PROCESS STARTS, SHOW THE MODAL */
+                $("#modal-progress").modal("show");
+              },
+              stop: function (e) {  /* 3. WHEN THE UPLOADING PROCESS FINALIZE, HIDE THE MODAL */
+                $("#modal-progress").modal("hide");
+              },
+              progressall: function (e, data) {  /* 4. UPDATE THE PROGRESS BAR */
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                var strProgress = progress + "%";
+                $(".progress-bar").css({"width": strProgress});
+                $(".progress-bar").text(strProgress);
+              },
+              done: function (e, data) {
+                if (data.result.is_valid) {
+                  $("#gallery tbody").prepend(
+                    "<tr><td><a href='" + data.result.url + "'>" + data.result.name + "</a></td></tr>"
+                  )
+                }
+                console.log(data);
+              }
+          });
+
+        });
+    </script>
+
+{% endblock %}
