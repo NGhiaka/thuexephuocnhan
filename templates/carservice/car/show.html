@@ -17,6 +17,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">Thông tin chi tiết về xe <strong>{{ car.nameofcar }}</strong></div>
             <div class="panel-body">
+                
                 <div class="row">
                     <div class="col-xs-4 col-md-4">
                         <img src="{{ car.avatar.url }}" class="img-thumbnail img-responsive" >         
@@ -31,6 +32,16 @@
                     </div>
                 </div>
                 
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <a href="{% url 'carservice:car_add_photo' car.id%}" class="btn btn-success"><i class="fa fa-file-image-o" aria-hidden="true"></i> Thêm ảnh</a>
+                    
+                        <a href="{% url 'carservice:car_edit' car.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Sửa</a>
+
+                        <a href="{% url 'carservice:car_delete' car.id%}" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>    
+                    </div>
+                    
+                </div>
                 
             </div>
         </div>
