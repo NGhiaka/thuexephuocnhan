@@ -91,10 +91,13 @@ class CarList(ListView):
 class CarDetail(DetailView):
 	template_name = 'frontend/car_detail.html'
 	model  = Car
-	# def get_context_data(self, **kwargs):
-	# 	context = super(CarDetail, self).get_context_data(**kwargs)		
-	# 	context['cars'] = Car.objects.all()
-	# 	return context
+	def get_context_data(self, **kwargs):
+		context = super(CarDetail, self).get_context_data(**kwargs)		
+		car = self.object
+		context['car'] = car
+		context['photos'] = PhotoCar.objects.filter(car=car)
+		context['other_cars'] = Car.objects.filter(~Q(id=car.id))[:5]
+		return context
 
 class BlogList(ListView):
 	template_name = 'frontend/news.html'
