@@ -8,12 +8,16 @@
     {# <link href="{% static 'css/jquery_datetimepicker.css' %}" rel="stylesheet"> #}
 
     <script>
-        $("#add_button").click(function() {
-            // var link = 'lichtrinh/them/' + $("#submit_car").val();
-            var link = "{% url 'carservice:schedule_new' 123%}";
-            link = link.replace('123', $("#car").val());
-            window.location.href = link;
-            // alert(link);
+
+        $(".add_button").click(function() {
+            var id = $("#car").val();
+            if (id){
+                var link = "{% url 'carservice:schedule_new' 123%}";
+                link = link.replace('123', id);
+                window.location.href = link;
+            }else{
+                alert("Vui lòng nhập thông tin xe!!!");
+            }
         });
     </script>
 
@@ -35,17 +39,17 @@
     
     <div class="panel panel-primary">
         <div class="panel-body">
-        {%  if object_list %}
+        {%  if cars %}
             <div class="form-group">
                 <div class="input-group">
                     <select class="form-control choose-element"  name="car" id="car">
-                        {%  for car in object_list %}
+                        {%  for car in cars %}
                             <option value="{{ car.id}}"> {{car}}</option>
                         {% endfor%}
                             <option value=""> ---Thêm Xe Mới---</option>
                         </select>
                     <div class="input-group-btn">
-                        <button type="submit_type" class="btn btn-primary" id="add_button">Tiếp</button>
+                        <button type="submit_type" class="btn btn-primary add_button">Tiếp</button>
                     <!-- Buttons -->
                     </div>
                 </div>
@@ -56,6 +60,9 @@
                     <div class="form-group">
                         {{ form.as_p }}
                     </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary btn-block" type="submit" value="Thêm" />
+                    </div>
                 </div>
             </form>
         {% else %}
@@ -64,6 +71,9 @@
                 <div class="form-groupy" id="new-car">
                     <div class="form-group">
                         {{ form.as_p }}
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary btn-block" type="submit" value="Thêm" />
                     </div>
                 </div>
             </form>

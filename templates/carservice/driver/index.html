@@ -16,32 +16,36 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Danh sách các tài xế của dịch vụ du lịch <strong>Phước Nhân</strong></div>
         <div class="panel-body">
-            <table class="table table-bordered table-hover table-striped">
-                <thead>
-                    <tr class="bg-primary">
-                        <th>STT</th>
-                        <th>CMND</th>
-                        <th>Họ&Tên</th>
-                        <th>Sinh nhật</th>
-                        <th></th>
-                    </tr>
-                </thead>
+
+            <table class="table table-hover customer-table-info" id="mydatatable">
+               
                 <tbody id="myTable">
                     {%  if driver_list %}
-                        {%  for driv in driver_list %}
-                            <tr class='clickable-row' data-href="chi-tiet/{{driv.id}}">
-                                <th>{{ driv.id }}</th>
-                                <th>{{ driv.idcard}}</th>
-                                <th>{{ driv.drivername}}</th>
-                                <th>{{ driv.birthday|date:'d/m/Y'}}</th>
-                                <th style="text-align: center;">
+                        {%  for driver in driver_list %}
+                            <tr class='clickable-row' data-href="chi-tiet/{{driver.id}}">
+                                <td>{{ driver.id }}</td>
+                                <td class="col-img">
+                                    <div class="customer-img">
+                                        <img src="{{ driver.avatar.url }}"> 
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="customer-name">{{ driver.drivername}}</div>
+                                    <div class="col-2-group">
+                                        <div class="customer-cardid">Số CMND: <span>{{ driver.idcard}}</span></div>
+                                        <div class="customer-phone">Số Điện Thoại: <span>{{ driver.phone_number}}</span></div>
+                                    </div>                                    
+                                    <div class="customer-address">Địa chỉ: <span>{{ driver.address}}</span></div>
+                                </td>
+                                <td style="text-align: right;">
 
-                                    <a href="cap-nhat/{{driv.id}}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true">Sửa</i></a>
+                                    <a href="{% url 'carservice:driver_edit' driver.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Sửa</a>
 
-                                    <a href="xoa/{{driv.id}}" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i>Xóa</a>
-                                </th>
+                                    <a href="{% url 'carservice:driver_delete' driver.id%}" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>
+                                </td>
                             </tr>
                         {%  endfor %}
+                        
                     {%  endif%}
                    
                 </tbody>

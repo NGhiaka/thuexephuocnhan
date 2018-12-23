@@ -7,8 +7,8 @@
 # from django.shortcuts import render, redirect
 
 # from .forms import RegisterForm
-from carservice.forms import CarForm
-from carservice.models import Car
+from carservice.forms import CarForm, PhotoCarForm
+from carservice.models import Car, PhotoCar
 from django.contrib import messages
 
 from django.http import HttpResponseRedirect
@@ -24,6 +24,8 @@ from django.views.generic.edit import FormView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.contrib import messages
+from django.http import JsonResponse
+from django.views import View
 
 
 # from django.core.files.storage import default_storage
@@ -130,3 +132,53 @@ class CarDelete(DeleteView):
 #         raise Http404("Khong tim thay xe")
 
 # # xong phan quan ly xe
+
+# class PhotoCreate(ListView):
+#     """docstring for Phôt"""
+#     template_name = 'carservice/car/photoform.html'
+#     form_class = PhotoCarForm
+#     def post(self, request, *args, **kwargs):
+#         car = Car(id= self.kwargs["pk"])
+#         forms = PhotoCarForm(self.request.FILES)
+#         if forms.is_valid():
+#             for f in forms:
+#                 photo = f.save()
+#                 photo.car = car
+#                 photo.save()
+#                 data = {'is_valid': True, 'name': photo.path_img.name, 'url': photo.path_img.url}
+#         else:
+#             data = {'is_valid': False}
+#         return JsonResponse(data)
+        
+
+class PhotoCreate(ListView):
+    template_name = 'carservice/car/photoform.html'
+    form_class = PhotoCarForm
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        # photos_list = PhotoCar.objects.filter(car_id= self.kwargs["pk"])
+        return render(request, self.template_name, {'form': form, 'carid': self.kwargs["pk"]})
+    def post(self, request, *args, **kwargs):
+        car = Car.objects.get(pk = self.kwargs["pk"])
+        for img in request.FILES.getlist('path_img'):
+            ph = PhotoCar()
+            ph.car= car 
+            ph.path_img = img
+            ph.save()
+        messages.success(request,
+                             "Yeeew, check it out on the home page!")
+        return HttpResponseRedirect(reverse_lazy('carservice:car'))
+
+        # forms = PhotoCarForm(self.request.FILES)
+        # if forms.is_valid():
+        #     for form in forms.cleaned_data:
+        #         photo = form['path_img']
+        #         photocar = PhotoCar(car=car, path_img=photo)
+        #         photocar.save()
+        #         # data = {'is_valid': True, 'name': photocar.path_img.name, 'url': photocar.path_img.url}
+        #     messages.success(request,
+        #                      "Yeeew, check it out on the home page!")
+        #     return reverse_lazy('carservice:car')
+        # else:
+        #     data = {'is_valid': False}
+        # return JsonResponse(data)

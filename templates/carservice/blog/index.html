@@ -75,42 +75,61 @@
     {# tab chua anh #}
     <div role="tabpanel" class="tab-pane" id="Blog">
         <div class="row">
-                {%  if Blog_list %}
-                    {%  for blog in Blog_list %}
-                        <div class="col-sm-6 col-md-3">
-                            <div class="thumbnail" style=" margin-top: 10px;">
-                                <div class="avatar-thumbnail">
-                                    <img src="{{ blog.avatar.url }}" alt="..." height="real_height" width="real_width" onload="resizeImg(this)">
-                                </div>
-                                <div class="caption caption-title">
-                                    <h3>{{ blog.title }}</h3>
-                                    <p><a href="{% url 'carservice:blog_detail' blog.id %}" class="btn btn-primary" role="button">Xem tin</a></p>
-                                </div>
+                
+            <table class="table table-hover customer-table-info" id="mydatatable">
+                <tbody id="myTable">
+                    {%  if Blog_list %}
+                        {%  for blog in Blog_list %}
+                            <tr class='clickable-row' data-href="chi-tiet/{{blog.id}}">
+                                <td>{{ customer.id }}</td>
+                                <td class="col-img">
+                                    <div class="customer-img">
+                                        <img src="{{ blog.avatar.url }}"> 
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="customer-name">{{ blog.title|truncatewords:10}}</div>
+                                    <div class="col-2-group">
+                                        <div class="customer-cardid">Ngày đăng: <span>{{blog.uploaded_at|date:"d-m-Y, H:i"}}</span></div>
+                                        <div class="customer-phone">Người đăng: <span>{{blog.author.get_full_name}}</span></div>
+                                    </div>   
+                                    <div class="customer-address"><span>{{ blog.content|safe|truncatewords:20}}</span></div>
+                                </td>
+                                <td style="text-align: right;">
 
-                                <div class="dropdown edit-dropdown">
-                                    <button id="dLabel" class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                        <li>
-                                            <a href="{% url 'carservice:blog_edit' blog.id %}" alt="Chỉnh sửa thông tin">Sửa</a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'carservice:blog_delete' blog.id %}" alt="Xóa">Xóa</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    <a href="{% url 'carservice:blog_edit' blog.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Sửa</a>
 
-
-                            </div>
-
-                            
-                        </div>
-                    {%  endfor%}
-                {%  endif%}
-            </div>
+                                    <a href="{% url 'carservice:blog_delete' blog.id%}" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>
+                                </td>
+                            </tr>
+                        {%  endfor %}
+                        
+                    {%  endif%}
+                   
+                </tbody>
+            </table>
+            {% if is_paginated %}
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
-    
-  </div>
 {% endblock %}
 

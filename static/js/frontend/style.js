@@ -1,9 +1,15 @@
-$(window).load(function(){
-    $('body').removeClass('preloading');
-    $('#preload').hide();
+var Frontend = function() {
+	var loading = function(){
+		$('body').removeClass('preloading');
+    	$('#preload').hide();
+	}
+    return {
+        init: function(){
+        	loading();
+        }
+    }
+}();
 
- //    $("a[href='#top']").click(function() {
-	// 	$("html, body").animate({ scrollTop: 0 }, "slow");
-	// 	return false;
-	// });
+$(document).ready(function() {
+    Frontend.init();
 })

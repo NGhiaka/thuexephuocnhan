@@ -36,22 +36,22 @@ def ExpenseCreate(request):
         messages.error(request, "Tạo  công!!!")
     return render(request, template_name, {'form':form})
 
-class ExpenseCreate(CreateView):
-    template_name = 'carservice/expense/form.html'
-    form_class = ExpenseForm
-    # initial = {'key': 'value'}
-    def get(self, request, *args, **kwargs):
-        form = self.form_class()
-        return render(request, self.template_name, {'form': form})
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            exp = form.save(commit=False)
-            exp.author = request.user
-            exp.save()
-            # return super(ExpenseCreate, self).post(form)
+# class ExpenseCreate(CreateView):
+#     template_name = 'carservice/expense/form.html'
+#     form_class = ExpenseForm
+#     # initial = {'key': 'value'}
+#     def get(self, request, *args, **kwargs):
+#         form = self.form_class()
+#         return render(request, self.template_name, {'form': form})
+#     def post(self, request, *args, **kwargs):
+#         form = self.form_class(request.POST)
+#         if form.is_valid():
+#             exp = form.save(commit=False)
+#             exp.author = request.user
+#             exp.save()
+#             # return super(ExpenseCreate, self).post(form)
 
-        return reverse_lazy('carservice:expense')
+#         return reverse_lazy('carservice:expense')
 
         # return render(request, self.template_name, {'form': form})
 

@@ -1,8 +1,9 @@
-$(window).on('load', function () {
+ $(document).ready(function() {
     $('body').removeClass('preloading');
     $('#preload').hide();
     $('.select2').select2();
 
+    $('#mydatatable').DataTable();
     // $('.filterable .btn-filter').click(function(){
     //     var $panel = $(this).parents('.filterable'),
     //     $filters = $panel.find('.filters input'),

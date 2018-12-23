@@ -8,16 +8,16 @@
     <script>
         var url = window.location.pathname;
         var id = url.substring(url.lastIndexOf('/') + 1);
-        $("#add_button").click(function() {
-            // var link = 'lichtrinh/them/' + $("#submit_car").val();
-            var url = window.location.pathname;
-            var link = url + "/" + $("#submit_customer").val();
-            // var carid = url.substring(url.lastIndexOf('/') + 1);
-            // var link = "{% url 'carservice:schedule_new' 1 2 %}";
-            // link = link.replace('1', carid);
-            // link = link.replace('2', $("#submit_customer").val());
-            window.location.href = link;
-            // alert(link);
+        $(".add_button").click(function() {
+            var id =  $("#customer").val();
+            if (id){
+                var url = window.location.pathname;
+                var link = url + "/" + $("#customer").val();
+                window.location.href = link;
+            }
+            else{
+                alert("Vui lòng nhập thông tin khách hàng!");
+            }
         });
     </script>
 
@@ -34,21 +34,19 @@
 {% endblock %}
                 
 {% block contain %}
-
-    
     <div class="panel panel-primary">
         <div class="panel-body">
         {%  if customers %}
             <div class="form-group">
                 <div class="input-group">
-                    <select class="form-control"  name="customer" id="submit_customer">
+                    <select class="form-control choose-element" name="customer" id="customer">
                         {%  for customer in customers %}
                             <option value="{{ customer.id}}"> {{customer}}</option>
-        
                         {% endfor%}
+                        <option value=""> ---Thêm Khách Hàng Mới---</option>
                     </select>
                     <div class="input-group-btn">
-                        <button type="submit_type" class="btn btn-primary" id="add_button">Tiếp</button>
+                        <button type="submit_type" class="btn btn-primary add_button">Tiếp</button>
                     <!-- Buttons -->
                     </div>
                 </div>
@@ -59,14 +57,20 @@
                     <div class="form-group">
                         {{ form.as_p }}
                     </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary btn-block" type="submit" value="Thêm" />
+                    </div>
                 </div>
             </form>
         {% else %}
             <form method="post" action="" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="form-groupy" id="new-car" style="display:none">
+                <div class="form-groupy" id="new-car">
                     <div class="form-group">
                         {{ form.as_p }}
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary btn-block" type="submit" value="Thêm" />
                     </div>
                 </div>
             </form>

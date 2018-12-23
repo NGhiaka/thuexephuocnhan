@@ -17,13 +17,14 @@ from django.http import HttpResponseRedirect
 
 class CarList(ListView):
     template_name = 'carservice/schedule/carlist.html'
-    model = Car
+    # model = Car
     form_class = CarForm
     paginate_by = 20
     ordering = ['id']
-    # def get(self, request, *args, **kwargs):
-    #     form = self.form_class()
-    #     return render(request, self.template_name, {'form': form})
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        car = Car.objects.all()
+        return render(request, self.template_name, {'form': form, 'cars': car})
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
@@ -34,11 +35,12 @@ class CarList(ListView):
 
 class CustomerList(ListView):
     template_name = 'carservice/schedule/customerlist.html'
-    model  = Customer
+    # model  = Customer
     form_class = CustomerForm
     def get(self, request, *args, **kwargs):
         form = self.form_class()
-        return render(request, self.template_name, {'form': form, 'customers': self.model})
+        customer = Customer.objects.all()
+        return render(request, self.template_name, {'form': form, 'customers': customer})
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
@@ -47,84 +49,15 @@ class CustomerList(ListView):
                 'car_id': self.kwargs['car_id'],
                 'customer_id': self.kwargs['customer_id']
                 }))
-        return render(request, self.template_name, {'form': form, 'customers': self.model})
+        return render(request, self.template_name, {'form': form, 'customers': iter(self.model)})
 
 class ScheduleList(ListView):
     template_name = 'carservice/schedule/index.html'
     model  = Schedule
 
-def ScheduleCreate(request, car_id=None, customer_id=None):
-    template_name = 'carservice/schedule/form.html'
-    if request.method == 'POST': 
-        carid = request.POST.get('car', '') #lấy thông tin select value hoặc ''
-        customerid = request.POST.get('customer', '') #lấy thông tin select value hoặc ''
-        if carid != '': #nếu có id
-            if customerid != '': #nếu có id
-                form = ScheduleForm(request.POST)
-                if form.is_valid():
-                    schedule = form.save(commit=False)
-                    schedule.car_id = carid
-                    schedule.customer_id = customerid
-                    schedule.save()
-                    messages.success(request, 'Thêm blog thành công!')
-                    return HttpResponseRedirect(reverse_lazy('carservice:expense'))
-            else:
-                customerform = CustomerForm(request.POST, request.FILES)
-                form = ScheduleForm(request.POST)
-                if customerform.is_valid() and form.is_valid():
-                    customer = customerform.save()
-                    schedule = form.save(commit=False)
-                    schedule.car_id = carid
-                    schedule.customer = customer
-                    schedule.save()
-                    messages.success(request, 'Thêm blog thành công!')
-                    return HttpResponseRedirect(reverse_lazy('carservice:expense'))
-        else: # Thêm mới thể loại
-            carform = CarForm(request.POST, request.FILES)
-            form = ScheduleForm(request.POST)
-            if customerid != '': #nếu có id
-                if carform.is_valid() and form.is_valid():
-                    car = carform.save()
-                    schedule = form.save(commit=False)
-                    schedule.car = car
-                    schedule.customer_id = customerid
-                    schedule.save()
-                    messages.success(request, 'Thêm blog thành công!')
-                    return HttpResponseRedirect(reverse_lazy('carservice:expense'))
-            else:
-                carform = CarForm(request.POST, request.FILES)
-                customerform = CustomerForm(request.POST, request.FILES)
-                if carform.is_valid() and customerform.is_valid() and form.is_valid():
-                    customer = customerform.save()
-                    if form:
-                        schedule = form.save(commit=False)
-                        schedule.car = car
-                        schedule.customer = customer
-                        schedule.save()
-                        messages.success(request, 'Thêm blog thành công!')
-                        return HttpResponseRedirect(reverse_lazy('carservice:expense'))
-        # return redirect('carservice:blog')
-    carform = CarForm()
-    customerform = CustomerForm()
-    form = ScheduleForm()
-    cars = Car.objects.all()
-    customers = Customer.objects.all()
-    return render(request, template_name, {
-            'cars': cars,
-            'customers': customers,
-            'carform': carform,
-            'customerform': customerform,
-            'form': form,
-        })
-
-# def schedule(request):
-#     schedule_list = Schedule.objects.all().values('id','name','company__name').order_by('-departure_day')
-#     context = {
-#         'schedule_list': schedule_list,
-#     }
-#     return render(request, 'carservice/schedule/index.html', context)
-
-def schedule_new(request, car_id, customer_id):
+def ScheduleCreate(request, car_id, customer_id):
+    if not car_id or not customer_id:
+        return HttpResponseRedirect(reverse_lazy('carservice:schedule_new'))
     if request.method == 'POST': 
         # car = Car.objects.get(id=car_id)
         f = ScheduleForm(request.POST)
