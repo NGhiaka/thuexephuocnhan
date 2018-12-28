@@ -19,7 +19,7 @@
                 <tbody id="myTable">
                     {%  if blog_list %}
                         {%  for blog in blog_list %}
-                            <tr class='clickable-row' data-href="chi-tiet/{{blog.id}}">
+                            <tr class='clickable-row' data-href="{% url 'carservice:blog_detail' blog.id%}">
                                 <td>{{ customer.id }}</td>
                                 <td class="col-img">
                                     <div class="customer-img">

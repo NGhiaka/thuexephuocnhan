@@ -56,3 +56,6 @@
 .vehicle-bottom-content:before{
 	background-image: url(../../images/rental-bottom-border.png);
 }
+.widget_tagcloud .tagcloud a{
+    background: #395e70;
+}

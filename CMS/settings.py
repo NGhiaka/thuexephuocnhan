@@ -175,3 +175,4 @@ FILE_UPLOAD_HANDLERS = [
     'django.core.files.uploadhandler.MemoryFileUploadHandler',
     'django.core.files.uploadhandler.TemporaryFileUploadHandler',
 ]
+# API_GOOGLE_KEY = 'AIzaSyDgWBBY8-JklnkHx67KvdgqJ8sHRyeDu70'

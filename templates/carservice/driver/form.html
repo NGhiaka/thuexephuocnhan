@@ -3,11 +3,11 @@
 {% block title %}Thêm tài xế mới{% endblock %}
 
 {% load staticfiles%}
-{% block scripts %}
-    
+{% block stylesheet %}
     <link href="{% static 'css/jquery_datetimepicker.css' %}" rel="stylesheet">
+{% endblock %}
+{% block scripts %}
     <script src="{% static 'js/build/jquery.datetimepicker.full.js' %}"></script>
-
 {% endblock %}
 {% block navibase %}
     <li>

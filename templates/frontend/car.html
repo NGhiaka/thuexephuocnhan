@@ -97,11 +97,11 @@
                             <h2 class="form-title">Filters</h2>
                             <div class="form-content available-filter">
                                 <div class="form-group">
-                                    <select  class="form-controller" name="typecar">
+                                    <select  class="form-controller" name="typecar" value="{{ request.GET.typecar}}">
                                         <option value>--- Loại Xe ---</option>
-                                        <option value="4">Xe 4 chỗ</option>
-                                        <option value="7">Xe 7 chỗ</option>
-                                        <option value="16">Xe 16 chỗ</option>
+                                        <option value=4>Xe 4 chỗ</option>
+                                        <option value=7>Xe 7 chỗ</option>
+                                        <option value=16>Xe 16 chỗ</option>
                                     </select>
                                 </div><!-- /.form-group -->
 
@@ -109,11 +109,11 @@
                                     <label>Available On</label>
                                     <div class="input">
                                         <i class="fa fa-calendar"></i>
-                                        <input class="date-start  date-selector form-controller" placeholder="Ngày đi" type="text">
+                                        <input class="date-start  date-selector form-controller" placeholder="Ngày đi" type="text" name="startDate" autocomplete="off" value="{{ request.GET.startDate}}">
                                     </div><!--/.input-->
                                     <div class="input">
                                         <i class="fa fa-calendar"></i>
-                                        <input class="date-end date-selector form-controller" placeholder="Ngày về" type="text">
+                                        <input class="date-end date-selector form-controller" placeholder="Ngày về" type="text" name="endDate" autocomplete="off" value="{{ request.GET.endDate}}">
                                     </div><!--/.input-->
                                 </div><!-- /.form-group -->
                                 
@@ -122,6 +122,7 @@
                                 </div><!-- /.filter-button -->
                             </div><!-- /.from-cotent -->
                         </form><!-- /.advance_search_query -->
+                        
                     </div><!-- /.vehicle-sidebar -->
                 </div><!-- /.col-md-3 -->
             </div><!-- /.row -->

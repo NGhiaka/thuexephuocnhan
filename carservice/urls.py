@@ -11,6 +11,8 @@ from .view import *
 app_name = "carservice"
 urlpatterns = [
     url(r'^$', login_required(views.index), name='index'),
+    url(r'^ajax/schedule/$', views.load_schedule, name='load_schedule'),
+    url(r'^ajax/report/$', views.report, name='report'),
 
     url(r'^quan-ly-xe/$', login_required(view_car.CarList.as_view()), name='car'),
 	url(r'^quan-ly-xe/them-xe$', login_required(view_car.CarCreate.as_view()), name='car_new'),

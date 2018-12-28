@@ -46,6 +46,10 @@
         <link rel="stylesheet" href="{% static 'admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
+        {% block stylesheet %}
+
+        {% endblock %}
+
         <link rel="stylesheet" type="text/css" href="{% static 'admin/dist/css/main.css'%}">
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -55,7 +59,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
 
-        
+       
 
 
         <title>{% block title %}{% endblock %}</title>
@@ -71,14 +75,15 @@
         <!---<div class="overlay">
           <i class="fa fa-refresh fa-spin"></i>
         </div> -->
-        <script>
-          $.widget.bridge('uibutton', $.ui.button);
-        </script>
-                <!-- jQuery 3 -->
+        <!-- jQuery 3 -->
         <script src="{% static 'admin/bower_components/jquery/dist/jquery.min.js' %}"></script>
         <!-- jQuery UI 1.11.4 -->
         <script src="{% static 'admin/bower_components/jquery-ui/jquery-ui.min.js' %}"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+          $.widget.bridge('uibutton', $.ui.button);
+        </script>
+                
         <!-- Bootstrap 3.3.7 -->
         <script src="{% static 'admin/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
         <!-- Select2 -->
@@ -114,7 +119,7 @@
         <!-- AdminLTE for demo purposes -->
         <script src="{% static 'admin/dist/js/demo.js' %}"></script>
         
-        
+
         {% block scripts %}{% endblock %}
         <script src="{% static 'admin/dist/js/main.js' %}"></script>
 

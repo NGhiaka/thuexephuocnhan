@@ -2,7 +2,8 @@ from django.shortcuts import render
 from carservice.forms import *
 from carservice.models import *
 # from carservice.models import *
-from django.utils.timezone import datetime
+import datetime
+# from django.utils.timezone import datetime
 from django.views.generic import TemplateView,ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
@@ -76,13 +77,29 @@ class CarList(ListView):
 	ordering = ['id']
 	paginate_by = 15
 	def get(self, request, *args, **kwargs):
-		typeCar = request.GET.get("typecar", None)
-		startDate = request.GET.get('startDate', None)
-		endDate = request.GET.get('endDate', None)
-		if not typeCar and not startDate and not endDate:
-			car = Car.objects.all()
-		else:	
-			car = Car.objects.filter(typecar = typeCar)
+		typeCar = request.GET.get('typecar', None)
+		start_date = request.GET.get('startDate', None)
+		end_date = request.GET.get('endDate', None)
+		if start_date != '' and start_date is not None:
+			start_date = datetime.datetime.strptime(start_date, '%d/%m/%Y').strftime('%Y-%m-%d')
+		if end_date != '' and end_date is not None:
+			end_date = datetime.datetime.strptime(end_date, '%d/%m/%Y').strftime('%Y-%m-%d') 
+		car = Car.objects.all()
+		if typeCar is not None and typeCar != '':
+			car = car.filter(Q(typecar = typeCar))
+		if (start_date is not None and end_date is not None) and (end_date != '' and start_date != ''):
+			car = car.filter(
+					~Q(schedule__departure_day__range=(start_date, end_date)),
+					~Q(schedule__destination_day__range=(start_date, end_date)),
+					~Q(schedule__departure_day__lte=start_date, schedule__destination_day__gte=start_date),
+					~Q(schedule__departure__lte=end_date, schedule__destination__gte=end_date)
+				)
+			# car = Car.objects.filter(Q(schedule__id__isnull=True),Q(typecar = typeCar), 
+			# 	Q(schedule__departure_day__range=(start_date, end_date))
+			# 	| Q(schedule__destination_day__range=(start_date, end_date))
+			# 	| Q(schedule__departure_day__lte=start_date, schedule__destination_day__gte=start_date)
+			# 	| Q(schedule__departure__lte=end_date, schedule__destination__gte=end_date)
+			# )
 
 		return render(request, self.template_name, {'object_list':car})
 		
