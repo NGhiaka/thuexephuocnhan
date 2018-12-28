@@ -19,64 +19,35 @@
 	</header>
 
     {%if car%}
-    
-	<div class="vehicle-single-block vehicle-padding">
+    <div class="vehicle-single-block vehicle-padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <div class="corousel-gallery-content">
                         <div class="gallery">
-                            <div class="full-view owl-carousel owl-loaded owl-drag">       
-                                <div class="owl-stage-outer">
-                                    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 4620px;">
-                                        <div class="owl-item active" style="width: 770px;">
-                                            <a class="item" href="{{c.avatar}}">
-                                                <img src="{{car.avatar.url}}" alt="post">
-                                            </a>
-                                        </div>
-                                    {%for photo in photos%}
-                                        <div class="owl-item" style="width: 770px;">
-                                            <a class="item" href="{{photo.path_img}}">
-                                                <img src="{{photo.path_img.url}}" alt="post">
-                                            </a>
-                                        </div>
-                                    {%endfor%}
+                            {# image  #}
+                            <div class="full-view owl-carousel owl-loaded owl-drag"> 
+                                {%for photo in photos%}
+                                    <div class="owl-item">
+                                        <a class="item">
+                                            <img src="{{photo.path_img.url}}" alt="post">
+                                        </a>
                                     </div>
-                                </div>
+                                {%endfor%}
                             </div>
-                            <!-- list thumbnail -->
-                            <div class="list-view owl-carousel owl-loaded owl-drag">   
-                                <div class="owl-stage-outer">
-                                    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 785px;">
-                                        <div class="owl-item active current" style="width: 115.833px; margin-right: 15px;">
-                                            <div class="item">
-                                                <img src="{{car.avatar.url}}" alt="post-image">
-                                            </div>
-                                        </div>
-                                        {%for photo in photos%}
-                                            <div class="owl-item active" style="width: 115.833px; margin-right: 15px;">
-                                                <div class="item">
-                                                    <img src="{{photo.path_img.url}}" alt="post-image">
-                                                </div>
-                                            </div>
-                                        {%endfor%}
-                                        <div class="owl-item active" style="width: 115.833px; margin-right: 15px;">
-                                            <div class="item">
-                                                <img src="{{car.avatar.url}}" alt="post-image">
-                                            </div>
-                                        </div>
+                            {# sub image #}
+                            <div class="list-view owl-carousel owl-loaded owl-drag">
+                                {%for photo in photos%}
+                                <div class="owl-item">
+                                    <div class="item">
+                                        <img src="{{photo.path_img.url}}" alt="post">
                                     </div>
                                 </div>
-                                <!-- <div class="owl-nav disabled">
-                                    <div class="owl-prev">prev</div>
-                                    <div class="owl-next">next</div>
-                                </div>
-                                <div class="owl-dots disabled"></div> -->
-                            </div>  
-
-                        </div> <!-- /.gallery-two -->
-                    </div> <!-- /.corousel-gallery-content -->
-
+                                {%endfor%}
+                            </div>
+                        </div>
+                    </div>
+                    {# imformation #}
                     <div class="vehicle-single-content">
                         <div class="tb mb-block">
                             <div class="tb-cell mb-block">
@@ -101,44 +72,60 @@
                                         </ul>
                                     </div><!-- /.vehicle-overview -->
                                 </div><!-- /.col-md-12 -->
+                                 <div class="col-md-12">
+                                    <div>
+                                        {{car.about_car}} 
+                                    </div>
+                                </div><!-- /.col-md-12 -->
                             </div><!-- /.row -->
                         </div><!-- /.overview -->
                     </div>
 
-                    <!-- <div class="hidden-md hidden-lg text-center extend-btn">
-                        <span class="extend-icon">
-                            <i class="fa fa-angle-down"></i>
-                        </span>
-                    </div> -->
-                </div> <!-- /.col-md-8 -->
+                </div>
 
                 <div class="col-md-4">
-                    <div class="vehicle-sidebar pd-zero">                    
-                        <h4 class="widget-title expand-margin mb-widget">Xe khác</h4><!-- /.widget-title -->
-                         <div class="widget-content">
-                            {% if other_cars %}
+                    <div class="vehicle-sidebar" style="background: #f8f8f8;">
+                         <div class="widget widget_popular_posts clearfix">
+                             <h4 class="widget-title expand-margin mb-widget">Bài viết phổ biến</h4><!-- /.widget-title -->
+                             <div class="widget-content">
+                                {% if other_cars %}
                                 {% for c in other_cars%}
-                                     <div class="post-content clearfix" style="margin-bottom: 20px; border-bottom: 1px solid #4c4c4c; padding-bottom: 20px;">
+                                     <div class="post-content clearfix">
                                          <div class="image-content">
                                              <a href="{% url 'frontend:detail_car' c.id %}">
                                                  <img src="{{c.avatar.url}}" alt="post">
                                              </a>
                                          </div><!-- /.image-content -->
                                          <div class="post-info">
-                                             <h5 class="widget-post-title"><a href="{{c.avatar.url}}" title="{{b.title}}">{{car}}</a></h5>
-                                             <span class="post-date"> {{c.typecar}} chỗ</span>
+                                             <h5 class="widget-post-title"><a href="{{c.avatar.url}}" style="color: #000;">{{c}}</a></h5>
+                                             <span class="post-date">Loại: {{c.typecar}} chỗ</span>
                                          </div><!-- /.post-info -->
                                      </div><!-- /.post-content -->
                                 {% endfor %}
-                            {% endif %}     
-                         </div><!-- /.widget-content -->
-                        <!-- <div class="ads_area">
-                            <a href="#"><img src="assets/images/Add-Image.jpg" alt="add"></a>
-                        </div> --><!-- /.ads_area -->
-                    </div><!-- /.vehicle-sidebar -->
-                </div><!-- /.col-md-4 -->
-            </div><!-- /.row -->
-        </div><!-- /.container  -->
+                            {% endif %}  
+                                <div class="widget widget_tagcloud clearfix">
+                                    <h4 class="widget-title expand-margin mb-widget">Tag Clound</h4> 
+                                    <div class="tagcloud" style="display: none;">
+                                         <a title="Cho thuê xe " href="#">Cho thuê xe </a>
+                                         <a title="Cho thuê xe giá rẻ" href="#">Cho thuê xe giá rẻ</a>
+                                         <a title="Thuê xe 4 chỗ" href="#">Thuê xe 4 chỗ</a>
+                                         <a title="Thuê xe 7 chỗ" href="#">Thuê xe 7 chỗ</a>
+                                         <a title="Thuê xe 16 chỗ" href="#">Thuê xe 16 chỗ</a>
+                                         <a title="Thuê xe hoa" href="#">Thuê xe hoa</a>
+                                         <a title="Xe du lịch" href="#">Xe du lịch</a>
+                                         <a title="Thuê xe ăn tiệc" href="#">Thuê xe ăn tiệc</a>
+                                         <a title="Thuê xe cưới" href="#">Thuê xe cưới</a>
+                                    
+                                    </div> 
+                                </div>   
+                            </div><!-- /.widget-content -->
+                         </div><!-- /.widget widget_popular_post -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
+
     {%endif%}
 {% endblock%}

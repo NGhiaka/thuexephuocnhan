@@ -13,8 +13,12 @@ from carservice.forms import *
 from carservice.models import *
 from django.views.generic import ListView, TemplateView
 # from django.contrib import messages
-from django.utils.timezone import datetime
+from datetime import datetime
 from django.contrib.auth.models import User
+from django.db.models import F, Q, Sum
+from django.db.models.functions import TruncMonth
+from django.http import JsonResponse
+import json
 # from passlib.hash import pbkdf2_sha256
 
 # class indexList(ListView):
@@ -25,22 +29,52 @@ from django.contrib.auth.models import User
 
 
 def index(request):
-    today = datetime.today()
-    schs = Schedule.objects.all()
-    forms = []
-    schedule = Schedule.objects.filter(departure_day__lte = today, destination_day__gte = today)
-    context = {}
-    for sch in schs:
-        # form = ScheduleForm(instance = sch)
-        forms.append({'title':sch.customer,'start':sch.departure_day.strftime('%Y-%m-%d'),'end': sch.destination_day.strftime('%Y-%m-%d')})
-        context = {
-            'schedules':schedule, 
-            'forms': forms,
-            'user':request.user
+    expense = Expense.objects.values('type_cost', 'date_enxpense__year', 'date_enxpense__month').annotate(cost=Sum('cost')).order_by('date_enxpense__year', 'date_enxpense__month')
+
+    # today = datetime.today()
+    # schs = Schedule.objects.all()
+    # forms = []
+    # schedule = Schedule.objects.filter(departure_day__lte = today, destination_day__gte = today)
+    # context = {}
+    # for sch in schs:
+    #     # form = ScheduleForm(instance = sch)
+    #     forms.append({'title':sch.customer,'start':sch.departure_day.strftime('%Y-%m-%d'),'end': sch.destination_day.strftime('%Y-%m-%d')})
+    #     context = {
+    #         'schedules':schedule, 
+    #         'forms': forms,
+    #         'user':request.user,
+    #         'expenses': expense
+    #     }
+
+    return render(request, 'carservice/dashboard/index.html', {'expenses': expense})
+
+def load_schedule(request):
+    first_day  = datetime.today().replace(day=1)
+    schedules = Schedule.objects.filter(Q(departure_day__gte=first_day) | Q(destination_day__gte=first_day))
+    # data = [{
+    #  "s":1
+    # }, {"s":2}]
+    data = list()
+    for sch in schedules:
+        obj = {
+            'title': sch.car.nameofcar + " ("+sch.car.carid+") " +" - "+ sch.customer.name + "("+sch.customer.phone+")",
+            'start': str(sch.departure_day),
+            'end': str(sch.destination_day),
         }
+        data.append(obj)
+    return JsonResponse(json.dumps(data), content_type="application/json", safe=False)
 
-    return render(request, 'carservice/page/index.html', context)
-
+def report(request):
+    exps = Expense.objects.values('type_cost', 'date_enxpense__year', 'date_enxpense__month').annotate(cost=Sum('cost')).order_by('date_enxpense__year', 'date_enxpense__month')
+    data = list()
+    for exp in exps:
+        obj = {
+            'type': exp.type_cost,
+            'cost': exp.cost,
+            'time': exp.date_enxpense__month + '/' + exp.date_enxpense__year,
+        }
+        data.append(obj)
+    return JsonResponse(json.dumps(data), content_type="application/json", safe=False)
 def service(request):
     return render(request, 'carservice/page/service.html')
 

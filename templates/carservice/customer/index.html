@@ -36,6 +36,7 @@
                                     <div class="customer-address">Địa chỉ: <span>{{ customer.address}}</span></div>
                                 </td>
                                 <td style="text-align: right;">
+                                    <a href="{% url 'carservice:customer_detail' customer.id%}" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i> Xem</a>
 
                                     <a href="{% url 'carservice:customer_edit' customer.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Sửa</a>
 

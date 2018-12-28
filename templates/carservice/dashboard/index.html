@@ -1,0 +1,63 @@
+{% extends 'carservice/template/template.html' %}
+{% load staticfiles%}
+{% block title %}Trang chủ{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/fullcalendar/fullcalendar.min.css' %}" type="text/css">
+    <link href="{% static 'css/fullcalendar/fullcalendar.print.min.css' %}" rel="stylesheet" media="print" />
+{% endblock %}
+
+                    
+{% block contenter %}
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Dashboard
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
+
+    <div style="padding:20px">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab">Lịch trình</a></li>
+          <li role="presentation"><a href="#map-tab" aria-controls="map-tab" role="tab" data-toggle="tab">Bản đồ</a></li>
+          <li role="presentation"><a href="#report" aria-controls="report" role="tab" data-toggle="tab">Thống Kê</a></li>
+          <li role="presentation"><a href="#dashboard" aria-controls="dashboard" role="tab" data-toggle="tab">Dashboard</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="schedule">
+            <div id='schedule-calendar' data-schedule-url="{% url 'carservice:load_schedule'%}"></div>
+            
+          </div>
+          <div role="tabpanel" class="tab-pane" id="map-tab">
+            {% include "carservice/dashboard/include/map.html" %}
+          </div>
+          
+          <div role="tabpanel" class="tab-pane" id="report">
+            {%for exp in expense %}
+              {{exp}}
+            {%endfor%}
+          </div>
+          <div role="tabpanel" class="tab-pane" id="dashboard">
+            {% include "carservice/dashboard/include/dashboard.html" %}
+          </div>
+        </div>
+
+      </div>
+{%endblock%}
+{% block scripts %}
+    <script src="{% static 'js/fullcalendar/moment.min.js'%}"></script>
+    <script src="{% static 'js/fullcalendar/fullcalendar.min.js' %}"></script>
+    <script src="{% static 'js/fullcalendar/locale-all.js' %}"></script>
+    <script src="{% static 'admin/dist/js/dashboard.js' %}"></script>
+    
+
+{% endblock %}

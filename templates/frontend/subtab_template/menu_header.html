@@ -14,20 +14,19 @@
                             <div class="menu-content">
                                 <ul class="menu-list">
                                     <li>
-                                        <a href="{% url 'frontend:home'%}" class="{% if request.resolver_match.url_name == 'home' %} active{% endif %}">Trang chủ</a>
-                                     
+                                        <a href="{% url 'frontend:home'%}" class="{% if 'home' in request.resolver_match.url_name %} active{% endif %}">Trang chủ</a>  
                                     </li>
                                     <li>
-                                        <a href="{% url 'frontend:about'%}" class="{% if request.resolver_match.url_name == 'about' %} active{% endif %}">Giới thiệu</a>
+                                        <a href="{% url 'frontend:about'%}" class="{% if 'about' in request.resolver_match.url_name %} active{% endif %}">Giới thiệu</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'frontend:car'%}" class="{% if request.resolver_match.url_name == 'car' %} active{% endif %}">Xe</a>
+                                        <a href="{% url 'frontend:car'%}" class="{% if 'car' in request.resolver_match.url_name %} active{% endif %}">Xe</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'frontend:news'%}" class="{% if request.resolver_match.url_name == 'news' %} active{% endif %}"> Blog</a>
+                                        <a href="{% url 'frontend:news'%}" class="{% if 'news' in request.resolver_match.url_name %} active{% endif %}"> Blog</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'frontend:contact'%}" class="{% if request.resolver_match.url_name == 'contact' %} active{% endif %}"> Liên hệ</a>
+                                        <a href="{% url 'frontend:contact'%}" class="{% if 'contact' in request.resolver_match.url_name %} active{% endif %}"> Liên hệ</a>
                                     </li>
 
                                 </ul> <!-- /.menu-list -->

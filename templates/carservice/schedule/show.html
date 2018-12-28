@@ -32,12 +32,12 @@
                     <div class="col-xs-8 col-md-8">
                         <p>
                             <strong>{{ schedule.customer }}</strong>
-                            <a href="{% url 'carservice:customer_edit' schedule.customer.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Thay đổi thông tin khách hàng</a>
+                            <a href="{% url 'carservice:customer_edit' schedule.customer.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true" title="Thay đổi thông tin khách hàng"></i></a>
                         </p>
                         <p><strong>{{ schedule.customer.phone }}</strong></p>
                         <p>
                             <strong>{{ schedule.car }}</strong>
-                            <a href="{% url 'carservice:car_edit' schedule.car.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Thay đổi thông tin xe</a>
+                            <a href="{% url 'carservice:car_edit' schedule.car.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true" title="Đổi xe"></i></a>
                         </p>
                         <p><strong>{{ schedule.departure_day|date:'d/m/Y' }} đến {{ schedule.destination_day|date:'d/m/Y' }}</strong></p>
                         <p><strong>{{ schedule.departure }}</strong></p>  
@@ -47,7 +47,15 @@
                         <p><strong>{{ schedule.deposit }}</strong></p>        
                     </div>
                 </div>
-                
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        
+                        <a href="{% url 'carservice:schedule_edit' schedule.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Sửa</a>
+
+                        <a href="{% url 'carservice:schedule_delete' schedule.id%}" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>    
+                    </div>
+                    
+                </div>
                 
             </div>
         </div>

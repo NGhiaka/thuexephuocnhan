@@ -26,48 +26,59 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="heading-content-three">
-                                        <h2 class="title">TẠI SAO <br>Chọn Chúng Tôi</h2>
+                                        <h2 class="title">Dịch Vụ Cho Thuê Xe Du Lịch <br>PHƯỚC NHÂN</h2>
                                         <h4 class="sub-title">Best offers Information</h4>
                                     </div><!-- /.section-title-area -->
                                 </div><!-- /.col-md-12 -->
                             </div><!-- /.row -->
                             <div class="row">
-                                {%if object_list%}
+                                <div class="col-md-12">
+                                    <h2 class="extra-big-title text-center">UY TÍNH LÀM NÊN THƯƠNG HIỆU</h2>
+                                </div><!-- /.col-md-12 -->
+                                <div class="row">
                                     <div class="col-md-12">
-                                        <h2 class="extra-big-title text-center" style="text-transform: uppercase;">{{object_list.0.slogan}}</h2>
-                                    </div><!-- /.col-md-12 -->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="about-content-left">
-                                                {{ object_list.0.summary|safe }}
-                                            </div><!-- /.col-md-5 -->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="about-image">
-                                                <img src="{{ object_list.0.avatar.url }}" alt="car-item">
-                                            </div>
-                                        </div><!-- /.col-md-7 -->
+                                        <h2>
+                                            <i class="fa fa-empire" aria-hidden="true"></i>
+                                            <i class="fa fa-empire" aria-hidden="true"></i>
+                                            <i class="fa fa-empire" aria-hidden="true"></i>
+                                        </h2>
+                                        <hr />
+                                        <span>
+                                            Với  phương châm UY TÍN - CHẤT LƯỢNG LÀ DANH DỰ, chúng tôi không ngừng nâng cao chất lượng dịch vụ  của mình, từ việc đầu tư thêm  những chiếc xe đời mới, chọn lọc tài xế có kinh nghiệm, tận tâm. Vì vậy, Khách hàng cứ yên tâm về giá cả cũng như chất  lượng phục vụ khi tìm đến dịch vụ thuê xe Phước Nhân.
+                                        </span>
                                     </div>
-
-                                {% else %}
-                                    <div class="col-md-12">
-                                        <h2 class="extra-big-title text-center">UY TÍNH LÀM NÊN THƯƠNG HIỆU</h2>
-                                    </div><!-- /.col-md-12 -->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="about-content-left">
-                                                <p>Tài xế được tuyển chọn khắc khe với kinh nghiệm nhiều năm trong ngành vận chuyển hành khách sẽ đảm bảo cho quý khách có sự an toàn tuyệt đối trong suốt chuyến hành trình.</p>
-                                                <p>Chất lượng xe đời mới, hệ thống an toàn, nội thất xe sang trong nhằm tạo cho khách hàng cảm giác thoải mái dễ chịu trong suốt hành trình.</p>
-                                                <p>Tài xế thân thiện – chu đáo – lịch sự.</p>
-                                            </div><!-- /.about-content-left-->
-                                        </div><!-- /.col-md-5 -->
-                                        <div class="col-md-6">
-                                            <img src="{% static 'images/vios_car.jpg' %}" alt="car-item">
-                                        </div><!-- /.col-md-7 -->
-                                    </div>
-                                    
-                                {%endif%} 
-
+                                    <div class="col-md-6">
+                                        <div class="about-content-left">
+                                            <h2><i class="fa fa-universal" aria-hidden="true"></i>Tiện ích:</h2>
+                                            <hr />
+                                            <ul>
+                                                <li>Xe <strong>đời mới sạch sẽ, êm ái, máy lạnh mát mẻ, không có mùi hôi</strong> như taxi hay xe chạy dịch vụ chuyên nghiệp.</li>
+                                                <li>Xe gia đình, <strong>hoàn toàn không có logo taxi hay bất kì hình ảnh nào cho thấy bạn đi xe thuê.</strong>. Rất thuận tiện và uy tín khi bạn đi gặp đối tác làm ăn, đi thăm xui gia hay đi các mục đích khác.</li>
+                                                <li><strong>Tài xế là chủ xe trực tiếp lái xe phục vụ bạn,</strong>,là xe gia đình nên họ luôn giữ gìn xe tốt, chạy điềm đạm, ít bị say xe, không đua bơi, thắng gấp, ăn nói lịch sự, nhã nhặn.</li>
+                                                <li>Bạn có thể <strong>yên tâm hoàn toàn về vấn đề an toàn bản thân, thái độ của tài xế…</strong>Tài xế rành đường, chạy xe cẩn thận an toàn. Thông tin cá nhân của tài xế rõ ràng minh bạch.</li>
+                                                <li>Tài xế được tuyển chọn khắc khe với kinh nghiệm nhiều năm trong ngành vận chuyển hành khách sẽ đảm bảo cho quý khách có sự an toàn tuyệt đối trong suốt chuyến hành trình.</li>
+                                                <li><strong>Chất lượng xe đời mới, hệ thống an toàn, nội thất xe sang trọng</strong> nhằm tạo cho khách hàng cảm giác thoải mái dễ chịu trong suốt hành trình.</li>
+                                                <br>
+                                            </ul>
+                                        </div><!-- /.about-content-left-->
+                                    </div><!-- /.col-md-5 -->
+                                    <div class="col-md-6">
+                                        <h2><i class="fa fa-cog" aria-hidden="true"></i> Dịch vụ</h2>
+                                        <hr />
+                                        <ul>
+                                            <li>Chúng tôi cung cấp các loại xe: Xe 4 chỗ, 7 chỗ, 16 chỗ</li>
+                                            <li>Cho thuê xe hoa: 4 chỗ</li>
+                                            <li>Cho thuê xe đi đám tiệc. </li>
+                                            <li>Cho thuê xe đi công tác.</li>
+                                            <li>Đưa rước khách ở các tỉnh miền Tây, thành phố Hồ Chí Minh, và các tỉnh duyên hải mình trung, ...</li>
+                                            <li>Cho thuê xe đi tham quan, du lịch</li>
+                                            <li>Cho thuê xe tự lái.</li>
+                                            <li>Cho thuê xe có tài xế ngắn hạn theo ngày. Cho thuê xe theo lịch trình định sẵn, Cho thuê xe đi du lịch dài ngày tự chọn. Cho thuê xe có kèm tài xế, lộ trình tự do…</li>
+                                            <li>Vui lòng gọi trực tiếp cho anh Nhân 0915.630.032 để được tư vấn rõ hơn.</li>
+                                            
+                                        </ul>
+                                    </div><!-- /.col-md-7 -->
+                                </div>
                             </div><!-- /.row -->
                     </div><!-- /.top-content -->
                 </div><!-- /.col-md-12 -->

@@ -27,7 +27,15 @@
                         <p>Biển số xe: <strong>{{ car.carid }}</strong></p>        
                     </div>
                 </div>
-                
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        
+                        <a href="{% url 'carservice:expense_edit' expense.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Sửa</a>
+
+                        <a href="{% url 'carservice:expense_delete' expense.id%}" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>    
+                    </div>
+                    
+                </div>
                 
             </div>
         </div>

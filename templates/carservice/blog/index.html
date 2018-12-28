@@ -80,7 +80,7 @@
                 <tbody id="myTable">
                     {%  if Blog_list %}
                         {%  for blog in Blog_list %}
-                            <tr class='clickable-row' data-href="chi-tiet/{{blog.id}}">
+                            <tr class='clickable-row' data-href="{% url 'carservice:blog_detail' blog.id%}">
                                 <td>{{ customer.id }}</td>
                                 <td class="col-img">
                                     <div class="customer-img">
@@ -96,7 +96,8 @@
                                     <div class="customer-address"><span>{{ blog.content|safe|truncatewords:20}}</span></div>
                                 </td>
                                 <td style="text-align: right;">
-
+                                    <a href="{%  url 'carservice:blog_detail' blog.id%}" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i> Xem</a>
+                                    
                                     <a href="{% url 'carservice:blog_edit' blog.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Sửa</a>
 
                                     <a href="{% url 'carservice:blog_delete' blog.id%}" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>

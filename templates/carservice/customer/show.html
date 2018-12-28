@@ -22,13 +22,20 @@
                     <img src="{{ customer.avatar.url }}" class="img-thumbnail img-responsive" >         
                 </div>
                 <div class="col-xs-8 col-md-8">
-                    <strong>{{ customer.name }}</strong></p>
+                    <h2><strong>{{ customer.name }}</strong></h2>
                     <p>Số điện thoại: <strong>{{ customer.phone }}</strong></p>
                     <p>Địa chỉ: <strong>{{ customer.address }}</strong></p>
                     <p>Chứng Minh Thư: <strong>{{ customer.cardid }}</strong></p>  
                 </div>
-                <a href="{% url 'carservice:customer_edit' customer.id%}"> Sửa khách hàng</a>
-            </div>             
+            </div>  
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a href="{% url 'carservice:customer_edit' customer.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Sửa</a>
+
+                    <a href="{% url 'carservice:customer_delete' customer.id%}" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>    
+                </div>
+                
+            </div>           
         </div>
     </div>
     {% else %}

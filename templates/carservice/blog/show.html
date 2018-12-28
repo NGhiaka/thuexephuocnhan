@@ -28,6 +28,14 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                            
+                <a href="{% url 'carservice:blog_edit' blog.id%}" class="btn btn-warning"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Sửa</a>
+
+                <a href="{% url 'carservice:blog_delete' blog.id%}" class="btn btn-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Xóa</a>    
+            </div>
+        </div>
     {%  endif%}
     <a href="{% url 'carservice:blog'%}"><i class="fa fa-reply fa-3x" aria-hidden="true"></i>
 {% endblock %}

@@ -40,7 +40,13 @@
                                         <span title="{{ expense.name}}">{{ expense.name|truncatewords_html:5}}</span>
                                     </th>
                                     <th>
-                                        {{ expense.type_cost|yesno:"Thu Vào,Chi Ra" }}
+                                        {% ifequal expense.type_cost 1 %}
+                                            Thu vào
+                                        {% else%} 
+                                            Chi ra   
+                                        {% endifequal%}
+                                        
+                                    
                                     </th>
                                     <th>
                                         {{ expense.cost }}
