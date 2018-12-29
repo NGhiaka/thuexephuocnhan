@@ -132,8 +132,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 if not DEBUG: 
-    # STATIC_ROOT = '/home/nghiaka/src/thuexephuocnhan/static/'
-    STATIC_ROOT = 'E:\\Website\\www\\CMS\\'
+    STATIC_ROOT = '/home/nghiaka/src/thuexephuocnhan/static/'
+    # STATIC_ROOT = 'E:\\Website\\www\\CMS\\'
 STATICFILES_DIRS = (
     ('css' , os.path.join(STATIC_ROOT, 'css')),
     ('js' , os.path.join(STATIC_ROOT, 'js')),
