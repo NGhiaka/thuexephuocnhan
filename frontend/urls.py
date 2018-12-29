@@ -5,7 +5,7 @@ app_name = "frontend"
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^trang-chu/$', views.home, name='home'),
-    url(r'^thong-tin/$', views.AboutList.as_view(), name='about'),
+    url(r'^gioi-thieu/$', views.AboutList.as_view(), name='about'),
     url(r'^dat-lich/$', views.BookingShow.as_view(), name='booking'),
     url(r'^dat-lich/tim$', views.BookingCreate.as_view(), name='create_booking'),
 
