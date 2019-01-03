@@ -29,24 +29,24 @@ import json
 
 
 def index(request):
-    expense = Expense.objects.values('type_cost', 'date_enxpense__year', 'date_enxpense__month').annotate(cost=Sum('cost')).order_by('date_enxpense__year', 'date_enxpense__month')
+    # expense = Expense.objects.values('type_cost', 'date_enxpense__year', 'date_enxpense__month').annotate(cost=Sum('cost')).order_by('date_enxpense__year', 'date_enxpense__month')
 
-    # today = datetime.today()
-    # schs = Schedule.objects.all()
-    # forms = []
-    # schedule = Schedule.objects.filter(departure_day__lte = today, destination_day__gte = today)
-    # context = {}
-    # for sch in schs:
-    #     # form = ScheduleForm(instance = sch)
-    #     forms.append({'title':sch.customer,'start':sch.departure_day.strftime('%Y-%m-%d'),'end': sch.destination_day.strftime('%Y-%m-%d')})
-    #     context = {
-    #         'schedules':schedule, 
-    #         'forms': forms,
-    #         'user':request.user,
-    #         'expenses': expense
-    #     }
+    today = datetime.today()
+    schs = Schedule.objects.all()
+    forms = []
+    schedule = Schedule.objects.filter(departure_day__lte = today, destination_day__gte = today)
+    context = {}
+    for sch in schs:
+        # form = ScheduleForm(instance = sch)
+        forms.append({'title':sch.customer,'start':sch.departure_day.strftime('%Y-%m-%d'),'end': sch.destination_day.strftime('%Y-%m-%d')})
+        context = {
+            'schedules':schedule, 
+            'forms': forms,
+            'user':request.user,
+            # 'expenses': expense
+        }
 
-    return render(request, 'carservice/dashboard/index.html', {'expenses': expense})
+    return render(request, 'carservice/dashboard/index.html', {'context': context})
 
 def load_schedule(request):
     first_day  = datetime.today().replace(day=1)
