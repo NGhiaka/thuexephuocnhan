@@ -23,11 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u2(f^mjb)yy%fky$fpk7mk^^40s)*=&!wl$9lsg%x9%=)^di47'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
 
 #ALLOWED_HOSTS = ['localhost']
 
-# DEBUG = True
+DEBUG = True
 ALLOWED_HOSTS = ["localhost", "0.0.0.0", "10.42.53.218"]
 
 # Application definition
@@ -128,12 +128,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-
+# STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-if not DEBUG: 
-    STATIC_ROOT = '/home/nghiaka/src/thuexephuocnhan/static/'
-    # STATIC_ROOT = 'E:\\Website\\www\\CMS\\'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATICFILES_DIRS = (
     ('css' , os.path.join(STATIC_ROOT, 'css')),
     ('js' , os.path.join(STATIC_ROOT, 'js')),
@@ -148,9 +146,30 @@ DATE_INPUT_FORMATS = ('%d-%m-%Y','%Y-%m-%d')
 LOGIN_URL = '/admin/login'
 LOGIN_REDIRECT_URL = '/admin'
 LOGOUT_REDIRECT_URL = '/admin/login'
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if not DEBUG: 
+    STATIC_ROOT = '/home/nghiaka/src/thuexephuocnhan/static/'
+    MEDIA_ROOT = '/home/nghiaka/src/thuexephuocnhan/media/'
+    # STATICFILES_DIRS = (
+    #     ('css' , '/home/nghiaka/src/thuexephuocnhan/static/css'),
+    #     ('js' , '/home/nghiaka/src/thuexephuocnhan/static/js'),
+    #     ('images' , '/home/nghiaka/src/thuexephuocnhan/static/images'),
+    #     ('font-awesome' , '/home/nghiaka/src/thuexephuocnhan/static/font-awesome'),
+    #     ('vendor' , '/home/nghiaka/src/thuexephuocnhan/static/vendor'),
+    #     ('admin' , '/home/nghiaka/src/thuexephuocnhan/static/admin'),
+    # )
+    # STATIC_ROOT = 'E:/Website/www/CMS/static/'
+    # MEDIA_ROOT = 'E:/Website/www/CMS/media/'
+    # STATICFILES_DIRS = (
+    #     ('css' , 'E:/Website/www/CMS/static/css'),
+    #     ('js' , 'E:/Website/www/CMS/static/js'),
+    #     ('images' , 'E:/Website/www/CMS/static/images'),
+    #     ('font-awesome' , 'E:/Website/www/CMS/static/font-awesome'),
+    #     ('vendor' , 'E:/Website/www/CMS/static/vendor'),
+    #     ('admin' , 'E:/Website/www/CMS/static/admin'),
+    # )
 
 # MEDIA_ROOT = STATIC_URL + 'images/uploads/' #os.path.join(STATIC_ROOT  , 'images')
 
@@ -179,12 +198,14 @@ FILE_UPLOAD_HANDLERS = [
     'django.core.files.uploadhandler.TemporaryFileUploadHandler',
 ]
 # API_GOOGLE_KEY = 'AIzaSyDgWBBY8-JklnkHx67KvdgqJ8sHRyeDu70'
+
+# security 
 SECURE_HSTS_SECONDS = 1
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 # SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 # SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = 'DENY'
