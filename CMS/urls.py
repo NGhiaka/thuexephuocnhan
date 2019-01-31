@@ -19,14 +19,18 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.urls import re_path
+from django.views.static import serve
+
 urlpatterns = [
 	url(r'^admin/', include('carservice.urls')),
     # url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 
     # url(r'^admin/', admin.site.urls),
     url(r'^', include('frontend.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+] 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'frontend.views.handler404'
 handler500 = 'frontend.views.handler500'

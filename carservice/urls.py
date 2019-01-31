@@ -4,6 +4,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.decorators import login_required
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 from . import views
 from .view import *
@@ -115,4 +118,4 @@ urlpatterns = [
 	url(r'^quan-ly-chi-tieu/cap-nhat/(?P<pk>\d+)$', login_required(view_expense.ExpenseUpdate), name='expense_edit'),
 	url(r'^quan-ly-chi-tieu/xoa/(?P<pk>\d+)$', login_required(view_expense.ExpenseDelete), name='expense_delete'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

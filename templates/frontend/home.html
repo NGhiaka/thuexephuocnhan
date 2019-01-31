@@ -611,7 +611,7 @@
                                             </div><!-- /.entry-meta -->
                                             <h2 class="entry-title">
                                                 <a href="{% url 'frontend:detail_news' blog.id %}">
-                                                    {{blog.title}}
+                                                    {{blog.title|truncatewords:10}}
                                                 </a>
                                             </h2><!-- /.entry-title -->
                                             <div class="entry-footer">
